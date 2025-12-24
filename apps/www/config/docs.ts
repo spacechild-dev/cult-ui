@@ -11,18 +11,6 @@ export const docsConfig: DocsConfig = {
       title: "Blog",
       href: "/blog",
     },
-    {
-      title: "Resume",
-      href: "/resume",
-    },
-    {
-      title: "Components",
-      href: "/docs/components/dynamic-island",
-    },
-    {
-      title: "Themes",
-      href: "/themes",
-    },
   ],
   sidebarNav: [
     {

@@ -15,13 +15,13 @@ export default function HomePage() {
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
               Merhaba, Ben{" "}
               <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                Adınız
+                Dağkan
               </span>
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground sm:text-xl">
-              Full Stack Developer, Designer, ve Creator.
+              Yazılımcı değilim.
               <br />
-              Web teknolojileri ile harika şeyler yapıyorum.
+              Burada "barely project" dediğim, zar zor çalışan projelerimi paylaşıyorum.
             </p>
           </div>
 
@@ -37,13 +37,15 @@ export default function HomePage() {
               Blog Yazılarım
             </Link>
             <Link
-              href="/resume"
+              href="https://buymeacoffee.com/daiquiri"
+              target="_blank"
+              rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
                 "rounded-xl transition-all hover:bg-muted/50"
               )}
             >
-              Resume
+              Buy Me a Coffee
             </Link>
             <Link
               href="https://github.com/spacechild-dev"
@@ -111,16 +113,8 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold">Hakkımda</h2>
           <div className="max-w-3xl space-y-4 text-muted-foreground">
             <p>
-              Merhaba! Ben [Adınız], [şehir] merkezli bir [mesleğiniz/rolünüz].
-              [Uzmanlık alanlarınız] konusunda tutkulu biriyim.
-            </p>
-            <p>
-              [Yıl] yılından beri [alan] alanında çalışıyorum. [Önemli beceriler
-              veya deneyimler] üzerine yoğunlaşıyorum.
-            </p>
-            <p>
-              Boş zamanlarımda [hobiler], [ilgi alanları] ile ilgileniyorum ve
-              [topluluk katkıları veya yan projeler] yapıyorum.
+              Merhaba! Ben Dağkan. Yazılımcı değilim ama teknolojiyle içli dışlıyım.
+              Boş zamanlarımda hobi olarak geliştirdiğim, bazen çalışan bazen çalışmayan projelerimi ("barely projects") burada paylaşıyorum.
             </p>
           </div>
         </section>
@@ -137,7 +131,6 @@ export default function HomePage() {
               "Node.js",
               "Tailwind CSS",
               "Git",
-              // Kendi teknolojilerinizi ekleyin
             ].map((tech) => (
               <span
                 key={tech}
@@ -154,14 +147,7 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold">İletişim</h2>
           <div className="flex flex-wrap gap-4">
             <Link
-              href="mailto:email@example.com"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Email
-            </Link>
-            <span className="text-muted-foreground">·</span>
-            <Link
-              href="https://github.com/username"
+              href="https://github.com/spacechild-dev"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -170,21 +156,12 @@ export default function HomePage() {
             </Link>
             <span className="text-muted-foreground">·</span>
             <Link
-              href="https://twitter.com/username"
+              href="https://buymeacoffee.com/daiquiri"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              Twitter
-            </Link>
-            <span className="text-muted-foreground">·</span>
-            <Link
-              href="https://linkedin.com/in/username"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              LinkedIn
+              Buy Me a Coffee
             </Link>
           </div>
         </section>

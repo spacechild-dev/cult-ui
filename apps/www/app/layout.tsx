@@ -20,26 +20,23 @@ import { ThemeSwitcher } from "@/components/theme-switcher"
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
-    template: `%s · Cult UI`,
+    template: `%s · Dağkan`,
   },
   metadataBase: new URL(siteConfig.url),
   description: siteConfig.description,
 
   /* Google ignores meta-keywords for ranking, but others may use them. */
   keywords: [
-    "shadcn",
-    "shadcn ui",
-    "shadcn components",
-    "shadcn blocks",
-    "shadcn templates",
-    "shadcn animate",
+    "personal website",
+    "projects",
+    "blog",
+    "next.js",
+    "react",
     "tailwind css",
-    "next.js 15",
-    "typescript ui kit",
   ],
 
-  authors: [{ name: "Jordan Gilliam", url: "https://cult-ui.com" }],
-  creator: "Jordan Gilliam",
+  authors: [{ name: "Dağkan", url: "https://github.com/spacechild-dev" }],
+  creator: "Dağkan",
 
   openGraph: {
     type: "website",
@@ -47,13 +44,13 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
-    siteName: "Cult UI",
+    siteName: "Dağkan",
     images: [
       {
         url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: "Cult UI – Shadcn UI Components, Blocks & Templates",
+        alt: "Dağkan - Personal Website",
       },
     ],
   },
@@ -63,7 +60,6 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@nolansym",
   },
 
   icons: {
@@ -113,7 +109,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <ThemeSwitcher />
             <Analytics />
 
-            <GoogleAnalytics gaId="G-5K1GVTD1JG" />
+            {/* <GoogleAnalytics gaId="G-5K1GVTD1JG" /> */}
 
             <NewYorkToaster />
             <DefaultToaster />

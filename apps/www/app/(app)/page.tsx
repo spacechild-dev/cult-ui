@@ -2,6 +2,7 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { getAllBlogPosts } from "@/lib/blog"
+import { Icons } from "@/components/icons" // Added this import
 
 export default function HomePage() {
   const recentPosts = getAllBlogPosts().slice(0, 3)

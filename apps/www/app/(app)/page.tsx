@@ -102,11 +102,11 @@ export default function HomePage() {
 
         {/* About Section */}
         <section className="mt-24 space-y-6">
-          <h2 className="text-3xl font-bold">Hakkımda</h2>
+          <h2 className="text-3xl font-bold">About Me</h2>
           <div className="max-w-3xl space-y-4 text-muted-foreground">
             <p>
-              Merhaba! Ben Dağkan. Yazılımcı değilim ama teknolojiyle içli dışlıyım.
-              Boş zamanlarımda hobi olarak geliştirdiğim, bazen çalışan bazen çalışmayan projelerimi ("barely projects") burada paylaşıyorum.
+              Hello! I am Dagkan. I'm not a developer, but I'm deeply involved with technology.
+              In my free time, I share my "barely projects" – projects that sometimes work, sometimes don't, but are developed as a hobby.
             </p>
           </div>
         </section>

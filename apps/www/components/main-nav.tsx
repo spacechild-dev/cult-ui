@@ -3,9 +3,9 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ExternalLink } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
+import { docsConfig } from "@/config/docs"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 
@@ -17,80 +17,23 @@ export function MainNav() {
       <Link href="/" className="mr-6 flex items-center space-x-2">
         <Icons.cultLogoBasic className="size-6 fill-black dark:fill-white " />
         <span className="hidden text-lg font-bold sm:inline-block">
-          cult ui
+          {siteConfig.name}
         </span>
         <span className="sr-only">{siteConfig.name}</span>
       </Link>
       <nav className="flex items-center gap-4 text-sm lg:gap-6">
-        <Link
-          href="/docs/components/dynamic-island"
-          className={cn(
-            "text-sm font-semibold transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/docs/components")
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
-        >
-          Components
-        </Link>
-
-        <a
-          href="https://aisdkagents.com/patterns"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn(
-            "flex items-center gap-2 text-sm font-semibold transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/examples")
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
-        >
-          AI Agents <span className="text-xs text-pink-500">(72 new)</span>
-          <ExternalLink className="size-3" />
-        </a>
-        <a
-          href="https://pro.cult-ui.com/blocks"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn(
-            "flex items-center gap-2 text-sm font-semibold transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/examples")
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
-        >
-          Blocks <span className="text-xs text-pink-500">(8 new)</span>
-          <ExternalLink className="size-3" />
-        </a>
-        {/* Temporarily disabled */}
-        {/* <a
-          href="https://pro.cult-ui.com/sections"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn(
-            "flex items-center gap-2 text-sm font-semibold transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/examples")
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
-        >
-          Sections <span className="text-xs text-pink-500">(10 new)</span>
-          <ExternalLink className="size-3" />
-        </a> */}
-        <a
-          href="https://pro.cult-ui.com/templates"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn(
-            "flex items-center gap-2 text-sm font-semibold transition-colors hover:text-foreground/80",
-            pathname?.startsWith("/examples")
-              ? "text-foreground"
-              : "text-foreground/60"
-          )}
-        >
-          Templates <span className="text-xs text-pink-500">(1 new)</span>
-          <ExternalLink className="size-3" />
-        </a>
+        {docsConfig.mainNav.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href!}
+            className={cn(
+              "text-sm font-semibold transition-colors hover:text-foreground/80",
+              pathname === item.href ? "text-foreground" : "text-foreground/60"
+            )}
+          >
+            {item.title}
+          </Link>
+        ))}
       </nav>
     </div>
   )

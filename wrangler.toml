@@ -1,0 +1,10 @@
+name = "cult-ui"
+compatibility_date = "2024-12-24"
+
+pages_build_output_dir = "apps/www/out"
+
+[build]
+command = "cd apps/www && npm install && npm run build"
+
+[build.upload]
+format = "directory"

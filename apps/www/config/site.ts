@@ -2,7 +2,7 @@ export const siteConfig = {
   /* ───────────────── Brand & positioning ───────────────── */
   name: "Dağkan",
   description:
-    "Yazılımcı değilim. Burada 'barely project' dediğim projelerimi paylaşıyorum.",
+    "I'm not a developer. I share my 'barely projects' here.",
   url: "https://cult-ui.com",
   ogImage: "https://cult-ui.com/og.png",
 

@@ -27,7 +27,7 @@ export default function HomePage() {
       <div className="container relative py-12 md:pt-24 max-w-3xl">
         {/* Hero Section */}
         <section className="flex flex-col items-center gap-8 text-center">
-          <div className="mx-auto max-w-2xl space-y-6 md:space-y-8">
+          <div className="mx-auto space-y-6 md:space-y-8">
             <p className="text-center text-sm leading-relaxed text-foreground md:text-base">
               I’m Dağkan (sounds like “DAH-kahn”). I don’t really consider myself a developer, but I love exploring and experimenting with different topics—especially anything related to data-driven performance marketing, analytics, and martech.
             </p>

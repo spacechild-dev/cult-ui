@@ -38,47 +38,45 @@ export function Pre({
     <div className="relative group my-8 not-prose">
       <div
         className={cn(
-          "relative overflow-hidden rounded-2xl border shadow-sm",
+          "relative overflow-hidden rounded-2xl border p-0.5 shadow-sm",
           "border-zinc-300 dark:border-zinc-800",
-          "bg-[#fdfbf7]/90 dark:bg-zinc-950/90 backdrop-blur-sm",
+          "bg-[#fdfbf7]/80 dark:bg-zinc-900/80 backdrop-blur-sm",
           className
         )}
       >
-        {/* Header bar */}
-        <div className="flex items-center justify-between px-4 py-2 border-b border-zinc-300/50 dark:border-zinc-800/50 bg-[#f5f2e9]/80 dark:bg-zinc-900/80">
-          <div className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400 font-bold">
-            {language || "code"}
-          </div>
-          
-          <button
-            onClick={handleCopy}
-            className={cn(
-              "flex items-center gap-1.5 px-2 py-1 text-[10px] font-medium rounded-md",
-              "text-zinc-500 dark:text-zinc-400",
-              "hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 transition-colors"
-            )}
-          >
-            {copied ? (
-              <span className="flex items-center gap-1 text-green-600 dark:text-green-400 font-semibold">
-                <Check className="size-3" />
-                <span>Copied</span>
-              </span>
-            ) : (
-              <span className="flex items-center gap-1">
-                <Copy className="size-3" />
-                <span>Copy</span>
-              </span>
-            )}
-          </button>
-        </div>
+        {/* Copy Button - Placed at the top right as requested */}
+        <button
+          onClick={handleCopy}
+          className={cn(
+            "absolute top-3 right-3 z-20",
+            "flex items-center justify-center p-1.5 rounded-md",
+            "text-zinc-500 dark:text-zinc-400",
+            "bg-white/50 dark:bg-zinc-800/50 border border-zinc-200/50 dark:border-zinc-700/50",
+            "hover:bg-white dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all",
+            "opacity-0 group-hover:opacity-100"
+          )}
+          aria-label="Copy code"
+        >
+          {copied ? (
+            <Check className="size-3.5 text-green-600 dark:text-green-400" />
+          ) : (
+            <Copy className="size-3.5" />
+          )}
+        </button>
 
-        {/* Code area - Force transparency to let the container background show through */}
+        {/* Language Label - Optional, but keeps the tech feel */}
+        {language && (
+          <div className="absolute top-3 left-4 z-20 text-[10px] font-mono uppercase tracking-widest text-zinc-400 font-bold pointer-events-none">
+            {language}
+          </div>
+        )}
+
+        {/* Code area - Styled like the 'original' theme's code block */}
         <pre
           ref={preRef}
           className={cn(
-            "p-4 text-sm sm:text-base leading-relaxed m-0 overflow-x-auto !bg-transparent",
-            "scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700",
-            className
+            "p-6 pt-10 text-sm sm:text-base leading-relaxed m-0 overflow-x-auto !bg-transparent",
+            "scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700"
           )}
           {...props}
         >
@@ -91,10 +89,6 @@ export function Pre({
 
 export const components = {
   pre: Pre,
-  // Handle rehype-pretty-code figures
-  figure: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <figure className={cn("m-0", className)} {...props} />
-  ),
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(

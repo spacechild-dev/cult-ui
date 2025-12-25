@@ -8,11 +8,6 @@ import rehypePrettyCode from "rehype-pretty-code"
 import { Icons } from "@/components/icons"
 import { ExternalLink, CheckCircle2 } from "lucide-react"
 import { cn } from "@/lib/utils"
-import {
-  MinimalCard,
-  MinimalCardDescription,
-  MinimalCardTitle,
-} from "@/registry/default/ui/minimal-card"
 
 export async function generateStaticParams() {
   const projects = getAllProjects()
@@ -82,7 +77,7 @@ export default async function ProjectPage({
                 ))}
               </div>
             </div>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-muted-foreground leading-relaxed text-sm sm:text-base">
               {project.description}
             </p>
             <div className="flex flex-wrap gap-3">
@@ -123,30 +118,24 @@ export default async function ProjectPage({
           </div>
         </section>
 
-        {/* Middle Section: Key Features using MinimalCard */}
+        {/* Middle Section: Key Features (Reverted to original clean style) */}
         {project.keyFeatures && project.keyFeatures.length > 0 && (
-          <section className="space-y-12">
+          <section className="space-y-8">
             <div className="space-y-4">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Key Features</h2>
-              <div className="h-1 w-20 bg-primary rounded-full" />
+              <h2 className="text-2xl font-bold tracking-tight">Key Features</h2>
+              <div className="h-1 w-16 bg-primary rounded-full" />
             </div>
-            <div className="grid grid-cols-1 gap-6">
+            <div className="grid grid-cols-1 gap-4">
               {project.keyFeatures.map((feature, index) => (
-                <MinimalCard 
+                <div 
                   key={index}
-                  className="bg-card/30 backdrop-blur-sm border-zinc-200/50 shadow-sm transition-all hover:shadow-md p-6"
+                  className="flex items-start gap-3 p-4 rounded-xl border bg-card/50 shadow-sm"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
-                      <CheckCircle2 className="size-5" />
-                    </div>
-                    <div>
-                      <MinimalCardTitle className="text-lg leading-tight">
-                        {feature}
-                      </MinimalCardTitle>
-                    </div>
-                  </div>
-                </MinimalCard>
+                  <CheckCircle2 className="size-5 text-primary mt-0.5 shrink-0" />
+                  <p className="text-sm font-medium leading-tight text-foreground/90">
+                    {feature}
+                  </p>
+                </div>
               ))}
             </div>
           </section>
@@ -154,9 +143,9 @@ export default async function ProjectPage({
 
         {/* Content Section (MDX) - Technical Details */}
         <section className="w-full">
-          <div className="space-y-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Technical Details</h2>
-            <div className="h-1 w-20 bg-primary rounded-full" />
+          <div className="space-y-4 mb-8">
+            <h2 className="text-2xl font-bold tracking-tight">Technical Details</h2>
+            <div className="h-1 w-16 bg-primary rounded-full" />
           </div>
           <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:tracking-tight prose-pre:p-0">
             <MDXRemote 
@@ -180,10 +169,10 @@ export default async function ProjectPage({
 
         {/* Bottom Section: App Screenshots */}
         {project.screenshots && project.screenshots.length > 0 && (
-          <section className="space-y-12">
+          <section className="space-y-8">
             <div className="space-y-4">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">App Screenshots</h2>
-              <div className="h-1 w-20 bg-primary rounded-full" />
+              <h2 className="text-2xl font-bold tracking-tight">App Screenshots</h2>
+              <div className="h-1 w-16 bg-primary rounded-full" />
             </div>
             <div className="grid grid-cols-1 gap-8">
               {project.screenshots.map((screenshot, index) => (

@@ -55,11 +55,7 @@ export default function HomePage() {
         {/* Blog Section */}
         <section className="mt-32 space-y-8">
           <div className="flex items-center justify-between px-2">
-            <div className="flex items-center gap-3">
-              <Badge variant="outline" className="rounded-full px-3 py-1 border-black/10 text-xs bg-white dark:bg-zinc-900 shadow-sm">
-                <Newspaper className="mr-2 size-3.5 fill-[#D2F583] stroke-1 text-neutral-800" /> Recent Writing
-              </Badge>
-            </div>
+            <h2 className="text-xl font-bold tracking-tight">Recent Writing</h2>
             <Link href="/blog" className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">View All Writing</Link>
           </div>
 

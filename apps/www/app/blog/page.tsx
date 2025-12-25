@@ -20,11 +20,8 @@ export default function BlogPage() {
   return (
     <div className="container max-w-3xl py-12">
       <div className="flex flex-col gap-12">
-        <div className="px-2 flex items-center gap-3">
+        <div className="px-2">
           <h1 className="text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200">Blog</h1>
-          <Badge variant="outline" className="rounded-full px-3 py-1 border-black/10 text-xs bg-white dark:bg-zinc-900 shadow-sm">
-            <Newspaper className="mr-2 size-3.5 fill-[#D2F583] stroke-1 text-neutral-800" /> Writing Manifest
-          </Badge>
         </div>
 
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 px-2">

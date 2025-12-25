@@ -65,12 +65,6 @@ export function SiteHeader() {
           </nav>
         </div>
       </div>
-
-      {!pathname?.includes("/docs") ? (
-        <div className="hidden lg:block lg:w-full -mt-[17px]">
-          <DistortedGlass></DistortedGlass>
-        </div>
-      ) : null}
     </header>
   )
 }

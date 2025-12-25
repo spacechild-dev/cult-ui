@@ -6,7 +6,7 @@ import { getAllBlogPosts } from "@/lib/blog"
 import { getAllProjects } from "@/lib/projects"
 import { siteConfig } from "@/config/site"
 import { Icons } from "@/components/icons"
-import { ExternalLink, ShieldCheck, StickerIcon, Flame } from "lucide-react"
+import { ExternalLink, ShieldCheck, StickerIcon, Flame, Newspaper } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import {
   MinimalCard,
@@ -27,7 +27,7 @@ export default function HomePage() {
       <div className="container relative py-12 md:pt-24 max-w-3xl">
         {/* Hero Section */}
         <section className="flex flex-col items-center gap-8 text-center">
-          <div className="mx-auto max-w-4xl space-y-6 md:space-y-8">
+          <div className="mx-auto space-y-6 md:space-y-8">
             <p className="text-center text-sm leading-relaxed text-foreground md:text-base font-medium">
               I’m Dağkan (sounds like “DAH-kahn”). I don’t really consider myself a developer, but I love exploring and experimenting with different topics—especially anything related to data-driven performance marketing, analytics, and martech.
             </p>
@@ -61,14 +61,10 @@ export default function HomePage() {
         {/* Blog Section */}
         <section className="mt-32 space-y-8">
           <div className="flex items-center justify-between px-2">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center bg-zinc-900 text-white dark:bg-white dark:text-black rounded-xl px-4 py-1.5 shadow-lg">
-                <h2 className="text-lg font-bold tracking-tight">Recent Posts</h2>
-              </div>
-              <Badge variant="outline" className="rounded-full px-2 py-0 h-6 border-black/10 text-[10px] bg-white dark:bg-zinc-900">
-                <StickerIcon className="mr-1 size-3 fill-[#D2F583] stroke-1" /> New
-              </Badge>
-            </div>
+            <Badge variant="outline" className="rounded-full px-3 py-1 border-black/10 text-xs bg-white dark:bg-zinc-900 shadow-sm">
+              <Newspaper className="mr-2 size-3.5 fill-[#D2F583] stroke-1 text-neutral-800" />
+              <span className="font-bold tracking-tight text-neutral-800 dark:text-neutral-200">Recent Posts</span>
+            </Badge>
             <Link href="/blog" className="text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors">View All →</Link>
           </div>
 
@@ -100,15 +96,11 @@ export default function HomePage() {
         {/* Projects Section */}
         <section className="mt-32 space-y-8">
           <div className="flex items-center justify-between px-2">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center bg-zinc-900 text-white dark:bg-white dark:text-black rounded-xl px-4 py-1.5 shadow-lg">
-                <h2 className="text-lg font-bold tracking-tight">Projects</h2>
-              </div>
-              <Badge variant="outline" className="rounded-full px-2 py-0 h-6 border-black/10 text-[10px] bg-white dark:bg-zinc-900">
-                <StickerIcon className="mr-1 size-3 fill-[#A3C0E0] stroke-1" /> Manifest
-              </Badge>
-            </div>
-            <Link href="/projects" className="text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors">View All →</Link>
+            <Badge variant="outline" className="rounded-full px-3 py-1 border-black/10 text-xs bg-white dark:bg-zinc-900 shadow-sm">
+              <StickerIcon className="mr-2 size-3.5 fill-[#A3C0E0] stroke-1 text-neutral-800" />
+              <span className="font-bold tracking-tight text-neutral-800 dark:text-neutral-200">Project Manifest</span>
+            </Badge>
+            <Link href="/projects" className="text-sm text-muted-foreground hover:text-foreground transition-colors">View All →</Link>
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 px-2">
@@ -139,7 +131,7 @@ export default function HomePage() {
                           </svg>
                         </div>
                         {project.slug === 'flow-otp' ? (
-                          <div className="relative flex flex-col items-center gap-3">
+                          <div className="relative flex flex-col items-center gap-3 scale-75">
                             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white dark:bg-zinc-950 shadow-xl border border-zinc-200 dark:border-zinc-800">
                               <ShieldCheck className="h-8 w-8 text-blue-500 animate-pulse" />
                             </div>

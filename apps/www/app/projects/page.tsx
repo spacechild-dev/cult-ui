@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { StickerIcon, ExternalLink, ShieldCheck, Flame } from "lucide-react"
+import { StickerIcon, ShieldCheck, Flame } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { Badge } from "@/components/ui/badge"
@@ -8,7 +8,6 @@ import {
   MinimalCard,
   MinimalCardDescription,
   MinimalCardTitle,
-  MinimalCardImage,
 } from "@/registry/default/ui/minimal-card"
 import { getAllProjects } from "@/lib/projects"
 
@@ -23,23 +22,23 @@ export default function ProjectsPage() {
   return (
     <div className="container max-w-3xl py-12">
       <div className="flex flex-col gap-12">
-        <div className="flex items-center gap-3 px-2">
-          <div className="flex items-center bg-zinc-900 text-white dark:bg-white dark:text-black rounded-xl px-4 py-1.5 shadow-lg">
-            <h1 className="text-lg font-bold tracking-tight">Projects</h1>
-          </div>
-          <Badge variant="outline" className="rounded-full px-2 py-0 h-6 border-black/10 text-[10px] bg-white dark:bg-zinc-900">
-            <StickerIcon className="mr-1 size-3 fill-[#A3C0E0] stroke-1" /> Manifest
+        <div className="px-2">
+          <Badge variant="outline" className="rounded-full px-3 py-1 border-black/10 text-xs bg-white dark:bg-zinc-900 shadow-sm">
+            <StickerIcon className="mr-2 size-3.5 fill-[#A3C0E0] stroke-1 text-neutral-800" />
+            <span className="font-bold tracking-tight text-neutral-800 dark:text-neutral-200 text-base">Projects</span>
           </Badge>
+          <p className="text-muted-foreground mt-4 max-w-2xl text-base md:text-lg px-1">
+            A curated list of my digital experiments and applications.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 px-2">
           {projects.map((project) => (
             <Link key={project.slug} href={`/projects/${project.slug}`} className="block no-underline group h-full">
               <MinimalCard className="relative p-2 no-underline shadow-sm transition-colors bg-card hover:bg-muted/50 text-left h-full flex flex-col">
-                {/* Image Container with Bezel Effect */}
                 <div
                   className={cn(
-                    "relative aspect-[16/10] w-full overflow-hidden rounded-[18px] shrink-0",
+                    "relative mb-4 aspect-[16/10] w-full overflow-hidden rounded-[18px] shrink-0",
                     "shadow-[0px_1px_1px_0px_rgba(0,0,0,0.05),0px_1px_1px_0px_rgba(255,252,240,0.5)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.1)_inset,0px_0px_1px_0px_rgba(28,27,26,0.5)]"
                   )}
                 >
@@ -67,15 +66,13 @@ export default function ProjectsPage() {
                           <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white dark:bg-zinc-950 shadow-xl border border-zinc-200 dark:border-zinc-800">
                             <ShieldCheck className="h-8 w-8 text-blue-500 animate-pulse" />
                           </div>
-                          <span className="text-[10px] font-mono font-bold text-zinc-400 tracking-tighter uppercase">Secure Token Manager</span>
+                          <span className="text-[10px] font-mono font-bold text-zinc-400 tracking-tighter uppercase text-center">Secure Token Manager</span>
                         </div>
                       ) : (
                         <Flame className="h-12 w-12 text-zinc-300 dark:text-zinc-700" />
                       )}
                     </div>
                   )}
-
-                  {/* Inner Bezel Shadow */}
                   <div className="absolute inset-0 rounded-[16px] pointer-events-none shadow-[0px_0px_0px_1px_rgba(0,0,0,.07),0px_0px_0px_3px_#fff,0px_0px_0px_4px_rgba(0,0,0,.08)] dark:shadow-[0px_0px_0px_1px_rgba(0,0,0,.07),0px_0px_0px_3px_rgba(100,100,100,0.3),0px_0px_0px_4px_rgba(0,0,0,.08)]" />
                 </div>
 

@@ -19,10 +19,12 @@ export default function BlogPage() {
   return (
     <div className="container max-w-3xl py-12">
       <div className="flex flex-col gap-12">
-        <div className="flex items-center gap-2 px-2">
-          <h1 className="text-3xl font-bold tracking-tight">Blog</h1>
-          <Badge variant="outline" className="rounded-full px-2 py-0 h-5 border-black/10 text-[10px]">
-            <StickerIcon className="mr-1 size-2.5 fill-[#D2F583] stroke-1" /> New Posts
+        <div className="flex items-center gap-3 px-2">
+          <div className="flex items-center bg-zinc-900 text-white dark:bg-white dark:text-black rounded-xl px-4 py-1.5 shadow-lg">
+            <h1 className="text-lg font-bold tracking-tight">Blog</h1>
+          </div>
+          <Badge variant="outline" className="rounded-full px-2 py-0 h-6 border-black/10 text-[10px] bg-white dark:bg-zinc-900">
+            <StickerIcon className="mr-1 size-3 fill-[#D2F583] stroke-1" /> New Posts
           </Badge>
         </div>
 
@@ -40,20 +42,8 @@ export default function BlogPage() {
                     <MinimalCardDescription className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
                       {post.description}
                     </MinimalCardDescription>
-                    <div className="flex items-center justify-between mt-2">
-                      <div className="flex items-center gap-2 text-[10px] text-muted-foreground uppercase tracking-widest font-bold">
-                        <time dateTime={post.date}>{new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}</time>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {post.tags.slice(0, 2).map((tag) => (
-                          <span
-                            key={tag}
-                            className="inline-block bg-muted/50 px-2 py-0.5 text-[10px] rounded border border-zinc-200/50"
-                          >
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
+                    <div className="flex items-center gap-2 text-[10px] text-muted-foreground uppercase tracking-widest font-bold">
+                      <time dateTime={post.date}>{new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}</time>
                     </div>
                   </div>
                 </MinimalCard>

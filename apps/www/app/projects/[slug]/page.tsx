@@ -6,8 +6,9 @@ import Image from "next/image"
 import { components } from "@/components/blog-mdx-components"
 import rehypePrettyCode from "rehype-pretty-code"
 import { Icons } from "@/components/icons"
-import { ExternalLink, CheckCircle2 } from "lucide-react"
+import { ExternalLink, CheckCircle2, StickerIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
 import {
   MinimalCard,
   MinimalCardDescription,
@@ -67,9 +68,16 @@ export default async function ProjectPage({
         <section className="flex flex-col gap-8">
           <div className="flex flex-col gap-6">
             <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">
-                {project.title}
-              </h1>
+              <div className="flex items-center gap-3">
+                <div className="flex items-center bg-zinc-900 text-white dark:bg-white dark:text-black rounded-xl px-4 py-1.5 shadow-lg">
+                  <h1 className="text-xl md:text-2xl font-bold tracking-tight">
+                    {project.title}
+                  </h1>
+                </div>
+                <Badge variant="outline" className="rounded-full px-2 py-0 h-6 border-black/10 text-[10px] bg-white dark:bg-zinc-900">
+                  <StickerIcon className="mr-1 size-3 fill-[#A3C0E0] stroke-1" /> Manifest
+                </Badge>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <Link
@@ -82,7 +90,7 @@ export default async function ProjectPage({
                 ))}
               </div>
             </div>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-muted-foreground leading-relaxed text-sm sm:text-base">
               {project.description}
             </p>
             <div className="flex flex-wrap gap-3">
@@ -116,8 +124,12 @@ export default async function ProjectPage({
                 priority
               />
             ) : (
-              <div className="absolute inset-0 flex items-center justify-center text-muted-foreground font-medium bg-zinc-100 dark:bg-zinc-900">
-                Preview coming soon
+              <div className="absolute inset-0 bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-900 dark:to-zinc-800 flex items-center justify-center">
+                {project.slug === 'flow-otp' ? (
+                  <ShieldCheck className="h-20 w-20 text-blue-500/20 animate-pulse" />
+                ) : (
+                  <StickerIcon className="h-20 w-20 text-zinc-300 dark:text-zinc-700" />
+                )}
               </div>
             )}
           </div>

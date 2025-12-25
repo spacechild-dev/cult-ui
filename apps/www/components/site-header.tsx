@@ -30,19 +30,19 @@ export function SiteHeader() {
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <nav className="flex items-center gap-0.5">
             <Link href="https://www.linkedin.com/in/dagkanbayramoglu/" target="_blank" rel="noreferrer">
-              <div className={cn(buttonVariants({ variant: "ghost" }), "w-9 px-0 hover:text-accent-teal hover:bg-accent-teal/5")}>
+              <div className={`${buttonVariants({ variant: "ghost" })} w-9 px-0 hover:text-accent-teal hover:bg-accent-teal/5`}>
                 <Icons.linkedin className="size-4" />
                 <span className="sr-only">LinkedIn</span>
               </div>
             </Link>
             <Link href="https://open.spotify.com/user/az7ds62ok9xtg09ua7cs7ym9i" target="_blank" rel="noreferrer">
-              <div className={cn(buttonVariants({ variant: "ghost" }), "w-9 px-0 hover:text-accent-teal hover:bg-accent-teal/5")}>
+              <div className={`${buttonVariants({ variant: "ghost" })} w-9 px-0 hover:text-accent-teal hover:bg-accent-teal/5`}>
                 <Icons.spotify className="size-4" />
                 <span className="sr-only">Spotify</span>
               </div>
             </Link>
             <Link href="https://www.last.fm/user/dagkan/listening-report/year" target="_blank" rel="noreferrer">
-              <div className={cn(buttonVariants({ variant: "ghost" }), "w-9 px-0 hover:text-accent-teal hover:bg-accent-teal/5")}>
+              <div className={`${buttonVariants({ variant: "ghost" })} w-9 px-0 hover:text-accent-teal hover:bg-accent-teal/5`}>
                 <Icons.lastfm className="size-4" />
                 <span className="sr-only">Last.fm</span>
               </div>
@@ -53,12 +53,9 @@ export function SiteHeader() {
               rel="noreferrer"
             >
               <div
-                className={cn(
-                  buttonVariants({
-                    variant: "ghost",
-                  }),
-                  "w-9 px-0 hover:text-accent-teal hover:bg-accent-teal/5"
-                )}
+                className={`${buttonVariants({
+                  variant: "ghost",
+                })} w-9 px-0 hover:text-accent-teal hover:bg-accent-teal/5`}
               >
                 <Icons.gitHub className="size-4" />
                 <span className="sr-only">GitHub</span>

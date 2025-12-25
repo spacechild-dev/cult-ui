@@ -35,19 +35,19 @@ export default function HomePage() {
           </div>
           <div className="flex w-full flex-wrap items-center justify-start gap-3 py-4 md:pb-2">
             <Link className={primaryBtnClass} href="/blog">Blog Posts</Link>
-            <Link target="_blank" rel="noreferrer" className={cn(btnClass, "hover:text-accent-teal hover:border-accent-teal/30 hover:bg-accent-teal/5")} href={siteConfig.links.github}>
+            <Link target="_blank" rel="noreferrer" className={`${btnClass} hover:text-accent-teal hover:border-accent-teal/30 hover:bg-accent-teal/5`} href={siteConfig.links.github}>
               <Icons.gitHub className="size-4" /> GitHub
             </Link>
-            <Link target="_blank" rel="noreferrer" className={cn(btnClass, "hover:text-accent-teal hover:border-accent-teal/30 hover:bg-accent-teal/5")} href="https://www.linkedin.com/in/dagkanbayramoglu/">
+            <Link target="_blank" rel="noreferrer" className={`${btnClass} hover:text-accent-teal hover:border-accent-teal/30 hover:bg-accent-teal/5`} href="https://www.linkedin.com/in/dagkanbayramoglu/">
               <Icons.linkedin className="size-4" /> LinkedIn
             </Link>
-            <Link target="_blank" rel="noreferrer" className={cn(btnClass, "hover:text-accent-teal hover:border-accent-teal/30 hover:bg-accent-teal/5")} href="https://open.spotify.com/user/az7ds62ok9xtg09ua7cs7ym9i">
+            <Link target="_blank" rel="noreferrer" className={`${btnClass} hover:text-accent-teal hover:border-accent-teal/30 hover:bg-accent-teal/5`} href="https://open.spotify.com/user/az7ds62ok9xtg09ua7cs7ym9i">
               <Icons.spotify className="size-4" /> Spotify
             </Link>
-            <Link target="_blank" rel="noreferrer" className={cn(btnClass, "hover:text-accent-teal hover:border-accent-teal/30 hover:bg-accent-teal/5")} href="https://www.last.fm/user/dagkan/listening-report/year">
+            <Link target="_blank" rel="noreferrer" className={`${btnClass} hover:text-accent-teal hover:border-accent-teal/30 hover:bg-accent-teal/5`} href="https://www.last.fm/user/dagkan/listening-report/year">
               <Icons.lastfm className="size-4" /> Last.fm
             </Link>
-            <Link href="mailto:hello@dagkanbayramoglu.com" className={cn(btnClass, "hover:text-accent-teal hover:border-accent-teal/30 hover:bg-accent-teal/5")}>
+            <Link href="mailto:hello@dagkanbayramoglu.com" className={`${btnClass} hover:text-accent-teal hover:border-accent-teal/30 hover:bg-accent-teal/5`}>
               <Icons.mail className="size-4" /> Mail
             </Link>
           </div>
@@ -107,10 +107,7 @@ export default function HomePage() {
             {projects.map((project) => (
               <Link key={project.slug} href={`/projects/${project.slug}`} className="block no-underline group h-full">
                 <MinimalCard className="relative p-2 no-underline shadow-sm transition-colors bg-card/50 hover:bg-accent-teal/5 text-left h-full flex flex-col min-h-[320px] border-accent-teal/5">
-                  <div className={cn(
-                    "relative aspect-[16/10] w-full overflow-hidden rounded-[18px] shrink-0",
-                    "shadow-[0px_1px_1px_0px_rgba(0,0,0,0.05),0px_1px_1px_0px_rgba(255,252,240,0.5)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.1)_inset,0px_0px_1px_0px_rgba(28,27,26,0.5)]"
-                  )}>
+                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[18px] shrink-0 shadow-[0px_1px_1px_0px_rgba(0,0,0,0.05),0px_1px_1px_0px_rgba(255,252,240,0.5)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.1)_inset,0px_0px_1px_0px_rgba(28,27,26,0.5)]">
                     {project.img ? (
                       <Image 
                         src={project.img} 

@@ -1,6 +1,9 @@
+import Link from "next/link"
+import { siteConfig } from "@/config/site"
+
 export const metadata = {
-  title: "Resume",
-  description: "Profesyonel özgeçmişim ve deneyimlerim",
+  title: "Career",
+  description: "Professional experience and skills in digital performance marketing and media management.",
 }
 
 export default function ResumePage() {
@@ -9,180 +12,175 @@ export default function ResumePage() {
       <div className="flex flex-col gap-12">
         {/* Header */}
         <header className="flex flex-col gap-4">
-          <h1 className="text-4xl font-bold tracking-tight">Adınız Soyadınız</h1>
+          <h1 className="text-4xl font-bold tracking-tight">Career</h1>
           <p className="text-xl text-muted-foreground">
-            Pozisyonunuz / Uzmanlık Alanınız
+            Digital Performance and Media Account Manager
           </p>
-          <div className="flex gap-4 text-sm text-muted-foreground">
-            <a href="mailto:email@example.com" className="hover:text-foreground">
-              email@example.com
+          <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+            <a href="mailto:hello@dagkanbayramoglu.com" className="hover:text-foreground transition-colors">
+              hello@dagkanbayramoglu.com
             </a>
             <span>·</span>
-            <a href="tel:+90" className="hover:text-foreground">
-              +90 XXX XXX XX XX
-            </a>
-            <span>·</span>
-            <a
-              href="https://github.com/username"
+            <Link
+              href="https://github.com/spacechild-dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-foreground"
+              className="hover:text-foreground transition-colors"
             >
               GitHub
-            </a>
+            </Link>
             <span>·</span>
-            <a
-              href="https://linkedin.com/in/username"
+            <Link
+              href="https://www.linkedin.com/in/dagkanbayramoglu/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-foreground"
+              className="hover:text-foreground transition-colors"
             >
               LinkedIn
-            </a>
+            </Link>
           </div>
         </header>
 
-        {/* About */}
+        {/* Professional Summary */}
         <section>
-          <h2 className="text-2xl font-bold mb-4">Hakkımda</h2>
+          <h2 className="text-2xl font-bold mb-4">Professional Summary</h2>
           <p className="text-muted-foreground leading-relaxed">
-            Buraya kendiniz hakkında kısa bir açıklama yazabilirsiniz. Uzmanlık alanlarınız,
-            tutkularınız ve profesyonel hedeflerinizden bahsedin.
+            Highly accomplished and results-driven Digital Marketing professional with extensive experience in performance marketing, team leadership, and strategic campaign management. Proven ability to drive ROI, optimize media budgets, and coordinate cross-functional teams to achieve operational alignment and business growth. Expertise spans multi-platform campaign execution, analytics, automation, and CRM insights, with a strong focus on mentorship, development, and process improvement.
           </p>
         </section>
 
         {/* Experience */}
         <section>
-          <h2 className="text-2xl font-bold mb-6">Deneyim</h2>
-          <div className="flex flex-col gap-8">
+          <h2 className="text-2xl font-bold mb-6">Experience</h2>
+          <div className="flex flex-col gap-10">
+            {/* Current Role */}
             <div className="flex flex-col gap-2">
-              <div className="flex justify-between items-start">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
                 <div>
-                  <h3 className="text-lg font-semibold">Pozisyon Adı</h3>
-                  <p className="text-muted-foreground">Şirket Adı</p>
+                  <h3 className="text-lg font-semibold">Digital Performance and Media Account Manager</h3>
+                  <p className="text-primary font-medium">Digital Performance Agency</p>
                 </div>
-                <span className="text-sm text-muted-foreground">2020 - Günümüz</span>
+                <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-md">Oct 2025 – Present</span>
               </div>
-              <ul className="list-disc list-inside text-muted-foreground space-y-1 mt-2">
-                <li>Başarı veya sorumluluk 1</li>
-                <li>Başarı veya sorumluluk 2</li>
-                <li>Başarı veya sorumluluk 3</li>
+              <ul className="list-disc list-outside ml-4 text-muted-foreground space-y-1.5 mt-2 text-sm">
+                <li>Managing performance and media operations across multiple clients and verticals.</li>
+                <li>Coordinating strategy, reporting, and execution for performance marketing workflows.</li>
+                <li>Collaborating with creative, analytics, and technical teams to ensure operational alignment.</li>
               </ul>
             </div>
 
+            {/* Previous Role: Team Lead */}
             <div className="flex flex-col gap-2">
-              <div className="flex justify-between items-start">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
                 <div>
-                  <h3 className="text-lg font-semibold">Önceki Pozisyon</h3>
-                  <p className="text-muted-foreground">Önceki Şirket</p>
+                  <h3 className="text-lg font-semibold">Performance Marketing Team Lead</h3>
+                  <p className="text-primary font-medium">ROI-Driven Digital Marketing Agency</p>
                 </div>
-                <span className="text-sm text-muted-foreground">2018 - 2020</span>
+                <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-md">Nov 2024 – Oct 2025</span>
               </div>
-              <ul className="list-disc list-inside text-muted-foreground space-y-1 mt-2">
-                <li>Başarı veya sorumluluk 1</li>
-                <li>Başarı veya sorumluluk 2</li>
+              <ul className="list-disc list-outside ml-4 text-muted-foreground space-y-1.5 mt-2 text-sm">
+                <li>Led a team of six with focus on mentorship, coordination, and performance marketing execution.</li>
+                <li>Provided hands-on leadership to support, unblock, and upskill the team without micromanaging.</li>
+                <li>Managed multi-platform campaigns (Google Ads, Meta, Criteo, TikTok, LinkedIn) and optimized media budgets.</li>
+                <li>Built dashboards via Looker Studio and delivered CRM insights through automated reporting pipelines.</li>
+                <li>Audited and improved tracking and attribution setups; supported CRM and offline conversion integrations.</li>
+              </ul>
+            </div>
+
+            {/* Sr. Executive */}
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+                <div>
+                  <h3 className="text-lg font-semibold">Sr. Performance Marketing Executive</h3>
+                  <p className="text-primary font-medium">ROI-Driven Digital Marketing Agency</p>
+                </div>
+                <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-md">Feb 2024 – Oct 2024</span>
+              </div>
+              <ul className="list-disc list-outside ml-4 text-muted-foreground space-y-1.5 mt-2 text-sm">
+                <li>Owned end-to-end campaign execution and reporting across performance platforms.</li>
+                <li>Provided mentorship and hands-on guidance to junior team members.</li>
+                <li>Supported analytics, automation, and technical teams in measurement workflows.</li>
+              </ul>
+            </div>
+
+            {/* Previous Role: Team Lead 2 */}
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+                <div>
+                  <h3 className="text-lg font-semibold">Digital Marketing Team Lead</h3>
+                  <p className="text-primary font-medium">Digital Marketing and Advertising Agency</p>
+                </div>
+                <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-md">Apr 2023 – Feb 2024</span>
+              </div>
+              <ul className="list-disc list-outside ml-4 text-muted-foreground space-y-1.5 mt-2 text-sm">
+                <li>Provided strategic direction for a five-person marketing team.</li>
+                <li>Facilitated 1:1s focused on performance, growth, and operational support.</li>
+                <li>Managed workload distribution, performance tracking, and operational efficiency.</li>
+              </ul>
+            </div>
+
+            {/* Specialist */}
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+                <div>
+                  <h3 className="text-lg font-semibold">Digital Marketing Specialist</h3>
+                  <p className="text-primary font-medium">Digital Marketing and Advertising Agency</p>
+                </div>
+                <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-md">Apr 2023 – Apr 2024</span>
+              </div>
+              <ul className="list-disc list-outside ml-4 text-muted-foreground space-y-1.5 mt-2 text-sm">
+                <li>Managed full-funnel campaigns across Google Ads, Meta Ads, Criteo, and LinkedIn.</li>
+                <li>Built automated dashboards in Looker Studio and designed funnel-based campaign structures.</li>
+                <li>Optimized tracking setups such as pixels, tags, and conversion events.</li>
               </ul>
             </div>
           </div>
         </section>
 
-        {/* Education */}
+        {/* Certifications */}
         <section>
-          <h2 className="text-2xl font-bold mb-6">Eğitim</h2>
-          <div className="flex flex-col gap-4">
-            <div className="flex justify-between items-start">
-              <div>
-                <h3 className="text-lg font-semibold">Bölüm Adı</h3>
-                <p className="text-muted-foreground">Üniversite Adı</p>
-              </div>
-              <span className="text-sm text-muted-foreground">2014 - 2018</span>
-            </div>
+          <h2 className="text-2xl font-bold mb-6">Certifications</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <ul className="list-disc list-outside ml-4 text-muted-foreground space-y-1 text-sm font-medium">
+              <li>Criteo Programmatic Campaign Manager</li>
+              <li>Criteo Programmatic Advertising Professional</li>
+              <li>Meta Certified Digital Marketing Associate</li>
+              <li>Google Ads Search / Display / Video</li>
+            </ul>
+            <ul className="list-disc list-outside ml-4 text-muted-foreground space-y-1 text-sm font-medium">
+              <li>Google Ads Shopping / App</li>
+              <li>Apple Search Ads</li>
+            </ul>
           </div>
         </section>
 
         {/* Skills */}
         <section>
-          <h2 className="text-2xl font-bold mb-6">Yetenekler</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <h2 className="text-2xl font-bold mb-6">Skills & Tools</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-semibold mb-3">Teknik</h3>
+              <h3 className="font-semibold mb-3">Performance Marketing</h3>
               <div className="flex flex-wrap gap-2">
-                <span className="bg-muted px-3 py-1 rounded text-sm">JavaScript</span>
-                <span className="bg-muted px-3 py-1 rounded text-sm">TypeScript</span>
-                <span className="bg-muted px-3 py-1 rounded text-sm">React</span>
-                <span className="bg-muted px-3 py-1 rounded text-sm">Next.js</span>
-                <span className="bg-muted px-3 py-1 rounded text-sm">Node.js</span>
-                {/* Kendi becerilerinizi ekleyin */}
+                <span className="bg-muted px-2.5 py-1 rounded-md text-xs font-medium border border-border">Google Ads</span>
+                <span className="bg-muted px-2.5 py-1 rounded-md text-xs font-medium border border-border">Meta Ads</span>
+                <span className="bg-muted px-2.5 py-1 rounded-md text-xs font-medium border border-border">Criteo</span>
+                <span className="bg-muted px-2.5 py-1 rounded-md text-xs font-medium border border-border">TikTok Ads</span>
+                <span className="bg-muted px-2.5 py-1 rounded-md text-xs font-medium border border-border">LinkedIn Ads</span>
+                <span className="bg-muted px-2.5 py-1 rounded-md text-xs font-medium border border-border">Apple Search Ads</span>
               </div>
             </div>
             <div>
-              <h3 className="font-semibold mb-3">Araçlar</h3>
+              <h3 className="font-semibold mb-3">Analytics & Automation</h3>
               <div className="flex flex-wrap gap-2">
-                <span className="bg-muted px-3 py-1 rounded text-sm">Git</span>
-                <span className="bg-muted px-3 py-1 rounded text-sm">Docker</span>
-                <span className="bg-muted px-3 py-1 rounded text-sm">VS Code</span>
-                <span className="bg-muted px-3 py-1 rounded text-sm">Figma</span>
-                {/* Kendi araçlarınızı ekleyin */}
+                <span className="bg-muted px-2.5 py-1 rounded-md text-xs font-medium border border-border">GA4</span>
+                <span className="bg-muted px-2.5 py-1 rounded-md text-xs font-medium border border-border">GTM</span>
+                <span className="bg-muted px-2.5 py-1 rounded-md text-xs font-medium border border-border">Looker Studio</span>
+                <span className="bg-muted px-2.5 py-1 rounded-md text-xs font-medium border border-border">Python</span>
+                <span className="bg-muted px-2.5 py-1 rounded-md text-xs font-medium border border-border">JavaScript</span>
+                <span className="bg-muted px-2.5 py-1 rounded-md text-xs font-medium border border-border">Make / Zapier</span>
               </div>
             </div>
           </div>
-        </section>
-
-        {/* Projects */}
-        <section>
-          <h2 className="text-2xl font-bold mb-6">Projeler</h2>
-          <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-2">
-              <h3 className="text-lg font-semibold">Proje Adı</h3>
-              <p className="text-muted-foreground">
-                Proje açıklaması. Ne yaptınız, hangi teknolojileri kullandınız?
-              </p>
-              <div className="flex gap-2">
-                <a
-                  href="https://github.com/username/project"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
-                >
-                  GitHub
-                </a>
-                <span className="text-muted-foreground">·</span>
-                <a
-                  href="https://project-demo.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
-                >
-                  Demo
-                </a>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <h3 className="text-lg font-semibold">Başka Proje</h3>
-              <p className="text-muted-foreground">
-                Başka bir proje açıklaması.
-              </p>
-              <a
-                href="https://github.com/username/project2"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-primary hover:underline"
-              >
-                GitHub
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Languages */}
-        <section>
-          <h2 className="text-2xl font-bold mb-6">Diller</h2>
-          <ul className="text-muted-foreground space-y-1">
-            <li>Türkçe - Ana dil</li>
-            <li>İngilizce - İleri seviye</li>
-            <li>Başka bir dil - Seviyesi</li>
-          </ul>
         </section>
       </div>
     </div>

@@ -16,9 +16,6 @@ export function MainNav() {
     <div className="mr-4 hidden md:flex ">
       <Link href="/" className="mr-6 flex items-center space-x-2">
         <Icons.cultLogoBasic className="size-6 fill-black dark:fill-white " />
-        <span className="hidden text-lg font-bold sm:inline-block">
-          {siteConfig.name}
-        </span>
         <span className="sr-only">{siteConfig.name}</span>
       </Link>
       <nav className="flex items-center gap-4 text-sm lg:gap-6">

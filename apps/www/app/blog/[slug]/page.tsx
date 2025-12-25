@@ -43,21 +43,21 @@ export default async function BlogPostPage({
   }
 
   return (
-    <div className="container max-w-3xl py-12">
+    <div className="container max-w-5xl py-12">
       <Link
         href="/blog"
-        className="text-muted-foreground hover:text-foreground mb-8 inline-block"
+        className="text-sm text-muted-foreground hover:text-foreground mb-8 inline-block"
       >
         ← Back to Blog
       </Link>
 
       <article className="prose prose-neutral dark:prose-invert max-w-none">
         <header className="mb-8 not-prose">
-          <h1 className="text-4xl font-bold tracking-tight mb-2">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
             {post.title}
           </h1>
-          <p className="text-muted-foreground text-lg">{post.description}</p>
-          <div className="flex items-center gap-4 mt-4 text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">{post.description}</p>
+          <div className="flex items-center gap-4 mt-6 text-sm text-muted-foreground border-b pb-6">
             <time dateTime={post.date}>
               {new Date(post.date).toLocaleDateString("en-US", {
                 year: "numeric",
@@ -68,7 +68,7 @@ export default async function BlogPostPage({
             {post.author && <span>· {post.author}</span>}
           </div>
           {post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-4">
+            <div className="flex flex-wrap gap-2 mt-6">
               {post.tags.map((tag) => (
                 <Link
                   key={tag}

@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function ResumePage() {
   return (
-    <div className="container max-w-4xl py-12">
+    <div className="container max-w-5xl py-12">
       <div className="flex flex-col gap-12">
         {/* Header */}
         <header className="flex flex-col gap-4">

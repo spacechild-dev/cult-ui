@@ -10,7 +10,7 @@ export default function BlogPage() {
   const posts = getAllBlogPosts()
 
   return (
-    <div className="container max-w-4xl py-12">
+    <div className="container max-w-5xl py-12">
       <div className="flex flex-col gap-8">
         <div>
           <h1 className="text-4xl font-bold tracking-tight">Blog</h1>

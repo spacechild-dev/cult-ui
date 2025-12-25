@@ -26,7 +26,7 @@ export default function HomePage() {
     <div className="isolate min-h-screen overflow-hidden pb-8 sm:pb-12">
       <div className="container relative py-12 md:pt-24">
         {/* Hero Section */}
-        <section className="flex flex-col items-center gap-8 text-center">
+        <section className="flex flex-col items-center gap-8 text-center max-w-5xl mx-auto">
           <div className="mx-auto max-w-4xl space-y-6 md:space-y-8">
             <p className="text-center text-sm leading-relaxed text-foreground md:text-base">
               I’m Dağkan (sounds like “DAH-kahn”). I don’t really consider myself a developer, but I love exploring and experimenting with different topics—especially anything related to data-driven performance marketing, analytics, and martech.
@@ -59,10 +59,10 @@ export default function HomePage() {
         </section>
 
         {/* Blog Section */}
-        <section className="mt-24 space-y-8 max-w-3xl mx-auto">
+        <section className="mt-24 space-y-8 max-w-5xl mx-auto">
           <div className="flex items-center justify-between px-2">
             <h2 className="text-3xl font-bold">Recent Posts</h2>
-            <Link href="/blog" className="text-sm text-muted-foreground hover:text-foreground">View All →</Link>
+            <Link href="/blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">View All →</Link>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-1 px-2">
@@ -85,7 +85,7 @@ export default function HomePage() {
         </section>
 
         {/* Projects Section */}
-        <section className="mt-24 space-y-8 max-w-3xl mx-auto">
+        <section className="mt-24 space-y-8 max-w-5xl mx-auto">
           <div className="flex items-center justify-between px-2">
             <div className="flex items-center gap-2">
               <h2 className="text-3xl font-bold">Projects</h2>
@@ -93,7 +93,7 @@ export default function HomePage() {
                 <StickerIcon className="mr-1 size-2.5 fill-[#A3C0E0] stroke-1" /> Manifest
               </Badge>
             </div>
-            <Link href="/projects" className="text-sm text-muted-foreground hover:text-foreground">View All →</Link>
+            <Link href="/projects" className="text-sm text-muted-foreground hover:text-foreground transition-colors">View All →</Link>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 px-2">

@@ -25,15 +25,15 @@ export default function HomePage() {
 
   return (
     <div className="isolate min-h-screen overflow-hidden pb-8 sm:pb-12">
-      <div className="container relative py-12 md:pt-24 max-w-3xl">
+      <div className="container relative py-24 md:py-32 max-w-3xl">
         {/* Hero Section */}
-        <section className="flex flex-col items-start gap-8 text-left">
-          <div className="mr-auto max-w-4xl space-y-6 md:space-y-8">
-            <p className="text-left text-sm leading-relaxed text-foreground md:text-base font-medium">
+        <section className="flex flex-col items-center gap-8 text-center">
+          <div className="mx-auto max-w-4xl space-y-6 md:space-y-8">
+            <p className="text-center text-sm leading-relaxed text-foreground md:text-base font-medium">
               I’m Dağkan (sounds like “DAH-kahn”). I don’t really consider myself a developer, but I love exploring and experimenting with different topics—especially anything related to data-driven performance marketing, analytics, and martech.
             </p>
           </div>
-          <div className="flex w-full flex-wrap items-center justify-start gap-3 py-4 md:pb-2">
+          <div className="flex w-full flex-wrap items-center justify-center gap-3 py-4 md:pb-2">
             <Link target="_blank" rel="noreferrer" className={`${buttonVariants({ variant: "outline", size: "sm" })} rounded-xl transition-all hover:bg-muted/50`} href={siteConfig.links.github}>
               <Icons.gitHub className="size-4 mr-2" /> GitHub
             </Link>

@@ -3,6 +3,7 @@ import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { getAllBlogPosts } from "@/lib/blog"
+import { getAllProjects } from "@/lib/projects"
 import { siteConfig } from "@/config/site"
 import { Icons } from "@/components/icons"
 import { ExternalLink, ShieldCheck, StickerIcon } from "lucide-react"
@@ -16,27 +17,10 @@ import {
 
 export default function HomePage() {
   const recentPosts = getAllBlogPosts().slice(0, 3)
+  const projects = getAllProjects().slice(0, 2)
 
   const btnClass = "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 gap-1.5 px-3 has-[>svg]:px-2.5 rounded-xl transition-all hover:bg-muted/50"
   const primaryBtnClass = "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 h-8 gap-1.5 px-3 has-[>svg]:px-2.5 rounded-xl transition-all"
-
-  const projects = [
-    {
-      title: "Spotify MixtapeKit",
-      description: "A comprehensive toolkit for Spotify enthusiasts. Create, manage, and analyze mixtapes.",
-      href: "https://mixtapekit.spacechild.dev/",
-      github: "https://github.com/spacechild-dev/spotify-mixtapekit",
-      img: "/mixtapekit.png",
-      icon: <Icons.spotify className="h-5 w-5 text-green-500" />
-    },
-    {
-      title: "FlowOTP",
-      description: "A modern and secure two-factor authentication (2FA) management solution.",
-      href: "https://github.com/spacechild-dev/FlowOTP",
-      github: "https://github.com/spacechild-dev/FlowOTP",
-      icon: <ShieldCheck className="h-5 w-5 text-blue-500" />
-    }
-  ]
 
   return (
     <div className="isolate min-h-screen overflow-hidden pb-8 sm:pb-12">
@@ -114,24 +98,30 @@ export default function HomePage() {
 
           <div className="grid gap-6 sm:grid-cols-2 px-2">
             {projects.map((project) => (
-              <MinimalCard key={project.title} className="bg-card/50 backdrop-blur-sm border-zinc-200/50 shadow-sm transition-all hover:shadow-md">
+              <MinimalCard key={project.slug} className="bg-card/50 backdrop-blur-sm border-zinc-200/50 shadow-sm transition-all hover:shadow-md">
                 {project.img && (
-                  <MinimalCardImage src={project.img} alt={project.title} />
+                  <Link href={`/projects/${project.slug}`}>
+                    <MinimalCardImage src={project.img} alt={project.title} />
+                  </Link>
                 )}
                 <div className="p-5 flex flex-col h-full">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
                       <div className="flex h-8 w-8 items-center justify-center rounded-md bg-muted/50">
-                        {project.icon}
+                        {project.slug === 'spotify-mixtapekit' ? <Icons.spotify className="h-5 w-5 text-green-500" /> : <ShieldCheck className="h-5 w-5 text-blue-500" />}
                       </div>
-                      <MinimalCardTitle className="text-lg">
-                        {project.title}
-                      </MinimalCardTitle>
+                      <Link href={`/projects/${project.slug}`}>
+                        <MinimalCardTitle className="text-lg hover:text-primary transition-colors">
+                          {project.title}
+                        </MinimalCardTitle>
+                      </Link>
                     </div>
                   </div>
-                  <MinimalCardDescription className="text-xs text-muted-foreground line-clamp-2 mb-4">
-                    {project.description}
-                  </MinimalCardDescription>
+                  <Link href={`/projects/${project.slug}`}>
+                    <MinimalCardDescription className="text-xs text-muted-foreground line-clamp-2 mb-4">
+                      {project.description}
+                    </MinimalCardDescription>
+                  </Link>
                   <div className="flex gap-2 mt-auto">
                     <Link href={project.github} target="_blank" rel="noreferrer" className="text-[10px] text-muted-foreground hover:text-foreground flex items-center gap-1">
                       <Icons.gitHub className="size-3" /> GitHub

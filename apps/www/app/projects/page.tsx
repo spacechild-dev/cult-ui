@@ -10,6 +10,7 @@ import {
   MinimalCardTitle,
   MinimalCardImage,
 } from "@/components/ui/minimal-card"
+import { getAllProjects } from "@/lib/projects"
 
 export const metadata = {
   title: "Projects",
@@ -17,25 +18,7 @@ export const metadata = {
 }
 
 export default function ProjectsPage() {
-  const projects = [
-    {
-      title: "Spotify MixtapeKit",
-      description: "A comprehensive toolkit for Spotify enthusiasts. Create, manage, and analyze your mixtapes with advanced features.",
-      href: "https://mixtapekit.spacechild.dev/",
-      github: "https://github.com/spacechild-dev/spotify-mixtapekit",
-      img: "/mixtapekit.png",
-      tags: ["React", "Spotify API", "Tailwind"],
-      icon: <Icons.spotify className="h-6 w-6 text-green-500" />
-    },
-    {
-      title: "FlowOTP",
-      description: "A modern and secure two-factor authentication (2FA) management solution. Designed for simplicity and efficiency.",
-      href: "https://github.com/spacechild-dev/FlowOTP",
-      github: "https://github.com/spacechild-dev/FlowOTP",
-      tags: ["Security", "2FA", "TypeScript"],
-      icon: <ShieldCheck className="h-6 w-6 text-blue-500" />
-    }
-  ]
+  const projects = getAllProjects()
 
   return (
     <div className="container max-w-5xl py-12">
@@ -59,20 +42,24 @@ export default function ProjectsPage() {
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
           {projects.map((project) => (
-            <div key={project.title} className="flex flex-col gap-4">
+            <div key={project.slug} className="flex flex-col gap-4">
               <MinimalCard className="bg-card/50 backdrop-blur-sm border-zinc-200/50 shadow-sm transition-all hover:shadow-md h-full">
                 {project.img && (
-                  <MinimalCardImage src={project.img} alt={project.title} />
+                  <Link href={`/projects/${project.slug}`}>
+                    <MinimalCardImage src={project.img} alt={project.title} />
+                  </Link>
                 )}
                 <div className="p-6 flex flex-col h-full">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted/50">
-                        {project.icon}
+                        {project.slug === 'spotify-mixtapekit' ? <Icons.spotify className="h-6 w-6 text-green-500" /> : <ShieldCheck className="h-6 w-6 text-blue-500" />}
                       </div>
-                      <MinimalCardTitle className="text-xl">
-                        {project.title}
-                      </MinimalCardTitle>
+                      <Link href={`/projects/${project.slug}`}>
+                        <MinimalCardTitle className="text-xl hover:text-primary transition-colors">
+                          {project.title}
+                        </MinimalCardTitle>
+                      </Link>
                     </div>
                     <div className="flex gap-2">
                       <Link
@@ -95,9 +82,11 @@ export default function ProjectsPage() {
                       </Link>
                     </div>
                   </div>
-                  <MinimalCardDescription className="text-muted-foreground flex-grow mb-6">
-                    {project.description}
-                  </MinimalCardDescription>
+                  <Link href={`/projects/${project.slug}`} className="flex-grow">
+                    <MinimalCardDescription className="text-muted-foreground mb-6 line-clamp-2">
+                      {project.description}
+                    </MinimalCardDescription>
+                  </Link>
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {project.tags.map((tag) => (
                       <span

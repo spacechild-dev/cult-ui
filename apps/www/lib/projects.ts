@@ -1,0 +1,77 @@
+import fs from "fs"
+import path from "path"
+import matter from "gray-matter"
+
+const projectsDirectory = path.join(process.cwd(), "content/projects")
+
+export interface Project {
+  slug: string
+  title: string
+  description: string
+  date: string
+  author: string
+  tags: string[]
+  published: boolean
+  content: string
+  href: string
+  github: string
+  img?: string
+}
+
+export function getAllProjects(): Project[] {
+  if (!fs.existsSync(projectsDirectory)) {
+    return []
+  }
+
+  const fileNames = fs.readdirSync(projectsDirectory)
+  const allProjects = fileNames
+    .filter((fileName) => fileName.endsWith(".mdx") || fileName.endsWith(".md"))
+    .map((fileName) => {
+      const slug = fileName.replace(/\.mdx?$/, "")
+      const fullPath = path.join(projectsDirectory, fileName)
+      const fileContents = fs.readFileSync(fullPath, "utf8")
+      const { data, content } = matter(fileContents)
+
+      return {
+        slug,
+        title: data.title || "",
+        description: data.description || "",
+        date: data.date || "",
+        author: data.author || "",
+        tags: data.tags || [],
+        published: data.published !== false,
+        content,
+        href: data.href || "",
+        github: data.github || "",
+        img: data.img || null,
+      }
+    })
+    .filter((project) => project.published)
+    .sort((a, b) => (a.date > b.date ? -1 : 1))
+
+  return allProjects
+}
+
+export function getProject(slug: string): Project | null {
+  try {
+    const fullPath = path.join(projectsDirectory, `${slug}.mdx`)
+    const fileContents = fs.readFileSync(fullPath, "utf8")
+    const { data, content } = matter(fileContents)
+
+    return {
+      slug,
+      title: data.title || "",
+      description: data.description || "",
+      date: data.date || "",
+      author: data.author || "",
+      tags: data.tags || [],
+      published: data.published !== false,
+      content,
+      href: data.href || "",
+      github: data.github || "",
+      img: data.img || null,
+    }
+  } catch {
+    return null
+  }
+}

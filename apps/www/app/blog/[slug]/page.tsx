@@ -2,6 +2,8 @@ import { notFound } from "next/navigation"
 import { getAllBlogPosts, getBlogPost } from "@/lib/blog"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import Link from "next/link"
+import { components } from "@/components/blog-mdx-components"
+import rehypePrettyCode from "rehype-pretty-code"
 
 export async function generateStaticParams() {
   const posts = getAllBlogPosts()
@@ -46,7 +48,7 @@ export default async function BlogPostPage({
         href="/blog"
         className="text-muted-foreground hover:text-foreground mb-8 inline-block"
       >
-        ← Blog'a Dön
+        ← Back to Blog
       </Link>
 
       <article className="prose prose-neutral dark:prose-invert max-w-none">
@@ -57,7 +59,7 @@ export default async function BlogPostPage({
           <p className="text-muted-foreground text-lg">{post.description}</p>
           <div className="flex items-center gap-4 mt-4 text-sm text-muted-foreground">
             <time dateTime={post.date}>
-              {new Date(post.date).toLocaleDateString("tr-TR", {
+              {new Date(post.date).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
@@ -79,7 +81,25 @@ export default async function BlogPostPage({
           )}
         </header>
 
-        <MDXRemote source={post.content} />
+        <MDXRemote 
+          source={post.content} 
+          components={components}
+          options={{
+            mdxOptions: {
+              rehypePlugins: [
+                [
+                  rehypePrettyCode,
+                  {
+                    theme: {
+                      dark: "github-dark",
+                      light: "github-light-default",
+                    },
+                  },
+                ],
+              ],
+            },
+          }}
+        />
       </article>
     </div>
   )

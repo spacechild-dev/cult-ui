@@ -46,9 +46,9 @@ export default async function BlogPostPage({
     <div className="container max-w-3xl py-12">
       <Link
         href="/blog"
-        className="text-sm font-bold uppercase tracking-widest text-accent-teal/80 hover:text-accent-teal mb-12 inline-block transition-colors"
+        className="text-sm font-medium text-muted-foreground hover:text-foreground mb-12 inline-block transition-colors"
       >
-        ← Back to Archive
+        ← Back to all posts
       </Link>
 
       <article className="prose prose-neutral dark:prose-invert max-w-none">
@@ -56,10 +56,10 @@ export default async function BlogPostPage({
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 leading-tight text-foreground">
             {post.title}
           </h1>
-          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8">
+          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8 font-normal">
             {post.description}
           </p>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
             <time dateTime={post.date}>
               {new Date(post.date).toLocaleDateString("en-US", {
                 year: "numeric",
@@ -69,7 +69,7 @@ export default async function BlogPostPage({
             </time>
             {post.author && (
               <>
-                <span>·</span>
+                <span className="text-muted-foreground/40">·</span>
                 <span>{post.author}</span>
               </>
             )}
@@ -80,7 +80,7 @@ export default async function BlogPostPage({
                 <Link
                   key={tag}
                   href={`/blog/tags/${encodeURIComponent(tag)}`}
-                  className="inline-block bg-white dark:bg-zinc-900 px-2.5 py-1 text-xs font-medium text-muted-foreground hover:text-accent-teal border border-accent-teal/5 hover:border-accent-teal/20 rounded-md transition-all shadow-sm"
+                  className="inline-flex items-center rounded-md bg-muted/50 px-2 py-0.5 text-[10px] font-medium text-muted-foreground ring-1 ring-inset ring-zinc-200/50 hover:bg-muted transition-colors"
                 >
                   #{tag}
                 </Link>

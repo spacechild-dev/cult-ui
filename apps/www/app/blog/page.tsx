@@ -19,41 +19,44 @@ export default function BlogPage() {
 
   return (
     <div className="container max-w-3xl py-12">
-      <div className="flex flex-col gap-16">
-        <div className="px-2 flex flex-col gap-4 border-b border-accent-teal/20 pb-8">
-          <h1 className="text-4xl font-bold tracking-tight text-accent-teal">Archive</h1>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            A collection of thoughts, notes, and experiments.
-          </p>
+      <div className="flex flex-col gap-12">
+        <div className="px-2 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200">Blog</h1>
+          <Badge variant="outline" className="rounded-full px-3 py-1 border-black/10 text-xs bg-white dark:bg-zinc-900 shadow-sm">
+            <Newspaper className="mr-2 size-3.5 fill-[#D2F583] stroke-1 text-neutral-800" /> Writing Manifest
+          </Badge>
         </div>
 
-        <div className="flex flex-col gap-16 px-2">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 px-2">
           {posts.length === 0 ? (
             <p className="text-muted-foreground text-center py-12">No blog posts yet.</p>
           ) : (
             posts.map((post) => (
-              <article key={post.slug} className="group relative flex flex-col items-start">
-                <h2 className="text-2xl font-bold tracking-tight text-foreground group-hover:text-accent-teal transition-colors mb-3">
-                  <Link href={`/blog/${post.slug}`}>
-                    <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl" />
-                    <span className="relative z-10">{post.title}</span>
-                  </Link>
-                </h2>
-                <time className="relative z-10 order-first mb-3 flex items-center text-sm font-mono font-bold text-muted-foreground/60 uppercase tracking-widest pl-3.5" dateTime={post.date}>
-                  <span className="absolute inset-y-0 left-0 flex items-center" aria-hidden="true">
-                    <span className="h-4 w-0.5 rounded-full bg-accent-teal/40" />
-                  </span>
-                  {new Date(post.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
-                </time>
-                <p className="relative z-10 mt-2 text-base leading-relaxed text-muted-foreground line-clamp-3 font-normal">
-                  {post.description}
-                </p>
-                <div className="relative z-10 mt-6 flex flex-wrap gap-2">
-                  {post.tags.slice(0, 3).map(tag => (
-                    <span key={tag} className="inline-block bg-white dark:bg-zinc-900 px-2.5 py-0.5 text-[10px] font-bold italic text-accent-teal/80 border border-accent-teal/10 rounded-md">#{tag}</span>
-                  ))}
-                </div>
-              </article>
+              <Link key={post.slug} href={`/blog/${post.slug}`} className="block no-underline group h-full">
+                <MinimalCard className="relative p-2 no-underline shadow-sm transition-colors bg-card hover:bg-muted/50 text-left h-full flex flex-col min-h-[280px]">
+                  <div className="px-4 pt-6 pb-6 flex-grow flex flex-col gap-3">
+                    <time className="text-[10px] font-mono font-bold text-muted-foreground/60 uppercase tracking-widest" dateTime={post.date}>
+                      {new Date(post.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+                    </time>
+                    <MinimalCardTitle className="text-lg font-bold leading-tight group-hover:text-primary transition-colors text-left px-0 mt-0">
+                      {post.title}
+                    </MinimalCardTitle>
+                    <MinimalCardDescription className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-normal line-clamp-4 text-left px-0">
+                      {post.description}
+                    </MinimalCardDescription>
+                    <div className="flex flex-wrap gap-2 mt-auto pt-4">
+                      {post.tags.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="inline-flex items-center rounded-md bg-muted/50 px-2 py-0.5 text-[10px] font-medium text-muted-foreground ring-1 ring-inset ring-zinc-200/50"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </MinimalCard>
+              </Link>
             ))
           )}
         </div>

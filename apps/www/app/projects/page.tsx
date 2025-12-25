@@ -21,7 +21,7 @@ export default function ProjectsPage() {
   const projects = getAllProjects()
 
   return (
-    <div className="container max-w-3xl py-12">
+    <div className="container max-w-4xl py-12">
       <div className="flex flex-col gap-12">
         <div className="relative w-full space-y-4">
           <Badge
@@ -40,18 +40,23 @@ export default function ProjectsPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-8">
+        <div className="grid grid-cols-1 gap-10">
           {projects.map((project) => (
             <div key={project.slug} className="flex flex-col gap-4">
-              <MinimalCard className="bg-card/50 backdrop-blur-sm border-zinc-200/50 shadow-sm transition-all hover:shadow-md h-full">
+              <MinimalCard className="bg-card/50 backdrop-blur-sm border-zinc-200/50 shadow-sm transition-all hover:shadow-md h-full overflow-hidden">
                 {project.img && (
-                  <Link href={`/projects/${project.slug}`}>
-                    <MinimalCardImage src={project.img} alt={project.title} />
+                  <Link href={`/projects/${project.slug}`} className="block relative aspect-[16/10] w-full overflow-hidden border-b">
+                    <Image 
+                      src={project.img} 
+                      alt={project.title} 
+                      fill 
+                      className="object-cover transition-transform duration-500 hover:scale-105"
+                    />
                   </Link>
                 )}
                 <div className="p-6 flex flex-col h-full">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 text-left">
                       <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted/50">
                         {project.slug === 'spotify-mixtapekit' ? <Icons.spotify className="h-6 w-6 text-green-500" /> : <ShieldCheck className="h-6 w-6 text-blue-500" />}
                       </div>
@@ -66,7 +71,7 @@ export default function ProjectsPage() {
                         href={project.github}
                         target="_blank"
                         rel="noreferrer"
-                        className="p-2 rounded-full hover:bg-muted transition-colors"
+                        className="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
                       >
                         <Icons.gitHub className="size-4" />
                         <span className="sr-only">GitHub</span>
@@ -75,14 +80,14 @@ export default function ProjectsPage() {
                         href={project.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="p-2 rounded-full hover:bg-muted transition-colors"
+                        className="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
                       >
                         <ExternalLink className="size-4" />
                         <span className="sr-only">Visit</span>
                       </Link>
                     </div>
                   </div>
-                  <Link href={`/projects/${project.slug}`} className="flex-grow">
+                  <Link href={`/projects/${project.slug}`} className="flex-grow text-left">
                     <MinimalCardDescription className="text-muted-foreground mb-6 line-clamp-3 text-sm sm:text-base leading-relaxed">
                       {project.description}
                     </MinimalCardDescription>

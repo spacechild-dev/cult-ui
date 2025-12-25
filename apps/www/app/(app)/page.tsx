@@ -27,7 +27,7 @@ export default function HomePage() {
       <div className="container relative py-12 md:pt-24 max-w-3xl">
         {/* Hero Section */}
         <section className="flex flex-col items-center gap-8 text-center">
-          <div className="mx-auto space-y-6 md:space-y-8">
+          <div className="mx-auto max-w-4xl space-y-6 md:space-y-8">
             <p className="text-center text-sm leading-relaxed text-foreground md:text-base">
               I’m Dağkan (sounds like “DAH-kahn”). I don’t really consider myself a developer, but I love exploring and experimenting with different topics—especially anything related to data-driven performance marketing, analytics, and martech.
             </p>
@@ -98,13 +98,18 @@ export default function HomePage() {
 
           <div className="grid gap-6 sm:grid-cols-1 px-2">
             {projects.map((project) => (
-              <MinimalCard key={project.slug} className="bg-card/50 backdrop-blur-sm border-zinc-200/50 shadow-sm transition-all hover:shadow-md">
+              <MinimalCard key={project.slug} className="bg-card/50 backdrop-blur-sm border-zinc-200/50 shadow-sm transition-all hover:shadow-md h-full overflow-hidden">
                 {project.img && (
-                  <Link href={`/projects/${project.slug}`}>
-                    <MinimalCardImage src={project.img} alt={project.title} />
+                  <Link href={`/projects/${project.slug}`} className="block relative aspect-[16/10] w-full overflow-hidden border-b">
+                    <Image 
+                      src={project.img} 
+                      alt={project.title} 
+                      fill 
+                      className="object-cover transition-transform duration-500 hover:scale-105"
+                    />
                   </Link>
                 )}
-                <div className="p-5 flex flex-col h-full">
+                <div className="p-5 flex flex-col h-full text-left">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
                       <div className="flex h-8 w-8 items-center justify-center rounded-md bg-muted/50">

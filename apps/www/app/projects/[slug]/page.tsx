@@ -8,6 +8,11 @@ import rehypePrettyCode from "rehype-pretty-code"
 import { Icons } from "@/components/icons"
 import { ExternalLink, CheckCircle2 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import {
+  MinimalCard,
+  MinimalCardDescription,
+  MinimalCardTitle,
+} from "@/registry/default/ui/minimal-card"
 
 export async function generateStaticParams() {
   const projects = getAllProjects()
@@ -49,7 +54,7 @@ export default async function ProjectPage({
   const btnClass = "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 gap-1.5 px-3 rounded-xl transition-all hover:bg-muted/50"
 
   return (
-    <div className="container max-w-3xl py-12">
+    <div className="container max-w-5xl py-12 lg:py-20">
       <Link
         href="/projects"
         className="text-sm text-muted-foreground hover:text-foreground mb-8 inline-block transition-colors"
@@ -101,7 +106,7 @@ export default async function ProjectPage({
               </Link>
             </div>
           </div>
-          <div className="relative aspect-video w-full overflow-hidden rounded-[2rem] border bg-muted shadow-2xl group">
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[2rem] border bg-muted shadow-2xl group">
             {project.img ? (
               <Image 
                 src={project.img} 
@@ -118,24 +123,33 @@ export default async function ProjectPage({
           </div>
         </section>
 
-        {/* Middle Section: Key Features (Reverted to original clean style) */}
+        {/* Middle Section: Key Features using MinimalCard in a 3-column grid */}
         {project.keyFeatures && project.keyFeatures.length > 0 && (
           <section className="space-y-8">
             <div className="space-y-4">
               <h2 className="text-2xl font-bold tracking-tight">Key Features</h2>
               <div className="h-1 w-16 bg-primary rounded-full" />
             </div>
-            <div className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {project.keyFeatures.map((feature, index) => (
-                <div 
+                <MinimalCard 
                   key={index}
-                  className="flex items-start gap-3 p-4 rounded-xl border bg-card/50 shadow-sm"
+                  className="bg-card/30 backdrop-blur-sm border-zinc-200/50 shadow-sm transition-all hover:shadow-md p-6"
                 >
-                  <CheckCircle2 className="size-5 text-primary mt-0.5 shrink-0" />
-                  <p className="text-sm font-medium leading-tight text-foreground/90">
-                    {feature}
-                  </p>
-                </div>
+                  <div className="flex flex-col gap-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
+                      <CheckCircle2 className="size-5" />
+                    </div>
+                    <div>
+                      <MinimalCardTitle className="text-lg leading-tight mb-2">
+                        {feature}
+                      </MinimalCardTitle>
+                      <MinimalCardDescription className="text-xs text-muted-foreground">
+                        Core functionality optimized for modern workflows and user experience.
+                      </MinimalCardDescription>
+                    </div>
+                  </div>
+                </MinimalCard>
               ))}
             </div>
           </section>
@@ -178,7 +192,7 @@ export default async function ProjectPage({
               {project.screenshots.map((screenshot, index) => (
                 <div 
                   key={index}
-                  className="relative aspect-video w-full overflow-hidden rounded-[2rem] border bg-muted shadow-2xl group"
+                  className="relative aspect-[16/10] w-full overflow-hidden rounded-[2rem] border bg-muted shadow-2xl group"
                 >
                   <Image 
                     src={screenshot} 

@@ -35,19 +35,19 @@ export default function HomePage() {
           </div>
           <div className="flex w-full flex-wrap items-center justify-center gap-3 py-4 md:pb-2">
             <Link target="_blank" rel="noreferrer" className={`${buttonVariants({ variant: "outline", size: "sm" })} rounded-xl transition-all hover:bg-muted/50`} href={siteConfig.links.github}>
-              <Icons.gitHub className="size-4 mr-2" /> GitHub
+              <Icons.gitHub className="size-4" /> GitHub
             </Link>
             <Link target="_blank" rel="noreferrer" className={`${buttonVariants({ variant: "outline", size: "sm" })} rounded-xl transition-all hover:bg-muted/50`} href="https://www.linkedin.com/in/dagkanbayramoglu/">
-              <Icons.linkedin className="size-4 mr-2" /> LinkedIn
+              <Icons.linkedin className="size-4" /> LinkedIn
             </Link>
             <Link target="_blank" rel="noreferrer" className={`${buttonVariants({ variant: "outline", size: "sm" })} rounded-xl transition-all hover:bg-muted/50`} href="https://open.spotify.com/user/az7ds62ok9xtg09ua7cs7ym9i">
-              <Icons.spotify className="size-4 mr-2" /> Spotify
+              <Icons.spotify className="size-4" /> Spotify
             </Link>
             <Link target="_blank" rel="noreferrer" className={`${buttonVariants({ variant: "outline", size: "sm" })} rounded-xl transition-all hover:bg-muted/50`} href="https://www.last.fm/user/dagkan/listening-report/year">
-              <Icons.lastfm className="size-4 mr-2" /> Last.fm
+              <Icons.lastfm className="size-4" /> Last.fm
             </Link>
             <Link href="mailto:hello@dagkanbayramoglu.com" className={`${buttonVariants({ variant: "outline", size: "sm" })} rounded-xl transition-all hover:bg-muted/50 px-6`}>
-              <Icons.mail className="size-4 mr-2" /> Mail
+              <Icons.mail className="size-4" /> Mail
             </Link>
           </div>
         </section>

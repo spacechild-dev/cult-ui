@@ -20,13 +20,11 @@ export default function BlogPage() {
   return (
     <div className="container max-w-3xl py-12">
       <div className="flex flex-col gap-12">
-        <div className="px-2">
-          <Badge variant="outline" className="rounded-full px-2 py-0 h-6 border-black/10 text-[10px] bg-white dark:bg-zinc-900 shadow-sm">
-            <Newspaper className="mr-1 size-3 fill-[#D2F583] stroke-1 text-neutral-800" /> Blog
+        <div className="px-2 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200">Blog</h1>
+          <Badge variant="outline" className="rounded-full px-3 py-1 border-black/10 text-[10px] bg-white dark:bg-zinc-900 shadow-sm">
+            <Newspaper className="mr-1 size-3 fill-[#D2F583] stroke-1 text-neutral-800" /> New Posts
           </Badge>
-          <p className="text-muted-foreground mt-4 text-base md:text-lg px-1 font-medium">
-            Sharing my thoughts, projects, and what I've learned
-          </p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 px-2">
@@ -35,7 +33,7 @@ export default function BlogPage() {
           ) : (
             posts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="group block no-underline">
-                <Card className="group h-full overflow-hidden rounded-2xl border-none p-0 shadow-[0px_1px_1px_0px_rgba(0,_0,_0,_0.05),_0px_1px_1px_0px_rgba(255,_252,_240,_0.5)_inset,_0px_0px_0px_1px_hsla(0,_0%,_100%,_0.1)_inset,_0px_0px_1px_0px_rgba(28,_27,_26,_0.5)] transition-all brightness-100 hover:brightness-105 bg-white dark:bg-zinc-900/50">
+                <Card className="group h-full overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 p-0 shadow-[0px_1px_1px_0px_rgba(0,_0,_0,_0.05),_0px_1px_1px_0px_rgba(255,_252,_240,_0.5)_inset,_0px_0px_0px_1px_hsla(0,_0%,_100%,_0.1)_inset,_0px_0px_1px_0px_rgba(28,_27,_26,_0.5)] transition-all brightness-100 hover:brightness-105 bg-white dark:bg-zinc-900/50">
                   <div className="flex h-full flex-col pt-5 pb-4">
                     <div className="flex-1 px-5 text-left">
                       <h3 className="text-lg font-bold tracking-tight group-hover:text-primary transition-colors">

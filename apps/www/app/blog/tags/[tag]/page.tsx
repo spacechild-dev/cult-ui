@@ -1,6 +1,11 @@
 import Link from "next/link"
 import { getBlogPostsByTag, getAllBlogTags } from "@/lib/blog"
 import { notFound } from "next/navigation"
+import {
+  MinimalCard,
+  MinimalCardDescription,
+  MinimalCardTitle,
+} from "@/registry/default/ui/minimal-card"
 
 export async function generateStaticParams() {
   const tags = getAllBlogTags()

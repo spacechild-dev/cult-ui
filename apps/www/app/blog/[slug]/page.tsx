@@ -46,18 +46,17 @@ export default async function BlogPostPage({
     <div className="container max-w-3xl py-12">
       <Link
         href="/blog"
-        className="text-sm text-muted-foreground hover:text-foreground mb-8 inline-block transition-colors"
+        className="text-sm font-bold uppercase tracking-widest text-accent-teal/80 hover:text-accent-teal mb-12 inline-block transition-colors"
       >
-        ← Back to Blog
+        ← Back to Archive
       </Link>
 
       <article className="prose prose-neutral dark:prose-invert max-w-none">
-        <header className="mb-8 not-prose">
-          <h1 className="text-4xl font-bold tracking-tight mb-4 leading-tight">
+        <header className="mb-12 not-prose">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 leading-tight text-foreground">
             {post.title}
           </h1>
-          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">{post.description}</p>
-          <div className="flex items-center gap-4 mt-6 text-sm text-muted-foreground border-b pb-6">
+          <div className="flex items-center gap-4 mt-8 text-xs font-mono font-bold text-muted-foreground/60 uppercase tracking-widest border-b border-accent-teal/20 pb-8">
             <time dateTime={post.date}>
               {new Date(post.date).toLocaleDateString("en-US", {
                 year: "numeric",
@@ -65,15 +64,20 @@ export default async function BlogPostPage({
                 day: "numeric",
               })}
             </time>
-            {post.author && <span>· {post.author}</span>}
+            {post.author && (
+              <>
+                <span className="text-accent-teal/30">/</span>
+                <span>{post.author}</span>
+              </>
+            )}
           </div>
           {post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-6">
+            <div className="flex flex-wrap gap-3 mt-8">
               {post.tags.map((tag) => (
                 <Link
                   key={tag}
                   href={`/blog/tags/${encodeURIComponent(tag)}`}
-                  className="inline-block bg-muted px-2 py-1 text-xs rounded hover:bg-primary hover:text-primary-foreground transition-colors"
+                  className="inline-block text-xs font-bold italic text-accent-teal/70 hover:text-accent-teal transition-colors"
                 >
                   #{tag}
                 </Link>

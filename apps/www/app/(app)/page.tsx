@@ -21,7 +21,7 @@ export default function HomePage() {
   const projects = getAllProjects().slice(0, 2)
 
   const btnClass = "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 gap-1.5 px-3 has-[>svg]:px-2.5 rounded-xl transition-all hover:bg-muted/50"
-  const primaryBtnClass = "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 h-8 gap-1.5 px-3 has-[>svg]:px-2.5 rounded-xl transition-all"
+  const primaryBtnClass = "inline-flex items-center justify-center whitespace-nowrap text-sm font-bold disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-accent-teal text-white shadow-xs hover:bg-accent-teal/90 h-8 gap-1.5 px-4 has-[>svg]:px-2.5 rounded-xl transition-all"
 
   return (
     <div className="isolate min-h-screen overflow-hidden pb-8 sm:pb-12">
@@ -30,7 +30,7 @@ export default function HomePage() {
         <section className="flex flex-col items-center gap-8 text-center">
           <div className="mx-auto max-w-4xl space-y-6 md:space-y-8">
             <p className="text-center text-sm leading-relaxed text-foreground md:text-base font-medium">
-              I’m Dağkan (sounds like “DAH-kahn”). I don’t really consider myself a developer, but I love exploring and experimenting with different topics—especially anything related to data-driven performance marketing, analytics, and martech.
+              I’m Dağkan (sounds like “DAH-kahn”). I don’t really consider myself a developer, but I love exploring and experimenting with different topics—especially anything related to <span className="text-accent-teal font-bold">data-driven performance marketing</span>, <span className="text-accent-teal font-bold">analytics</span>, and <span className="text-accent-teal font-bold">martech</span>.
             </p>
           </div>
           <div className="flex w-full flex-wrap items-center justify-center gap-4 py-4 md:pb-2">
@@ -60,50 +60,39 @@ export default function HomePage() {
         </section>
 
         {/* Blog Section */}
-        <section className="mt-32 space-y-8">
-          <div className="flex items-center justify-between px-2">
+        <section className="mt-32 space-y-12">
+          <div className="flex items-center justify-between px-2 border-b border-accent-teal/20 pb-4">
             <div className="flex items-center gap-3">
-              <Badge variant="outline" className="rounded-full px-2 py-0 h-6 border-black/10 text-[10px] bg-white dark:bg-zinc-900 shadow-sm">
-                <Newspaper className="mr-1 size-3 fill-[#D2F583] stroke-1 text-neutral-800" /> Recent Posts
-              </Badge>
+              <h2 className="text-xl font-bold tracking-tight text-accent-teal">Recent Writing</h2>
             </div>
-            <Link href="/blog" className="text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors">View All →</Link>
+            <Link href="/blog" className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-accent-teal transition-colors">View Archive</Link>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-1 px-2">
+          <div className="space-y-12 px-2">
             {recentPosts.length === 0 ? (
-              <p className="col-span-full text-center text-muted-foreground">No blog posts yet.</p>
+              <p className="text-center text-muted-foreground">No blog posts yet.</p>
             ) : (
               recentPosts.map((post) => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} className="group block no-underline">
-                  <Card className="group h-full overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 p-0 shadow-[0px_1px_1px_0px_rgba(0,_0,_0,_0.05),_0px_1px_1px_0px_rgba(255,_252,_240,_0.5)_inset,_0px_0px_0px_1px_hsla(0,_0%,_100%,_0.1)_inset,_0px_0px_1px_0px_rgba(28,_27,_26,_0.5)] transition-all brightness-100 hover:brightness-105 bg-white dark:bg-zinc-900/50">
-                    <div className="flex h-full flex-col pt-5 pb-4">
-                      <div className="flex-1 px-5 text-left">
-                        <h3 className="text-lg font-bold tracking-tight group-hover:text-primary transition-colors">
-                          {post.title}
-                        </h3>
-                        <div className="mt-2 text-sm leading-relaxed tracking-tight text-muted-foreground line-clamp-2 font-normal">
-                          {post.description}
-                        </div>
-                      </div>
-                      <div className="mt-4 flex items-center justify-between gap-3 px-5 border-t border-zinc-100 dark:border-zinc-800/50 pt-3">
-                        <div className="flex items-center gap-3">
-                          <span className="text-[10px] font-mono font-bold text-muted-foreground/60 uppercase tracking-widest">
-                            {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                          </span>
-                          <div className="flex gap-1.5">
-                            {post.tags.slice(0, 2).map(tag => (
-                              <span key={tag} className="text-[10px] text-primary/70 font-bold italic">#{tag}</span>
-                            ))}
-                          </div>
-                        </div>
-                        <div className="text-[10px] font-bold text-muted-foreground/40 group-hover:text-primary transition-colors duration-300 ease-out flex items-center gap-1 uppercase tracking-tighter">
-                          Read More <ArrowUpRight className="size-3" />
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
-                </Link>
+                <article key={post.slug} className="group relative flex flex-col items-start">
+                  <h3 className="text-xl font-bold tracking-tight text-foreground group-hover:text-accent-teal transition-colors mb-2">
+                    <Link href={`/blog/${post.slug}`}>
+                      <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl" />
+                      <span className="relative z-10">{post.title}</span>
+                    </Link>
+                  </h3>
+                  <time className="relative z-10 order-first mb-3 flex items-center text-xs font-mono font-bold text-muted-foreground/60 uppercase tracking-widest pl-3.5" dateTime={post.date}>
+                    <span className="absolute inset-y-0 left-0 flex items-center" aria-hidden="true">
+                      <span className="h-4 w-0.5 rounded-full bg-accent-teal/40" />
+                    </span>
+                    {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                  </time>
+                  <p className="relative z-10 mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                    {post.description}
+                  </p>
+                  <div className="relative z-10 mt-4 flex items-center gap-4 text-xs font-bold text-accent-teal/80 uppercase tracking-tighter transition group-hover:text-accent-teal">
+                    Read article <ArrowUpRight className="ml-1 size-3" />
+                  </div>
+                </article>
               ))
             )}
           </div>
@@ -111,19 +100,17 @@ export default function HomePage() {
 
         {/* Projects Section */}
         <section className="mt-32 space-y-8">
-          <div className="flex items-center justify-between px-2">
+          <div className="flex items-center justify-between px-2 border-b border-accent-teal/20 pb-4">
             <div className="flex items-center gap-3">
-              <Badge variant="outline" className="rounded-full px-2 py-0 h-6 border-black/10 text-[10px] bg-white dark:bg-zinc-900 shadow-sm">
-                <StickerIcon className="mr-1 size-3 fill-[#A3C0E0] stroke-1 text-neutral-800" /> Projects
-              </Badge>
+              <h2 className="text-xl font-bold tracking-tight text-accent-teal">Featured Projects</h2>
             </div>
-            <Link href="/projects" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">View All →</Link>
+            <Link href="/projects" className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-accent-teal transition-colors">View All Projects</Link>
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 px-2">
             {projects.map((project) => (
               <Link key={project.slug} href={`/projects/${project.slug}`} className="block no-underline group h-full">
-                <MinimalCard className="relative p-2 no-underline shadow-sm transition-colors bg-card hover:bg-muted/50 text-left h-full flex flex-col min-h-[320px]">
+                <MinimalCard className="relative p-2 no-underline shadow-sm transition-colors bg-card/50 hover:bg-accent-teal/5 text-left h-full flex flex-col min-h-[320px] border-accent-teal/5">
                   <div className={cn(
                     "relative aspect-[16/10] w-full overflow-hidden rounded-[18px] shrink-0",
                     "shadow-[0px_1px_1px_0px_rgba(0,0,0,0.05),0px_1px_1px_0px_rgba(255,252,240,0.5)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.1)_inset,0px_0px_1px_0px_rgba(28,27,26,0.5)]"
@@ -148,9 +135,9 @@ export default function HomePage() {
                         {project.slug === 'flow-otp' ? (
                           <div className="relative flex flex-col items-center gap-4 py-8 scale-75">
                             <div className="relative">
-                              <div className="absolute -inset-4 bg-blue-500/20 rounded-full blur-2xl animate-pulse" />
+                              <div className="absolute -inset-4 bg-accent-teal/20 rounded-full blur-2xl animate-pulse" />
                               <div className="relative flex h-20 w-20 items-center justify-center rounded-3xl bg-white dark:bg-zinc-900 shadow-2xl border border-zinc-200 dark:border-zinc-800 rotate-12 group-hover:rotate-0 transition-transform duration-500">
-                                <ShieldCheck className="h-10 w-10 text-blue-500" />
+                                <ShieldCheck className="h-10 w-10 text-accent-teal" />
                               </div>
                             </div>
                             <div className="flex flex-col items-center gap-1">
@@ -170,9 +157,9 @@ export default function HomePage() {
                   <div className="px-2 pt-6 pb-6 flex-grow flex flex-col gap-3">
                     <div className="flex items-center gap-2">
                       <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-muted/50 border border-zinc-200/50 dark:border-zinc-800/50 shadow-sm">
-                        {project.slug === 'spotify-mixtapekit' ? <Icons.spotify className="h-4 w-4 text-green-500" /> : <ShieldCheck className="h-4 w-4 text-blue-500" />}
+                        {project.slug === 'spotify-mixtapekit' ? <Icons.spotify className="h-4 w-4 text-green-500" /> : <ShieldCheck className="h-4 w-4 text-accent-teal" />}
                       </div>
-                      <MinimalCardTitle className="text-lg font-bold leading-tight group-hover:text-primary transition-colors">
+                      <MinimalCardTitle className="text-lg font-bold leading-tight group-hover:text-accent-teal transition-colors">
                         {project.title}
                       </MinimalCardTitle>
                     </div>

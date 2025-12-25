@@ -53,7 +53,7 @@ export default async function BlogPostPage({
 
       <article className="prose prose-neutral dark:prose-invert max-w-none">
         <header className="mb-12 not-prose">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 leading-tight text-foreground">
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 leading-tight text-foreground">
             {post.title}
           </h1>
           <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8 font-normal">

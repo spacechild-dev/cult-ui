@@ -34,7 +34,6 @@ export default function HomePage() {
             </p>
           </div>
           <div className="flex w-full flex-wrap items-center justify-start gap-3 py-4 md:pb-2">
-            <Link className={primaryBtnClass} href="/blog">Blog Posts</Link>
             <Link target="_blank" rel="noreferrer" className={`${buttonVariants({ variant: "outline", size: "sm" })} rounded-xl transition-all hover:bg-muted/50`} href={siteConfig.links.github}>
               <Icons.gitHub className="size-4 mr-2" /> GitHub
             </Link>
@@ -47,7 +46,7 @@ export default function HomePage() {
             <Link target="_blank" rel="noreferrer" className={`${buttonVariants({ variant: "outline", size: "sm" })} rounded-xl transition-all hover:bg-muted/50`} href="https://www.last.fm/user/dagkan/listening-report/year">
               <Icons.lastfm className="size-4 mr-2" /> Last.fm
             </Link>
-            <Link href="mailto:hello@dagkanbayramoglu.com" className={`${buttonVariants({ variant: "outline", size: "sm" })} rounded-xl transition-all hover:bg-muted/50`}>
+            <Link href="mailto:hello@dagkanbayramoglu.com" className={`${buttonVariants({ variant: "outline", size: "sm" })} rounded-xl transition-all hover:bg-muted/50 px-6`}>
               <Icons.mail className="size-4 mr-2" /> Mail
             </Link>
           </div>
@@ -61,16 +60,16 @@ export default function HomePage() {
                 <Newspaper className="mr-2 size-3.5 fill-[#D2F583] stroke-1 text-neutral-800" /> Recent Writing
               </Badge>
             </div>
-            <Link href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">View All →</Link>
+            <Link href="/blog" className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">View All Writing</Link>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 px-2">
+          <div className="grid gap-6 sm:grid-cols-1 px-2">
             {recentPosts.length === 0 ? (
               <p className="col-span-full text-center text-muted-foreground">No blog posts yet.</p>
             ) : (
               recentPosts.map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`} className="block no-underline group h-full">
-                  <MinimalCard className="relative p-2 no-underline shadow-sm transition-colors bg-card hover:bg-muted/50 text-left h-full flex flex-col min-h-[280px]">
+                  <MinimalCard className="relative p-2 no-underline shadow-sm transition-colors bg-card hover:bg-muted/50 text-left h-full flex flex-col">
                     <div className="px-4 pt-6 pb-6 flex-grow flex flex-col gap-3">
                       <time className="text-[10px] font-mono font-bold text-muted-foreground/60 uppercase tracking-widest" dateTime={post.date}>
                         {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
@@ -78,11 +77,11 @@ export default function HomePage() {
                       <MinimalCardTitle className="text-lg font-bold leading-tight group-hover:text-primary transition-colors text-left px-0 mt-0">
                         {post.title}
                       </MinimalCardTitle>
-                      <MinimalCardDescription className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-normal line-clamp-3 text-left px-0">
+                      <MinimalCardDescription className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-normal text-left px-0">
                         {post.description}
                       </MinimalCardDescription>
-                      <div className="flex flex-wrap gap-2 mt-auto pt-4">
-                        {post.tags.slice(0, 3).map((tag) => (
+                      <div className="flex flex-wrap gap-2 pt-2">
+                        {post.tags.slice(0, 5).map((tag) => (
                           <span
                             key={tag}
                             className="inline-flex items-center rounded-md bg-muted/50 px-2 py-0.5 text-[10px] font-medium text-muted-foreground ring-1 ring-inset ring-zinc-200/50"
@@ -101,11 +100,11 @@ export default function HomePage() {
 
         {/* Projects Section */}
         <section className="mt-32 space-y-8">
-          <div className="flex items-center justify-between px-2 border-b border-accent-teal/20 pb-4">
+          <div className="flex items-center justify-between px-2">
             <div className="flex items-center gap-3">
-              <h2 className="text-xl font-bold tracking-tight text-accent-teal">Featured Projects</h2>
+              <h2 className="text-xl font-bold tracking-tight">Featured Projects</h2>
             </div>
-            <Link href="/projects" className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-accent-teal transition-colors">View All Projects</Link>
+            <Link href="/projects" className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">View All Projects</Link>
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 px-2">

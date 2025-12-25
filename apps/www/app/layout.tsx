@@ -89,7 +89,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <head />
         <body
           className={cn(
-            "relative min-h-screen bg-background font-sans antialiased bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)]",
+            "relative min-h-screen bg-background font-sans antialiased bg-[url('/assets/groovepaper.png')] bg-repeat",
             fontSans.variable
           )}
         >

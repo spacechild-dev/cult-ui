@@ -211,28 +211,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Skills/Tech Stack */}
-        <section className="mt-24 space-y-6 max-w-3xl mx-auto text-center px-2">
-          <h2 className="text-3xl font-bold">Skills / Tech Stack</h2>
-          <div className="flex flex-wrap justify-center gap-3">
-            {[
-              "JavaScript",
-              "TypeScript",
-              "React",
-              "Next.js",
-              "Node.js",
-              "Tailwind CSS",
-              "Git",
-            ].map((tech) => (
-              <span
-                key={tech}
-                className="rounded-full border bg-muted px-4 py-2 text-sm font-medium"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </section>
       </div>
     </div>
   )

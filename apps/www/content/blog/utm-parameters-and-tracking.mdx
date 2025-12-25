@@ -1,0 +1,89 @@
+---
+title: UTM Parameters and Tracking with JavaScript
+description: This article explains how to capture and store UTM parameters and click IDs using JavaScript for better website visitor analysis.
+date: 2024-12-25
+author: Dagkan
+tags:
+  - digital marketing
+  - analytics
+  - javascript
+published: true
+---
+
+In digital marketing and performance analysis, tracking parameters like **UTM parameters** and click IDs play a critical role in better understanding website visitors. In this article, I will explain how to store the parameters visible in the address bar during a visitor's first visit and use them later.
+
+### What is the purpose of the code?
+
+The main purpose of this script is to capture tracking parameters (e.g., utm_source, utm_medium, gclid, fbclid) brought by the URL during the visitor's first visit and store them in local storage (localStorage) and session storage (sessionStorage). Thus, these data are not lost while the user navigates your site and can be used when needed.
+
+### How does the script work?
+
+#### 1. We define which parameters we want to track.
+
+```javascript
+const TRACKED_PARAMS = [
+  'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'
+];
+```
+
+#### 2. Capture Parameters
+When a user comes to the site from a link, the script searches for these parameters in the URL and collects them in an object.
+
+#### 3. Store with Local Storage for 30 Days
+During the first visit, these parameters are stored in `localStorage` for 30 days. 
+
+```javascript
+const EXPIRY_DAYS = 30;
+const LS_EXPIRY_MS = EXPIRY_DAYS * 24 * 60 * 60 * 1000;
+```
+
+#### 4. JavaScript Access
+You can access the captured parameters from other scripts with `window.trackingParams`.
+
+```javascript
+console.log(window.trackingParams);
+```
+
+### Full Code
+
+Add this before the closing `</body>` tag:
+
+```html
+<script>
+(function trackUrlParams() {
+    const TRACKED_PARAMS = [
+        'utm_source',
+        'utm_medium',
+        'utm_campaign',
+        'utm_term',
+        'utm_content',
+        'gclid',
+        'fbclid'
+    ];
+    const searchParams = new URLSearchParams(window.location.search);
+    let foundParams = {};
+    for (const key of TRACKED_PARAMS) {
+        if (searchParams.has(key)) {
+            foundParams[key] = searchParams.get(key);
+        }
+    }
+    const LS_KEY = 'trackingParams';
+    const LS_EXP_KEY = 'trackingParams_expiry';
+    const now = Date.now();
+    const EXPIRY_DAYS = 30;
+    const LS_EXPIRY_MS = EXPIRY_DAYS * 24 * 60 * 60 * 1000;
+    if (Object.keys(foundParams).length > 0) {
+        if (!localStorage.getItem(LS_KEY) || Number(localStorage.getItem(LS_EXP_KEY)) < now) {
+            localStorage.setItem(LS_KEY, JSON.stringify(foundParams));
+            localStorage.setItem(LS_EXP_KEY, now + LS_EXPIRY_MS);
+        }
+    }
+    if (Object.keys(foundParams).length > 0) {
+        sessionStorage.setItem(LS_KEY, JSON.stringify(foundParams));
+    }
+    window.trackingParams = foundParams;
+})();
+</script>
+```
+
+See you in the next article!

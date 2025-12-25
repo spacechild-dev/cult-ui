@@ -27,20 +27,18 @@ export function Pre({
 
   return (
     <div className="relative group my-6 not-prose">
-      <div className="flex items-center justify-between px-4 py-2 border border-b-0 rounded-t-xl bg-[#f5f2e9] border-zinc-300/50">
-        {language ? (
-          <div className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
-            {language}
-          </div>
-        ) : (
-          <div />
-        )}
-        <CopyButton value={code} className="size-7 hover:bg-zinc-200/50 text-zinc-600" />
+      {/* Header bar with language and copy button */}
+      <div className="flex items-center justify-between px-4 py-1.5 border border-zinc-300/50 rounded-t-xl bg-[#f5f2e9]/80 backdrop-blur-sm">
+        <div className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 font-bold">
+          {language || "code"}
+        </div>
+        <CopyButton value={code} className="size-6 text-zinc-500 hover:text-zinc-900 hover:bg-zinc-200/50 transition-colors" />
       </div>
+      {/* Code area */}
       <pre
         ref={preRef}
         className={cn(
-          "mb-4 max-h-[650px] overflow-x-auto rounded-b-xl border border-zinc-300/50 bg-[#fdfbf7] p-4 shadow-sm",
+          "mb-4 max-h-[650px] overflow-x-auto rounded-b-xl border border-t-0 border-zinc-300/50 bg-[#fdfbf7]/80 backdrop-blur-sm p-4 text-sm sm:text-base",
           className
         )}
         {...props}
@@ -98,7 +96,7 @@ export const components = {
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold",
+        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-zinc-800",
         className
       )}
       {...props}

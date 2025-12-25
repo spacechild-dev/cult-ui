@@ -43,14 +43,9 @@ export default function HomePage() {
       <div className="container relative py-12 md:pt-24">
         {/* Hero Section */}
         <section className="flex flex-col items-center gap-8 text-center">
-          <div className="py-2">
-            <h1 className="text-center text-2xl font-semibold leading-tight tracking-tighter md:text-3xl lg:text-4xl lg:leading-[1.1]">
-              Performance Marketing & MarTech
-            </h1>
-          </div>
-          <div className="mx-auto max-w-2xl space-y-6 md:space-y-8">
+          <div className="mx-auto max-w-4xl space-y-6 md:space-y-8">
             <p className="text-center text-sm leading-relaxed text-foreground md:text-base">
-              I’m Dağkan (sounds like “DAH-kahn”). I don’t really consider myself a developer, but I love exploring and experimenting with different topics—especially anything related to data-driven performance marketing, analytics, and martech. That’s actually my job, too! This site is both a personal playground and a space where I test things like Google Tag Manager, GA4, server-side GTM, Facebook CAPI, and offline conversions (though, fair warning: I tend to break stuff with my frequent updates and rarely bother to fix it). If you accept cookies here (assuming that’s even working), you’ll help make my experiments more effective—so thanks in advance. Currently, I’m working as Digital Performance and Media Account Manager at OPTDCOM, and I’m not taking on any side projects at the moment.
+              I’m Dağkan (sounds like “DAH-kahn”). I don’t really consider myself a developer, but I love exploring and experimenting with different topics—especially anything related to data-driven performance marketing, analytics, and martech.
             </p>
           </div>
           <div className="flex w-full flex-wrap items-center justify-center gap-4 py-4 md:pb-2">

@@ -58,9 +58,9 @@ export default function ResumePage() {
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
                 <div>
                   <h3 className="text-lg font-semibold">Digital Performance and Media Account Manager</h3>
-                  <p className="text-primary font-medium">Digital Performance Agency</p>
+                  <p className="text-primary font-medium uppercase tracking-wider">OPTDCOM</p>
                 </div>
-                <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-md">Oct 2025 – Present</span>
+                <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-md whitespace-nowrap">Oct 2025 – Present</span>
               </div>
               <ul className="list-disc list-outside ml-4 text-muted-foreground space-y-1.5 mt-2 text-sm">
                 <li>Managing performance and media operations across multiple clients and verticals.</li>
@@ -74,9 +74,9 @@ export default function ResumePage() {
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
                 <div>
                   <h3 className="text-lg font-semibold">Performance Marketing Team Lead</h3>
-                  <p className="text-primary font-medium">ROI-Driven Digital Marketing Agency</p>
+                  <p className="text-primary font-medium uppercase tracking-wider">ROIPUBLIC</p>
                 </div>
-                <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-md">Nov 2024 – Oct 2025</span>
+                <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-md whitespace-nowrap">Nov 2024 – Oct 2025</span>
               </div>
               <ul className="list-disc list-outside ml-4 text-muted-foreground space-y-1.5 mt-2 text-sm">
                 <li>Led a team of six with focus on mentorship, coordination, and performance marketing execution.</li>
@@ -92,9 +92,9 @@ export default function ResumePage() {
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
                 <div>
                   <h3 className="text-lg font-semibold">Sr. Performance Marketing Executive</h3>
-                  <p className="text-primary font-medium">ROI-Driven Digital Marketing Agency</p>
+                  <p className="text-primary font-medium uppercase tracking-wider">ROIPUBLIC</p>
                 </div>
-                <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-md">Feb 2024 – Oct 2024</span>
+                <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-md whitespace-nowrap">Feb 2024 – Oct 2024</span>
               </div>
               <ul className="list-disc list-outside ml-4 text-muted-foreground space-y-1.5 mt-2 text-sm">
                 <li>Owned end-to-end campaign execution and reporting across performance platforms.</li>
@@ -108,9 +108,9 @@ export default function ResumePage() {
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
                 <div>
                   <h3 className="text-lg font-semibold">Digital Marketing Team Lead</h3>
-                  <p className="text-primary font-medium">Digital Marketing and Advertising Agency</p>
+                  <p className="text-primary font-medium uppercase tracking-wider">PROFAJ</p>
                 </div>
-                <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-md">Apr 2023 – Feb 2024</span>
+                <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-md whitespace-nowrap">Apr 2023 – Feb 2024</span>
               </div>
               <ul className="list-disc list-outside ml-4 text-muted-foreground space-y-1.5 mt-2 text-sm">
                 <li>Provided strategic direction for a five-person marketing team.</li>
@@ -124,9 +124,9 @@ export default function ResumePage() {
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
                 <div>
                   <h3 className="text-lg font-semibold">Digital Marketing Specialist</h3>
-                  <p className="text-primary font-medium">Digital Marketing and Advertising Agency</p>
+                  <p className="text-primary font-medium uppercase tracking-wider">PROFAJ</p>
                 </div>
-                <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-md">Apr 2023 – Apr 2024</span>
+                <span className="text-sm text-muted-foreground bg-muted px-2 py-0.5 rounded-md whitespace-nowrap">Apr 2023 – Apr 2024</span>
               </div>
               <ul className="list-disc list-outside ml-4 text-muted-foreground space-y-1.5 mt-2 text-sm">
                 <li>Managed full-funnel campaigns across Google Ads, Meta Ads, Criteo, and LinkedIn.</li>

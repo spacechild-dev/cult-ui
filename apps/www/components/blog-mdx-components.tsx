@@ -3,7 +3,6 @@
 import * as React from "react"
 import { useRef, useState, useEffect } from "react"
 import { Check, Copy } from "lucide-react"
-import { motion, AnimatePresence } from "motion/react"
 import { cn } from "@/lib/utils"
 
 interface PreProps extends React.HTMLAttributes<HTMLPreElement> {
@@ -34,6 +33,11 @@ export function Pre({
 
   return (
     <div className="relative group my-8 not-prose">
+      {/* 
+        The outer container uses the 'Cult' theme styling. 
+        We use 'important' overrides (!bg-transparent) on the inner pre 
+        to strip away inline styles injected by rehype-pretty-code.
+      */}
       <div
         className={cn(
           "relative overflow-hidden rounded-2xl border shadow-sm transition-all",
@@ -70,9 +74,13 @@ export function Pre({
           </button>
         </div>
 
-        {/* Code area */}
+        {/* 
+          Force transparency and reset margins to ensure the 
+          rehype-pretty-code output doesn't break our theme.
+        */}
         <pre
           ref={preRef}
+          style={{ backgroundColor: 'transparent', color: 'inherit' }}
           className={cn(
             "p-5 text-sm sm:text-base leading-relaxed m-0 overflow-x-auto !bg-transparent !text-inherit",
             "scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700",
@@ -89,9 +97,7 @@ export function Pre({
 
 export const components = {
   pre: Pre,
-  // Custom component for direct usage
   CodeBlock: Pre,
-  // Ensure figure from rehype-pretty-code doesn't add extra margins
   figure: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <figure className={cn("m-0 p-0", className)} {...props} />
   ),

@@ -54,7 +54,7 @@ export default async function ProjectPage({
   const btnClass = "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 gap-1.5 px-3 rounded-xl transition-all hover:bg-muted/50"
 
   return (
-    <div className="container max-w-5xl py-12 lg:py-20">
+    <div className="container max-w-3xl py-12">
       <Link
         href="/projects"
         className="text-sm text-muted-foreground hover:text-foreground mb-8 inline-block transition-colors"
@@ -82,7 +82,7 @@ export default async function ProjectPage({
                 ))}
               </div>
             </div>
-            <p className="text-lg text-muted-foreground leading-relaxed text-sm sm:text-base">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               {project.description}
             </p>
             <div className="flex flex-wrap gap-3">
@@ -130,22 +130,22 @@ export default async function ProjectPage({
               <h2 className="text-2xl font-bold tracking-tight">Key Features</h2>
               <div className="h-1 w-16 bg-primary rounded-full" />
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {project.keyFeatures.map((feature, index) => (
                 <MinimalCard 
                   key={index}
-                  className="bg-card/30 backdrop-blur-sm border-zinc-200/50 shadow-sm transition-all hover:shadow-md p-6"
+                  className="bg-card/30 backdrop-blur-sm border-zinc-200/50 shadow-sm transition-all hover:shadow-md p-4"
                 >
-                  <div className="flex flex-col gap-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
-                      <CheckCircle2 className="size-5" />
+                  <div className="flex flex-col gap-3 h-full">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0">
+                      <CheckCircle2 className="size-4" />
                     </div>
                     <div>
-                      <MinimalCardTitle className="text-lg leading-tight mb-2">
+                      <MinimalCardTitle className="text-sm font-bold leading-tight mb-1.5">
                         {feature}
                       </MinimalCardTitle>
-                      <MinimalCardDescription className="text-xs text-muted-foreground">
-                        Core functionality optimized for modern workflows and user experience.
+                      <MinimalCardDescription className="text-[11px] leading-snug text-muted-foreground">
+                        Optimized core functionality.
                       </MinimalCardDescription>
                     </div>
                   </div>

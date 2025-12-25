@@ -5,6 +5,7 @@ import { useLayoutEffect, useRef, useState } from "react"
 import { Check, Copy } from "lucide-react"
 import { motion, AnimatePresence } from "motion/react"
 import { cn } from "@/lib/utils"
+import { CodeBlock } from "@/registry/default/ui/code-block"
 
 interface PreProps extends React.HTMLAttributes<HTMLPreElement> {
   "data-language"?: string
@@ -24,9 +25,7 @@ export function Pre({
 
   React.useEffect(() => {
     if (preRef.current) {
-      // Extract text content safely
-      const content = preRef.current.innerText
-      setCode(content)
+      setCode(preRef.current.innerText)
     }
   }, [children])
 
@@ -40,10 +39,9 @@ export function Pre({
     <div className="relative group my-8 not-prose">
       <div
         className={cn(
-          "relative overflow-hidden rounded-2xl border shadow-sm",
+          "group relative overflow-hidden rounded-2xl border",
           "border-zinc-300 dark:border-zinc-800",
-          "bg-[#fdfbf7]/90 dark:bg-zinc-950/90 backdrop-blur-sm",
-          className
+          "bg-[#fdfbf7]/80 dark:bg-zinc-950/80 backdrop-blur-sm shadow-sm"
         )}
       >
         {/* Header bar */}
@@ -61,7 +59,7 @@ export function Pre({
             )}
           >
             {copied ? (
-              <span className="flex items-center gap-1 text-green-600 dark:text-green-400">
+              <span className="flex items-center gap-1 text-green-600 dark:text-green-400 font-semibold">
                 <Check className="size-3" />
                 <span>Copied</span>
               </span>
@@ -74,11 +72,11 @@ export function Pre({
           </button>
         </div>
 
-        {/* Code area - Force transparency to let the container background show through */}
+        {/* Code area */}
         <pre
           ref={preRef}
           className={cn(
-            "p-4 text-sm leading-relaxed m-0 overflow-x-auto !bg-transparent",
+            "p-4 text-sm sm:text-base leading-relaxed m-0 overflow-x-auto !bg-transparent",
             "scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700",
             className
           )}
@@ -93,6 +91,7 @@ export function Pre({
 
 export const components = {
   pre: Pre,
+  CodeBlock: CodeBlock,
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn(
@@ -138,7 +137,7 @@ export const components = {
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold before:content-none after:content-none",
+        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold before:content-none after:content-none text-zinc-800 dark:text-zinc-200",
         className
       )}
       {...props}

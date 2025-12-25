@@ -6,7 +6,7 @@ import Image from "next/image"
 import { components } from "@/components/blog-mdx-components"
 import rehypePrettyCode from "rehype-pretty-code"
 import { Icons } from "@/components/icons"
-import { ExternalLink, Github, CheckCircle2 } from "lucide-react"
+import { ExternalLink, CheckCircle2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import {
   MinimalCard,
@@ -130,7 +130,7 @@ export default async function ProjectPage({
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Key Features</h2>
               <div className="h-1 w-20 bg-primary rounded-full mx-auto lg:mx-0" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {project.keyFeatures.map((feature, index) => (
                 <MinimalCard 
                   key={index}
@@ -151,11 +151,11 @@ export default async function ProjectPage({
           </section>
         )}
 
-        {/* Content Section (MDX) */}
+        {/* Content Section (MDX) - Technical Details */}
         <section className="max-w-4xl mx-auto w-full">
           <div className="space-y-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Technical Details</h2>
-            <div className="h-1 w-20 bg-primary rounded-full" />
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-center">Technical Details</h2>
+            <div className="h-1 w-20 bg-primary rounded-full mx-auto" />
           </div>
           <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:tracking-tight prose-pre:p-0">
             <MDXRemote 

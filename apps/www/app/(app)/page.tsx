@@ -39,21 +39,21 @@ export default function HomePage() {
               <Icons.gitHub className="size-4" /> GitHub
             </Link>
             
-            <div className="flex items-center gap-3 px-2">
-              <Link href="https://www.linkedin.com/in/dagkanbayramoglu/" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors transition-all hover:scale-110">
-                <Icons.linkedin className="size-5" />
+            <div className="flex items-center gap-4 px-2">
+              <Link href="https://www.linkedin.com/in/dagkanbayramoglu/" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-accent-teal transition-all hover:scale-110">
+                <i className="fa fa-linkedin text-xl" aria-hidden="true"></i>
               </Link>
-              <Link href="https://open.spotify.com/user/az7ds62ok9xtg09ua7cs7ym9i" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors transition-all hover:scale-110">
-                <Icons.spotify className="size-5" />
+              <Link href="https://open.spotify.com/user/az7ds62ok9xtg09ua7cs7ym9i" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-accent-teal transition-all hover:scale-110">
+                <i className="fa fa-spotify text-xl" aria-hidden="true"></i>
               </Link>
-              <Link href="https://www.last.fm/user/dagkan/listening-report/year" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors transition-all hover:scale-110">
-                <Icons.lastfm className="size-5" />
+              <Link href="https://www.last.fm/user/dagkan/listening-report/year" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-accent-teal transition-all hover:scale-110">
+                <i className="fa fa-lastfm text-xl" aria-hidden="true"></i>
               </Link>
-              <Link href="https://www.discogs.com/user/dagkanbayramoglu/collection" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors transition-all hover:scale-110">
-                <Icons.discogs className="size-5" />
+              <Link href={siteConfig.links.github} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-accent-teal transition-all hover:scale-110">
+                <i className="fa fa-github text-xl" aria-hidden="true"></i>
               </Link>
-              <Link href="mailto:hello@dagkanbayramoglu.com" className="text-muted-foreground hover:text-foreground transition-colors transition-all hover:scale-110">
-                <Icons.mail className="size-5" />
+              <Link href="mailto:hello@dagkanbayramoglu.com" className="text-muted-foreground hover:text-accent-teal transition-all hover:scale-110">
+                <i className="fa fa-envelope text-lg" aria-hidden="true"></i>
               </Link>
             </div>
           </div>

@@ -14,7 +14,7 @@ import { MainNav } from "@/components/main-nav"
 export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
-  const isActive = (path: string) => pathname?.startsWith(path)
+  const isActive = (path: string) => path === "/" ? pathname === "/" : pathname?.startsWith(path)
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 py-4">

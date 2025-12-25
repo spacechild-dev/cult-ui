@@ -12,7 +12,7 @@ import { Icons } from "@/components/icons"
 
 export function MainNav() {
   const pathname = usePathname()
-  const isActive = (path: string) => pathname?.startsWith(path)
+  const isActive = (path: string) => path === "/" ? pathname === "/" : pathname?.startsWith(path)
 
   return (
     <div className="flex items-center gap-6">

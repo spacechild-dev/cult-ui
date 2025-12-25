@@ -68,27 +68,27 @@ export default async function ProjectPage({
         <section className="flex flex-col gap-8">
           <div className="flex flex-col gap-6">
             <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Badge variant="outline" className="rounded-full px-4 py-1.5 border-black/10 text-xs bg-white dark:bg-zinc-900 shadow-sm">
-                  <StickerIcon className="mr-2 size-4 fill-[#A3C0E0] stroke-1 text-neutral-800" />
-                  <h1 className="text-xl md:text-2xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200">
-                    {project.title}
-                  </h1>
+              <div className="flex items-center gap-3 flex-wrap">
+                <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200">
+                  {project.title}
+                </h1>
+                <Badge variant="outline" className="rounded-full px-3 py-1 border-black/10 text-xs bg-white dark:bg-zinc-900 shadow-sm shrink-0">
+                  <StickerIcon className="mr-2 size-3.5 fill-[#A3C0E0] stroke-1 text-neutral-800" />
+                  <span className="font-bold tracking-tight text-neutral-800 dark:text-neutral-200">Manifest</span>
                 </Badge>
               </div>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
-                  <Link
+                  <span
                     key={tag}
-                    href={`/projects/tags/${encodeURIComponent(tag)}`}
-                    className="inline-flex items-center rounded-md bg-muted px-2 py-0.5 text-[10px] font-mono uppercase tracking-widest text-muted-foreground border border-border hover:bg-accent transition-colors"
+                    className="text-[10px] text-primary/70 font-bold italic"
                   >
                     #{tag}
-                  </Link>
+                  </span>
                 ))}
               </div>
             </div>
-            <p className="text-lg text-muted-foreground leading-relaxed text-sm sm:text-base">
+            <p className="text-lg text-muted-foreground leading-relaxed text-sm sm:text-base border-l-2 border-zinc-200 dark:border-zinc-800 pl-4 py-1 italic">
               {project.description}
             </p>
             <div className="flex flex-wrap gap-3">

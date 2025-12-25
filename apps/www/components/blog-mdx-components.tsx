@@ -33,17 +33,20 @@ export function Pre({
 
   return (
     <div className="relative group my-8 not-prose">
-      {/* Inject CSS to override inline styles from shiki/rehype-pretty-code */}
+      {/* 
+        This style block is the only way to reliably override the inline styles 
+        injected by rehype-pretty-code/shiki during build time.
+      */}
       <style dangerouslySetInnerHTML={{ __html: `
-        .custom-pre { background-color: transparent !important; }
-        .custom-pre code { background-color: transparent !important; }
+        .code-block-container pre { background-color: transparent !important; margin: 0 !important; }
+        .code-block-container code { background-color: transparent !important; padding: 0 !important; }
       `}} />
       
       <div
         className={cn(
-          "relative overflow-hidden rounded-2xl border transition-all",
+          "code-block-container relative overflow-hidden rounded-2xl border shadow-sm transition-all",
           "border-zinc-300 dark:border-zinc-800",
-          "bg-[#fdfbf7]/95 dark:bg-zinc-950/95 backdrop-blur-md shadow-sm"
+          "bg-[#fdfbf7]/95 dark:bg-zinc-950/95 backdrop-blur-md"
         )}
       >
         {/* Header bar */}
@@ -62,7 +65,7 @@ export function Pre({
             )}
           >
             {copied ? (
-              <span className="flex items-center gap-1">
+              <span className="flex items-center gap-1 font-bold">
                 <Check className="size-3" />
                 <span>Copied</span>
               </span>
@@ -75,10 +78,11 @@ export function Pre({
           </button>
         </div>
 
+        {/* Code area */}
         <pre
           ref={preRef}
           className={cn(
-            "custom-pre p-5 text-sm sm:text-base leading-relaxed m-0 overflow-x-auto !bg-transparent !text-inherit",
+            "p-5 text-sm sm:text-base leading-relaxed m-0 overflow-x-auto !bg-transparent !text-inherit",
             "scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700",
             className
           )}
@@ -95,10 +99,7 @@ export const components = {
   pre: Pre,
   CodeBlock: Pre,
   figure: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <figure 
-      className={cn("m-0 p-0 !bg-transparent !border-0", className)} 
-      {...props} 
-    />
+    <figure className={cn("m-0 p-0 !bg-transparent !border-0", className)} {...props} />
   ),
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1 className={cn("mt-2 scroll-m-20 text-4xl font-bold tracking-tight", className)} {...props} />

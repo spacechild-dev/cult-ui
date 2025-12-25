@@ -8,16 +8,16 @@ interface DocsConfig {
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
-      title: "Playlists",
-      href: "/playlists",
+      title: "Home",
+      href: "/",
     },
     {
-      title: "Insights",
-      href: "/global-stats",
+      title: "Blog",
+      href: "/blog",
     },
     {
-      title: "Duplicates",
-      href: "/global-duplicates",
+      title: "Career",
+      href: "/resume",
     },
   ],
   sidebarNav: [],

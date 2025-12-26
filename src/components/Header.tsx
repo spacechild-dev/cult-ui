@@ -153,12 +153,13 @@ export const Header = () => {
             }}
         >
             <Row vertical="center" gap="0" style={{ pointerEvents: 'auto', position: 'relative' }}>
-                {/* BETA Label - Concave Effect */}
+                {/* BETA Label - Concave Effect with Custom Colors */}
                 <Flex 
                     paddingX="16" 
                     vertical="center"
                     style={{
                         background: 'var(--brand-solid-strong)',
+                        backgroundColor: 'var(--color-beta-bg)',
                         height: '48px',
                         borderTopLeftRadius: '24px',
                         borderBottomLeftRadius: '24px',
@@ -167,11 +168,11 @@ export const Header = () => {
                         boxShadow: 'var(--shadow-elevation-dark-two)',
                         position: 'relative',
                         zIndex: 1,
-                        marginRight: '-24px', // Tucked under
+                        marginRight: '-24px',
                         paddingRight: '32px'
                     }}
                 >
-                    <Text variant="code-default-xs" weight="strong" onBackground="brand-strong">
+                    <Text variant="code-default-xs" weight="strong" style={{ color: 'white' }}>
                         BETA
                     </Text>
                 </Flex>

@@ -115,6 +115,13 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const handleSetLanguage = (lang: Language) => {
         setLanguage(lang);
         localStorage.setItem("language", lang);
+        
+        const currentHost = window.location.hostname;
+        if (lang === "tr" && !currentHost.includes(".com.tr")) {
+            window.location.href = "https://dagkanbayramoglu.com.tr" + window.location.pathname;
+        } else if (lang === "en" && currentHost.includes(".com.tr")) {
+            window.location.href = "https://dagkanbayramoglu.com" + window.location.pathname;
+        }
     };
 
     const t = (key: string) => {

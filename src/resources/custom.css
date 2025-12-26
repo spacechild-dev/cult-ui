@@ -1,6 +1,16 @@
-/* :root {
-  /*
-  /* Example setup for custom colors */
+:root {
+  --color-beta-bg: #065f46; /* Emerald 800 for Light Mode */
+}
+
+[data-theme='dark'] {
+  --color-beta-bg: #064e3b; /* Deeper Emerald for Dark Mode */
+  
+  /* Refining Dark Mode Neutrals for a deeper look */
+  --neutral-background-medium: rgba(10, 10, 10, 0.8) !important;
+  --neutral-on-background-strong: #e2e8f0 !important;
+}
+
+/* Example setup for custom colors */
   /* Generate at: https://once-ui.com/customize */
   /*
   --scheme-brand-100: #08002f;

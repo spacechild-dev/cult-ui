@@ -61,7 +61,7 @@ export default function Home() {
                     onBackground="neutral-strong"
                     wrap="balance"
                     align="center"
-                    weight="bold"
+                    weight="strong"
                 >
                     Son olarak; algoritmalar değişiyor, kafalar karışıyor. Birlikte çözüm arayalım.
                 </Text>

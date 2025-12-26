@@ -199,7 +199,7 @@ export const Header = () => {
                 onClose={() => setIsContactOpen(false)}
                 title="Get in Touch"
                 description="Drop me a message and let's start a conversation."
-                maxWidth={32}
+                maxWidth="s"
             >
                 <Flex direction="column" gap="16" padding="16">
                     <Input 

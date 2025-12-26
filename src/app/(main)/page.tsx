@@ -40,15 +40,15 @@ export default function Home() {
         paddingX="l" 
         style={{ minHeight: "80vh" }}
       >
-        <Column maxWidth="s" horizontal="center" gap="48" align="center">
-          <Column gap="24" horizontal="center">
+        <Column maxWidth="m" horizontal="center" gap="48" align="center">
+          <Column gap="32" horizontal="center">
               <Text
                   variant="body-default-l"
                   onBackground="neutral-strong"
                   wrap="balance"
                   align="center"
                   style={{ 
-                    lineHeight: '1.6',
+                    lineHeight: '1.8',
                     color: 'var(--neutral-on-background-strong)'
                   }}
               >
@@ -60,7 +60,7 @@ export default function Home() {
                   wrap="balance"
                   align="center"
                   style={{ 
-                    lineHeight: '1.6',
+                    lineHeight: '1.8',
                     color: 'var(--neutral-on-background-strong)'
                   }}
               >

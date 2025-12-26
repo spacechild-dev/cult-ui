@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Flex, Text, Heading, Row, Icon } from "@once-ui-system/core";
+import { Flex, Text, Heading, Row } from "@once-ui-system/core";
 import { SiLastdotfm } from "react-icons/si";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Track {
     name: string;
@@ -48,7 +48,7 @@ export const NowPlaying = () => {
         <Flex
             fillWidth
             style={{
-                maxWidth: '400px', // Optimized width
+                maxWidth: '440px',
                 backdropFilter: 'blur(12px)',
                 boxShadow: 'var(--shadow-elevation-dark-two)',
                 transition: 'all 0.3s ease',
@@ -59,13 +59,14 @@ export const NowPlaying = () => {
             border="neutral-alpha-weak"
         >
             <Row fillWidth vertical="center" gap="16">
+                {/* Album Cover */}
                 <Flex
                     style={{
-                        width: '56px',
-                        height: '56px',
+                        width: '52px',
+                        height: '52px',
                         position: 'relative',
                         overflow: 'hidden',
-                        borderRadius: '8px',
+                        borderRadius: '10px',
                         flexShrink: 0,
                         border: '1px solid var(--neutral-alpha-weak)'
                     }}
@@ -77,30 +78,48 @@ export const NowPlaying = () => {
                     />
                 </Flex>
 
-                <Flex direction="column" gap="4" style={{ minWidth: 0, flex: 1, overflow: 'hidden' }}>
-                    <Text variant="code-default-xs" onBackground="brand-strong" style={{ letterSpacing: '0.1em', textTransform: 'uppercase', opacity: 0.8 }}>
+                {/* Track Info */}
+                <Flex direction="column" gap="2" style={{ minWidth: 0, flex: 1, overflow: 'hidden' }}>
+                    <Text variant="code-default-xs" onBackground="brand-strong" style={{ letterSpacing: '0.12em', textTransform: 'uppercase', opacity: 0.7, marginBottom: '2px' }}>
                         Now Playing
                     </Text>
-                    <div style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
-                        {track.name.length > 25 ? (
+                    
+                    <div style={{ overflow: 'hidden', whiteSpace: 'nowrap', position: 'relative' }}>
+                        {track.name.length > 28 ? (
                             <motion.div
-                                animate={{ x: [0, -100, 0] }}
-                                transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-                                style={{ display: 'inline-block', paddingRight: '20px' }}
+                                animate={{ x: [0, -150, 0] }}
+                                transition={{ 
+                                    duration: 15, 
+                                    repeat: Infinity, 
+                                    ease: "linear" 
+                                }}
+                                style={{ display: 'inline-block', paddingRight: '40px' }}
                             >
-                                <Heading variant="heading-strong-s">{track.name}</Heading>
+                                <Text variant="label-strong-m" onBackground="neutral-strong">
+                                    {track.name}
+                                </Text>
                             </motion.div>
                         ) : (
-                            <Heading variant="heading-strong-s">{track.name}</Heading>
+                            <Text variant="label-strong-m" onBackground="neutral-strong">
+                                {track.name}
+                            </Text>
                         )}
                     </div>
-                    <Text variant="body-default-xs" onBackground="neutral-weak" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+
+                    <Text variant="body-default-s" onBackground="neutral-weak" style={{ opacity: 0.8, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {track.artist['#text']}
                     </Text>
                 </Flex>
 
-                <a href={profileUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                    <Flex padding="8" radius="full" background="brand-alpha-weak">
+                {/* Last.fm Link Icon */}
+                <a href={profileUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', flexShrink: 0 }}>
+                    <Flex 
+                        padding="10" 
+                        radius="full" 
+                        background="brand-alpha-weak"
+                        style={{ transition: 'transform 0.2s ease' }}
+                        className="hover-scale"
+                    >
                         <SiLastdotfm className="text-brand-strong" size={18} />
                     </Flex>
                 </a>

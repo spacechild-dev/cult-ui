@@ -6,7 +6,6 @@ import {
     Flex,
     Text,
     Row,
-    Button,
 } from "@once-ui-system/core";
 import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
@@ -38,22 +37,32 @@ export const SiteHeader = () => {
                 fillWidth 
                 justifyContent="space-between" 
                 vertical="center"
-                paddingX="24"
+                paddingX="20"
                 radius="2xl"
-                border="neutral-alpha-weak"
                 style={{
                     background: 'var(--neutral-background-medium)',
-                    backdropFilter: 'blur(12px)',
+                    backdropFilter: 'blur(16px)',
                     height: '64px',
+                    border: '1px solid var(--neutral-alpha-weak)',
                     boxShadow: 'var(--shadow-elevation-dark-two)'
                 }}
             >
                 <Row vertical="center" gap="32">
-                    <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
+                    <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
                         <Flex padding="8" radius="m" background="brand-alpha-weak" border="brand-alpha-weak">
                             <Code className="size-5 text-brand-strong" />
                         </Flex>
-                        <Text variant="heading-strong-s" onBackground="neutral-strong">Dağkan</Text>
+                        <Text 
+                            variant="label-strong-m" 
+                            onBackground="neutral-strong"
+                            style={{ 
+                                letterSpacing: '-0.02em', 
+                                fontWeight: 900,
+                                textTransform: 'uppercase' 
+                            }}
+                        >
+                            Dağkan
+                        </Text>
                     </Link>
 
                     <Row gap="4" hide="s">
@@ -74,15 +83,31 @@ export const SiteHeader = () => {
 
                 <Row vertical="center" gap="12">
                     <div className="hidden sm:block">
-                        <Button
-                            href={siteConfig.links.buyMeACoffee}
-                            target="_blank"
-                            variant="secondary"
-                            size="s"
-                            weight="strong"
+                        <a 
+                            href={siteConfig.links.buyMeACoffee} 
+                            target="_blank" 
+                            rel="noreferrer"
+                            style={{
+                                background: '#FFDD00',
+                                color: 'black',
+                                padding: '8px 16px',
+                                borderRadius: '12px',
+                                fontSize: '10px',
+                                fontWeight: 900,
+                                textTransform: 'uppercase',
+                                fontStyle: 'italic',
+                                letterSpacing: '-0.02em',
+                                textDecoration: 'none',
+                                boxShadow: '0 4px 14px 0 rgba(255, 221, 0, 0.39)',
+                                transition: 'all 0.2s ease'
+                            }}
+                            className="hover:scale-105 active:scale-95"
                         >
-                            Support
-                        </Button>
+                            <Row vertical="center" gap="8">
+                                <Icons.coffee className="size-3" />
+                                <span>Support</span>
+                            </Row>
+                        </a>
                     </div>
                     
                     <button 
@@ -113,10 +138,21 @@ export const SiteHeader = () => {
                             href={siteConfig.links.buyMeACoffee}
                             target="_blank"
                             rel="noreferrer"
-                            className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#FFDD00] text-black font-black uppercase italic tracking-tighter text-xs mt-2 no-underline"
+                            style={{
+                                background: '#FFDD00',
+                                color: 'black',
+                                padding: '12px',
+                                borderRadius: '12px',
+                                fontSize: '12px',
+                                fontWeight: 900,
+                                textTransform: 'uppercase',
+                                fontStyle: 'italic',
+                                textAlign: 'center',
+                                marginTop: '8px',
+                                textDecoration: 'none'
+                            }}
                         >
-                            <Icons.coffee className="size-4" />
-                            <span>Buy me a coffee</span>
+                            Buy me a coffee
                         </a>
                     </div>
                 )}

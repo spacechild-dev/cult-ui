@@ -37,8 +37,8 @@ const baseURL = "https://daiquiri.dev";
 const style = {
   theme: "system",
   neutral: "gray",
-  brand: "blue",
-  accent: "indigo",
+  brand: "emerald",
+  accent: "emerald",
   solid: "contrast",
   solidStyle: "flat",
   border: "playful",

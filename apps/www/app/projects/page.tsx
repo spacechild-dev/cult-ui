@@ -37,7 +37,7 @@ export default function ProjectsPage() {
               >
                 <Flex vertical="center" gap="12">
                   <div style={{ padding: '8px', borderRadius: '8px', background: 'var(--neutral-alpha-weak)' }}>
-                    {project.slug === 'spotify-mixtapekit' ? <Icons.spotify className="size-5 text-green-500" /> : <ShieldCheck className="size-5 text-blue-500" />}
+                    {project.slug === 'spotify-mixtapekit' ? <Icons.spotify className="size-5 text-green-500" /> : <ShieldCheck className="size-5 text-emerald-500" />}
                   </div>
                   <Heading variant="heading-strong-s">{project.title}</Heading>
                 </Flex>

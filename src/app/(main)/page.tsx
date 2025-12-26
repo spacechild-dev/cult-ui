@@ -40,15 +40,14 @@ export default function Home() {
         paddingX="l" 
         style={{ minHeight: "80vh" }}
       >
-        <Column maxWidth="m" horizontal="center" gap="48" align="center">
-          <Column gap="32" horizontal="center">
+        <Column maxWidth="s" horizontal="center" gap="48" align="center">
+          <Column gap="24" horizontal="center">
               <Text
-                  variant="body-default-xl"
+                  variant="body-default-l"
                   onBackground="neutral-strong"
                   wrap="balance"
                   align="center"
                   style={{ 
-                    fontSize: '1.5rem', 
                     lineHeight: '1.6',
                     color: 'var(--neutral-on-background-strong)'
                   }}
@@ -56,12 +55,11 @@ export default function Home() {
                   {t("home.bio1")}
               </Text>
               <Text
-                  variant="body-default-xl"
+                  variant="body-default-l"
                   onBackground="neutral-strong"
                   wrap="balance"
                   align="center"
                   style={{ 
-                    fontSize: '1.5rem', 
                     lineHeight: '1.6',
                     color: 'var(--neutral-on-background-strong)'
                   }}
@@ -70,7 +68,7 @@ export default function Home() {
               </Text>
           </Column>
 
-          <NowPlaying variant="medium" />
+          <NowPlaying />
           
           <Flex gap="12" wrap horizontal="center">
             <Button href={social.github} variant="secondary" size="s">

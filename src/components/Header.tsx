@@ -152,8 +152,8 @@ export const Header = () => {
                 pointerEvents: 'none'
             }}
         >
-            <Row vertical="center" gap="0" style={{ pointerEvents: 'auto' }}>
-                {/* BETA Label - Stuck to menu */}
+            <Row vertical="center" gap="0" style={{ pointerEvents: 'auto', position: 'relative' }}>
+                {/* BETA Label - Concave Effect */}
                 <Flex 
                     paddingX="16" 
                     vertical="center"
@@ -165,6 +165,10 @@ export const Header = () => {
                         border: '1px solid var(--brand-alpha-medium)',
                         borderRight: 'none',
                         boxShadow: 'var(--shadow-elevation-dark-two)',
+                        position: 'relative',
+                        zIndex: 1,
+                        marginRight: '-24px', // Tucked under
+                        paddingRight: '32px'
                     }}
                 >
                     <Text variant="code-default-xs" weight="strong" onBackground="brand-strong">
@@ -172,10 +176,11 @@ export const Header = () => {
                     </Text>
                 </Flex>
 
-                {/* Main Nav Capsule */}
+                {/* Main Nav Capsule - Full Rounded */}
                 <Flex 
                     vertical="center"
                     paddingX="12"
+                    radius="full"
                     style={{
                         background: 'rgba(255, 255, 255, 0.85)',
                         backdropFilter: 'blur(16px)',
@@ -183,14 +188,14 @@ export const Header = () => {
                         width: 'fit-content',
                         minWidth: '420px',
                         border: '1px solid var(--neutral-alpha-weak)',
-                        borderTopRightRadius: '24px',
-                        borderBottomRightRadius: '24px',
                         boxShadow: 'var(--shadow-elevation-dark-two)',
+                        position: 'relative',
+                        zIndex: 2
                     }}
                 >
                     <Row vertical="center" fillWidth horizontal="between">
                         <Row vertical="center" gap="12">
-                            {/* Dynamic Home Icon with Smooth Animation */}
+                            {/* Dynamic Home Icon */}
                             <Link 
                                 href="/" 
                                 style={{ textDecoration: 'none' }}

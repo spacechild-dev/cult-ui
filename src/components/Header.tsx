@@ -7,13 +7,19 @@ import {
     Text,
     Row,
     MegaMenu,
+    Dialog,
+    Button,
+    Input,
+    Textarea
 } from "@once-ui-system/core";
 import { social } from "@/resources/once-ui.config";
 import { FaCoffee } from "react-icons/fa";
 import { Code } from "lucide-react";
+import { useState } from "react";
 
 export const Header = () => {
     const pathname = usePathname();
+    const [isContactOpen, setIsContactOpen] = useState(false);
     
     return (
         <Flex
@@ -152,6 +158,15 @@ export const Header = () => {
                 </Row>
 
                 <Row vertical="center" gap="8">
+                    <Button 
+                        variant="tertiary" 
+                        size="s" 
+                        onClick={() => setIsContactOpen(true)}
+                        prefixIcon="mail"
+                    >
+                        <span className="hidden sm:inline">Contact</span>
+                    </Button>
+
                     <a 
                         href={social.buyMeACoffee} 
                         target="_blank" 
@@ -173,11 +188,36 @@ export const Header = () => {
                     >
                         <Row vertical="center" gap="4">
                             <FaCoffee size={12} />
-                            <span className="hidden sm:inline">Support</span>
+                            <span className="hidden sm:inline">Buy me a coffee</span>
                         </Row>
                     </a>
                 </Row>
             </Flex>
+
+            <Dialog
+                isOpen={isContactOpen}
+                onClose={() => setIsContactOpen(false)}
+                title="Get in Touch"
+                description="Drop me a message and let's start a conversation."
+                maxWidth={32}
+            >
+                <Flex direction="column" gap="16" padding="16">
+                    <Input 
+                        label="Email" 
+                        placeholder="your@email.com" 
+                        type="email"
+                        fillWidth
+                    />
+                    <Textarea 
+                        label="Message" 
+                        placeholder="What's on your mind?" 
+                        fillWidth
+                    />
+                    <Button variant="primary" fillWidth onClick={() => setIsContactOpen(false)}>
+                        Send Message
+                    </Button>
+                </Flex>
+            </Dialog>
         </Flex>
     );
 };

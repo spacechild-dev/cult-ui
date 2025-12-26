@@ -14,6 +14,7 @@ import { social } from "@/resources/once-ui.config";
 import { FaGithub, FaLinkedin, FaSpotify, FaEnvelope } from "react-icons/fa";
 import { SiLastdotfm } from "react-icons/si";
 import { NowPlaying } from "@/components/NowPlaying";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -30,26 +31,49 @@ export default function Home() {
           <Flex vertical="center" gap="8">
             <FaGithub size={14} />
             <Text marginX="4">
-              <LetterFx trigger="instant">Open Source Explorer</LetterFx>
+              <LetterFx trigger="instant">Performance Marketing & Tracking</LetterFx>
             </Text>
           </Flex>
         </Badge>
-        <Heading variant="display-strong-xl" align="center" marginTop="24">
-          Dağkan
-        </Heading>
-        <Text
-          variant="heading-default-xl"
-          onBackground="neutral-weak"
-          wrap="balance"
-          align="center"
-          marginBottom="32"
-        >
-          I’m Dağkan (sounds like “DAH-kahn”). I don’t really consider myself a developer, but I love exploring and experimenting with different topics—especially anything related to data-driven performance marketing, analytics, and martech.
-        </Text>
+
+        <Column gap="24" horizontal="center" marginTop="24">
+            <Text
+                variant="body-default-xl"
+                onBackground="neutral-weak"
+                wrap="balance"
+                align="center"
+            >
+                Bu siteyi hem kişisel merakım hem de mesleki ilgim doğrultusunda oluşturdum. Veriye dayalı performans pazarlama, pazarlama analitiği ve iç görüleri, performans ölçümlemesi ve pazarlama teknolojilerini deneyimlemeyi seviyorum -zaten işim de bu-. İroniktir ama veriye dayalı stratejileri bütünsel stratejilerle de dengelerim.
+            </Text>
+
+            <Text
+                variant="body-default-l"
+                onBackground="neutral-weak"
+                wrap="balance"
+                align="center"
+            >
+                Bu site üzerinde Google Tag Manager, Google Analytics 4, server side GTM, Facebook CAPI, çevrimdışı dönüşümler gibi birçok şeyi test ediyorum. Aslında zırt pırt güncellediğim için muhtemelen bozulmuşlardır ve düzeltmeye üşeniyorumdur. Yine de çerezleri kabul ederseniz (tabi bu da bozulmadıysa) çok sevinirim; böylece denemelerim daha sağlıklı sonuçlar verebilir.
+            </Text>
+
+            <Flex direction="column" horizontal="center" gap="12">
+                <Text
+                    variant="body-default-l"
+                    onBackground="neutral-strong"
+                    wrap="balance"
+                    align="center"
+                    weight="bold"
+                >
+                    Son olarak; algoritmalar değişiyor, kafalar karışıyor. Birlikte çözüm arayalım.
+                </Text>
+                <Button href="https://linkedin.com/in/dagkanbayramoglu/" variant="tertiary" size="m" suffixIcon="chevronRight">
+                    Sohbete Katıl
+                </Button>
+            </Flex>
+        </Column>
 
         <NowPlaying />
         
-        <Flex gap="12" wrap horizontal="center" marginTop="32">
+        <Flex gap="12" wrap horizontal="center" marginTop="48">
           <Button href={social.github} variant="secondary" size="s">
             <Flex gap="8" vertical="center"><FaGithub /> GitHub</Flex>
           </Button>

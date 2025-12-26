@@ -117,7 +117,7 @@ export const NowPlaying = () => {
                         className="lastfm-badge"
                     >
                         <SiLastdotfm className="text-brand-strong" />
-                        <Text variant="label-strong-xs" onBackground="brand-strong" hide="s">Last.fm</Text>
+                        <Text variant="label-strong-xs" onBackground="brand-strong">Last.fm</Text>
                     </Flex>
                 </a>
             </Row>

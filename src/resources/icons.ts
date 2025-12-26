@@ -13,7 +13,8 @@ import {
     HiOutlineAcademicCap,
     HiOutlineStar,
     HiOutlineChartBar,
-    HiOutlineTrophy
+    HiOutlineTrophy,
+    HiOutlineEnvelope
 } from "react-icons/hi2";
 
 export const iconLibrary: Record<string, IconType> = {
@@ -30,7 +31,8 @@ export const iconLibrary: Record<string, IconType> = {
     book: HiOutlineAcademicCap,
     star: HiOutlineStar,
     chart: HiOutlineChartBar,
-    target: HiOutlineTrophy, // Using Trophy as a fallback for target since Target was missing
+    target: HiOutlineTrophy,
+    mail: HiOutlineEnvelope,
 };
 
 export type IconLibrary = typeof iconLibrary;

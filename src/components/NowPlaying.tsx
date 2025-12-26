@@ -113,9 +113,9 @@ export const NowPlaying = () => {
 
                 {/* Last.fm Link Icon */}
                 <a href={profileUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', flexShrink: 0 }}>
-                    <Flex 
-                        padding="10" 
-                        radius="full" 
+                    <Flex
+                        padding="m"
+                        radius="full"
                         background="brand-alpha-weak"
                         style={{ transition: 'transform 0.2s ease' }}
                         className="hover-scale"

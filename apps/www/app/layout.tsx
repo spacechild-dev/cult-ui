@@ -3,26 +3,15 @@ import '@once-ui-system/core/css/styles.css';
 import '@once-ui-system/core/css/tokens.css';
 import '@/src/resources/custom.css'
 
-import { Metadata, Viewport } from "next"
-import { GoogleAnalytics } from "@next/third-parties/google"
+import { Metadata } from "next"
 import classNames from "classnames";
 
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
-import { cn } from "@/lib/utils"
-import { Toaster as NewYorkSonner } from "@/components/ui/sonner"
-import {
-  Toaster as DefaultToaster,
-  Toaster as NewYorkToaster,
-} from "@/components/ui/toaster"
-import { Analytics } from "@/components/analytics"
-import { ThemeProvider } from "@/components/providers"
-import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { ThemeSwitcher } from "@/components/theme-switcher"
 
 // Once UI Imports
 import { baseURL, meta, fonts, effects, style, dataStyle } from "@/src/resources/once-ui.config";
-import { Schema, Column, Flex, opacity, SpacingToken, Background } from "@once-ui-system/core";
+import { Schema, Column, Flex, Background } from "@once-ui-system/core";
 import { OnceProviders } from '@/src/components/OnceProviders';
 
 export const metadata: Metadata = {
@@ -32,16 +21,6 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(siteConfig.url),
   description: siteConfig.description,
-  keywords: ["personal website", "projects", "blog", "next.js", "react", "tailwind css"],
-  authors: [{ name: "Dağkan", url: "https://github.com/spacechild-dev" }],
-  creator: "Dağkan",
-}
-
-export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
 }
 
 interface RootLayoutProps {
@@ -125,7 +104,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             }}
             gradient={{
               display: effects.gradient.display,
-              opacity: effects.gradient.opacity as opacity,
+              opacity: effects.gradient.opacity as any,
               x: effects.gradient.x,
               y: effects.gradient.y,
               width: effects.gradient.width,
@@ -136,21 +115,21 @@ export default function RootLayout({ children }: RootLayoutProps) {
             }}
             dots={{
               display: effects.dots.display,
-              opacity: effects.dots.opacity as opacity,
-              size: effects.dots.size as SpacingToken,
+              opacity: effects.dots.opacity as any,
+              size: effects.dots.size as any,
               color: effects.dots.color,
             }}
             grid={{
               display: effects.grid.display,
-              opacity: effects.grid.opacity as opacity,
+              opacity: effects.grid.opacity as any,
               color: effects.grid.color,
               width: effects.grid.width,
               height: effects.grid.height,
             }}
             lines={{
               display: effects.lines.display,
-              opacity: effects.lines.opacity as opacity,
-              size: effects.lines.size as SpacingToken,
+              opacity: effects.lines.opacity as any,
+              size: effects.lines.size as any,
               thickness: effects.lines.thickness,
               angle: effects.lines.angle,
               color: effects.lines.color,
@@ -158,20 +137,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           />
           
           <div className="relative z-10 flex flex-col min-h-screen">
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              {children}
-              <TailwindIndicator />
-              <ThemeSwitcher />
-              <Analytics />
-              <NewYorkToaster />
-              <DefaultToaster />
-              <NewYorkSonner />
-            </ThemeProvider>
+            {children}
           </div>
         </Column>
       </OnceProviders>

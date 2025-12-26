@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 import {
@@ -43,7 +41,7 @@ export default function BlogPage() {
                     {new Date(post.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
                   </Text>
                   <Heading variant="heading-strong-m">{post.title}</Heading>
-                  <Text variant="body-default-m" onBackground="neutral-weak" lineClamp={3}>
+                  <Text variant="body-default-m" onBackground="neutral-weak">
                     {post.description}
                   </Text>
                   <Flex gap="8" wrap marginTop="8">

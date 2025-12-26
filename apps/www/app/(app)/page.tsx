@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 import {
@@ -9,15 +7,13 @@ import {
   Column,
   Badge,
   Flex,
-  Logo,
-  Line,
   LetterFx,
 } from "@once-ui-system/core";
 import { getAllBlogPosts } from "@/lib/blog";
 import { getAllProjects } from "@/lib/projects";
 import { siteConfig } from "@/config/site";
 import { Icons } from "@/components/icons";
-import { ShieldCheck, Zap } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 
 export default function HomePage() {
   const recentPosts = getAllBlogPosts().slice(0, 3);
@@ -85,7 +81,6 @@ export default function HomePage() {
                 border="neutral-alpha-weak" 
                 direction="column" 
                 gap="8"
-                className="hover-reveal"
                 style={{ transition: 'all 0.2s ease' }}
               >
                 <Text variant="code-default-s" onBackground="neutral-weak">

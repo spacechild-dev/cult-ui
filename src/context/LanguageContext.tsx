@@ -102,8 +102,10 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
     useEffect(() => {
         const host = window.location.hostname;
-        if (host.endsWith(".tr")) {
+        if (host.includes("dagkanbayramoglu.com.tr")) {
             setLanguage("tr");
+        } else if (host.includes("dagkanbayramoglu.com")) {
+            setLanguage("en");
         } else {
             const saved = localStorage.getItem("language") as Language;
             if (saved) setLanguage(saved);

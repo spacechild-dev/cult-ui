@@ -18,7 +18,6 @@ import {
     NavIcon
 } from "@once-ui-system/core";
 import { social } from "@/resources/once-ui.config";
-import { FaCoffee } from "react-icons/fa";
 import { Code } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -141,26 +140,24 @@ export const Header = () => {
 
     return (
         <>
-            {/* Re-located Beta Warning - Fixed Bottom Right */}
+            {/* Minimal Beta Badge - Fixed Bottom Right */}
             <Flex 
-                paddingX="16" 
-                paddingY="8" 
-                radius="l" 
-                background="brand-alpha-strong"
+                paddingX="12" 
+                paddingY="4" 
+                radius="full" 
+                background="neutral-strong"
                 style={{
                     position: 'fixed',
                     bottom: '24px',
                     right: '24px',
                     width: 'fit-content',
-                    maxWidth: '240px',
-                    border: '1px solid var(--brand-alpha-medium)',
-                    backdropFilter: 'blur(8px)',
                     zIndex: 1000,
-                    boxShadow: 'var(--shadow-elevation-dark-two)',
+                    opacity: 0.5,
+                    border: '1px solid var(--neutral-alpha-weak)',
                 }}
             >
-                <Text variant="label-strong-xs" onBackground="brand-strong" align="center">
-                    {t("home.beta")}
+                <Text variant="code-default-xs" onBackground="neutral-strong">
+                    BETA
                 </Text>
             </Flex>
 
@@ -188,14 +185,14 @@ export const Header = () => {
                         backdropFilter: 'blur(16px)',
                         height: '48px',
                         width: 'fit-content',
-                        minWidth: 'fit-content',
+                        minWidth: '320px',
                         border: '1px solid var(--neutral-alpha-weak)',
                         boxShadow: 'var(--shadow-elevation-dark-two)',
                         pointerEvents: 'auto'
                     }}
                 >
                     <Row vertical="center" gap="12">
-                        {/* Dynamic Home Icon */}
+                        {/* Dynamic Home Icon with Smooth Animation */}
                         <Link 
                             href="/" 
                             style={{ textDecoration: 'none' }}
@@ -203,25 +200,28 @@ export const Header = () => {
                             onMouseLeave={() => setIsHomeHovered(false)}
                         >
                             <motion.div
-                                animate={{ width: isHomeHovered ? 'auto' : '32px' }}
+                                layout
+                                transition={{ type: "spring", stiffness: 400, damping: 30 }}
                                 style={{
                                     height: '32px',
                                     display: 'flex',
                                     alignItems: 'center',
+                                    justifyContent: 'center',
                                     background: 'var(--brand-alpha-weak)',
                                     border: '1px solid var(--brand-alpha-medium)',
                                     borderRadius: '9999px',
                                     padding: '0 8px',
-                                    overflow: 'hidden'
+                                    overflow: 'hidden',
+                                    minWidth: '32px'
                                 }}
                             >
                                 <Code size={16} className="text-brand-strong" style={{ flexShrink: 0 }} />
-                                <AnimatePresence>
+                                <AnimatePresence mode="popLayout">
                                     {isHomeHovered && (
                                         <motion.span
-                                            initial={{ opacity: 0, x: -10 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            exit={{ opacity: 0, x: -10 }}
+                                            initial={{ opacity: 0, width: 0, x: -5 }}
+                                            animate={{ opacity: 1, width: 'auto', x: 0 }}
+                                            exit={{ opacity: 0, width: 0, x: -5 }}
                                             style={{
                                                 marginLeft: '8px',
                                                 fontSize: '10px',
@@ -253,7 +253,6 @@ export const Header = () => {
                     </Row>
 
                     <Row vertical="center" gap="8">
-                        {/* Integrated Switcher Group */}
                         <Flex background="neutral-alpha-weak" radius="full" padding="2" vertical="center">
                             <ToggleButton
                                 id="lang-en"
@@ -281,41 +280,15 @@ export const Header = () => {
                             />
                         </Flex>
 
-                        <Row s={{ hide: true }}>
-                            <Button 
-                                variant="tertiary" 
-                                size="s" 
-                                onClick={() => setIsContactOpen(true)}
-                                prefixIcon="mail"
-                            >
-                                <span>Contact</span>
-                            </Button>
-                        </Row>
-
-                        <a 
-                            href={social.buyMeACoffee} 
-                            target="_blank" 
-                            rel="noreferrer"
-                            style={{
-                                background: '#FFDD00',
-                                color: 'black',
-                                padding: '6px 12px',
-                                borderRadius: '9999px',
-                                fontSize: '9px',
-                                fontWeight: 900,
-                                textTransform: 'uppercase',
-                                fontStyle: 'italic',
-                                letterSpacing: '0.02em',
-                                textDecoration: 'none',
-                                boxShadow: '0 2px 8px 0 rgba(255, 221, 0, 0.2)',
-                                transition: 'all 0.2s ease'
-                            }}
+                        <Button 
+                            variant="tertiary" 
+                            size="s" 
+                            onClick={() => setIsContactOpen(true)}
+                            prefixIcon="mail"
+                            hide="s"
                         >
-                            <Row vertical="center" gap="4">
-                                <FaCoffee size={12} />
-                                <span className="hidden sm:inline">Support</span>
-                            </Row>
-                        </a>
+                            <span>{t("nav.contact")}</span>
+                        </Button>
                     </Row>
                 </Flex>
 

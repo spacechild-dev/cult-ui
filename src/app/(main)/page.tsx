@@ -48,19 +48,23 @@ export default function Home() {
                   wrap="balance"
                   align="center"
                   style={{ 
-                    fontSize: '1.75rem', 
-                    lineHeight: '1.5',
-                    color: 'var(--neutral-on-background-strong)' // Anthracite tone
+                    fontSize: '1.5rem', 
+                    lineHeight: '1.6',
+                    color: 'var(--neutral-on-background-strong)'
                   }}
               >
                   {t("home.bio1")}
               </Text>
               <Text
-                  variant="body-default-l"
-                  onBackground="neutral-medium"
+                  variant="body-default-xl"
+                  onBackground="neutral-strong"
                   wrap="balance"
                   align="center"
-                  style={{ color: 'var(--neutral-on-background-medium)' }}
+                  style={{ 
+                    fontSize: '1.5rem', 
+                    lineHeight: '1.6',
+                    color: 'var(--neutral-on-background-strong)'
+                  }}
               >
                   {t("home.bio2")}
               </Text>

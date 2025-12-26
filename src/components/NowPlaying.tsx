@@ -12,7 +12,7 @@ interface Track {
 }
 
 interface NowPlayingProps {
-    variant?: 'default' | 'compact';
+    variant?: 'default' | 'compact' | 'medium';
 }
 
 export const NowPlaying = ({ variant = 'default' }: NowPlayingProps) => {
@@ -90,6 +90,57 @@ export const NowPlaying = ({ variant = 'default' }: NowPlayingProps) => {
                         </Text>
                         <SiLastdotfm className="text-brand-strong" size={14} />
                     </Row>
+                </Flex>
+            </a>
+        );
+    }
+
+    if (variant === 'medium') {
+        return (
+            <a 
+                href={profileUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'none', width: 'fit-content' }}
+            >
+                <Flex
+                    paddingX="16"
+                    paddingY="12"
+                    radius="l"
+                    background="surface"
+                    border="neutral-alpha-weak"
+                    vertical="center"
+                    gap="16"
+                    style={{
+                        backdropFilter: 'blur(12px)',
+                        boxShadow: 'var(--shadow-elevation-dark-two)',
+                        transition: 'all 0.3s ease',
+                    }}
+                >
+                    <Flex
+                        style={{
+                            width: '44px',
+                            height: '44px',
+                            position: 'relative',
+                            overflow: 'hidden',
+                            borderRadius: '6px',
+                            flexShrink: 0,
+                            border: '1px solid var(--neutral-alpha-weak)'
+                        }}
+                    >
+                        <img src={cover} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </Flex>
+                    <Flex direction="column" gap="2" style={{ minWidth: 0 }}>
+                        <Text variant="label-strong-s" onBackground="neutral-strong" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            {track.name}
+                        </Text>
+                        <Row vertical="center" gap="8">
+                            <Text variant="body-default-xs" onBackground="neutral-weak" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                                {track.artist['#text']}
+                            </Text>
+                            <SiLastdotfm className="text-brand-strong" size={12} />
+                        </Row>
+                    </Flex>
                 </Flex>
             </a>
         );

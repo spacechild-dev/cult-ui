@@ -14,7 +14,10 @@ import {
     HiOutlineStar,
     HiOutlineChartBar,
     HiOutlineTrophy,
-    HiOutlineEnvelope
+    HiOutlineEnvelope,
+    HiOutlineSun,
+    HiOutlineMoon,
+    HiOutlineLanguage
 } from "react-icons/hi2";
 
 export const iconLibrary: Record<string, IconType> = {
@@ -33,6 +36,9 @@ export const iconLibrary: Record<string, IconType> = {
     chart: HiOutlineChartBar,
     target: HiOutlineTrophy,
     mail: HiOutlineEnvelope,
+    sun: HiOutlineSun,
+    moon: HiOutlineMoon,
+    language: HiOutlineLanguage,
 };
 
 export type IconLibrary = typeof iconLibrary;

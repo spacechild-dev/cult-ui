@@ -9,12 +9,17 @@ import {
   Flex,
 } from "@once-ui-system/core";
 import { FaSpotify, FaShieldAlt } from "react-icons/fa";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ProjectsPage() {
+  const { language, t } = useLanguage();
+
   const projects = [
     {
       title: "Spotify MixtapeKit",
-      description: "A comprehensive look into building a toolkit for Spotify enthusiasts, covering API integration, state management, and user experience.",
+      description: language === "tr" 
+        ? "Spotify meraklıları için çalma listesi analizi ve mixtape kürasyonu sunan kapsamlı bir araç seti."
+        : "A comprehensive look into building a toolkit for Spotify enthusiasts, covering API integration, state management, and user experience.",
       slug: "spotify-mixtapekit",
       tags: ["spotify", "react", "api"],
       icon: FaSpotify,
@@ -22,7 +27,9 @@ export default function ProjectsPage() {
     },
     {
       title: "FlowOTP",
-      description: "Exploring the security principles and implementation details of FlowOTP, a secure and clean solution for two-factor authentication.",
+      description: language === "tr"
+        ? "İki faktörlü kimlik doğrulama için güvenli, temiz ve %100 çevrimdışı çalışan açık kaynaklı bir çözüm."
+        : "Exploring the security principles and implementation details of FlowOTP, a secure and clean solution for two-factor authentication.",
       slug: "flow-otp",
       tags: ["security", "2fa", "typescript"],
       icon: FaShieldAlt,
@@ -34,9 +41,9 @@ export default function ProjectsPage() {
     <Column fillWidth horizontal="center" paddingY="128" paddingX="l" style={{ minHeight: "100vh" }}>
       <Column maxWidth="s" fillWidth gap="l">
         <Column gap="12" marginBottom="32">
-          <Heading variant="display-strong-s">Projects</Heading>
+          <Heading variant="display-strong-s">{t("projects.title")}</Heading>
           <Text variant="body-default-l" onBackground="neutral-weak">
-            A collection of my web apps, tools, and experiments.
+            {t("projects.description")}
           </Text>
         </Column>
 

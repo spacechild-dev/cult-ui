@@ -8,12 +8,15 @@ import {
   Column,
   Flex,
 } from "@once-ui-system/core";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function BlogPage() {
+  const { t, language } = useLanguage();
+
   const posts = [
     {
-      title: "UTM & ClickID Takibi: Parametreleri Tarayıcıda Saklama Rehberi",
-      description: "UTM parametrelerini ve Click ID'leri localStorage/sessionStorage üzerinde saklayarak dijital pazarlama analizlerinizi nasıl iyileştirebileceğinizi öğrenin.",
+      title: language === "tr" ? "UTM & ClickID Takibi: Parametreleri Tarayıcıda Saklama Rehberi" : "UTM & ClickID Tracking: A Guide to Storing Parameters in the Browser",
+      description: language === "tr" ? "UTM parametrelerini ve Click ID'leri localStorage/sessionStorage üzerinde saklayarak dijital pazarlama analizlerinizi nasıl iyileştirebileceğinizi öğrenin." : "Learn how to capture and store UTM parameters and Click IDs in local and session storage to maintain tracking data across user sessions.",
       date: "2024-07-05",
       slug: "utm-parameters-and-tracking",
       tags: ["marketing", "analytics", "tracking"]
@@ -24,9 +27,9 @@ export default function BlogPage() {
     <Column fillWidth horizontal="center" paddingY="128" paddingX="l" style={{ minHeight: "100vh" }}>
       <Column maxWidth="s" fillWidth gap="l">
         <Column gap="12" marginBottom="32">
-          <Heading variant="display-strong-s">Blog</Heading>
+          <Heading variant="display-strong-s">{t("nav.blog")}</Heading>
           <Text variant="body-default-l" onBackground="neutral-weak">
-            Öğrendiklerimi, projelerimi ve düşüncelerimi paylaşıyorum.
+            {language === "tr" ? "Öğrendiklerimi, projelerimi ve düşüncelerimi paylaşıyorum." : "Sharing my thoughts, projects, and what I've learned"}
           </Text>
         </Column>
 

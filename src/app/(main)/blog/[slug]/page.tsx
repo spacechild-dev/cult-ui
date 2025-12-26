@@ -14,6 +14,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { headers } from "next/headers";
 
 interface BlogPostProps {
     params: Promise<{ slug: string }>;
@@ -21,10 +22,24 @@ interface BlogPostProps {
 
 export default async function BlogPost({ params }: BlogPostProps) {
     const { slug } = await params;
-    const filePath = path.join(process.cwd(), "src/content/blog", `${slug}.mdx`);
+    const headerList = await headers();
+    const host = headerList.get("host") || "";
+    const isTr = host.endsWith(".tr");
+    const lang = isTr ? "tr" : "en";
+
+    // Try to load language specific file first
+    let filePath = path.join(process.cwd(), "src/content/blog", `${slug}-${lang}.mdx`);
     
     if (!fs.existsSync(filePath)) {
-        return <div>Post not found</div>;
+        // Fallback to default slug if exists, or en
+        filePath = path.join(process.cwd(), "src/content/blog", `${slug}.mdx`);
+        if (!fs.existsSync(filePath)) {
+            filePath = path.join(process.cwd(), "src/content/blog", `${slug}-en.mdx`);
+        }
+    }
+    
+    if (!fs.existsSync(filePath)) {
+        return <Column fillWidth center padding="128"><Text>Post not found</Text></Column>;
     }
 
     const fileContent = fs.readFileSync(filePath, "utf8");
@@ -67,7 +82,9 @@ export default async function BlogPost({ params }: BlogPostProps) {
                 <Link href="/blog" style={{ textDecoration: 'none' }}>
                     <Row vertical="center" gap="8" horizontal="start">
                         <HiOutlineArrowLeft size={16} />
-                        <Text variant="label-strong-s" onBackground="neutral-weak">Blog'a Dön</Text>
+                        <Text variant="label-strong-s" onBackground="neutral-weak">
+                            {lang === "tr" ? "Blog'a Dön" : "Back to Blog"}
+                        </Text>
                     </Row>
                 </Link>
 
@@ -89,7 +106,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
                     <MDXRemote source={content} components={components} />
                     
                     <Text variant="body-default-m" onBackground="neutral-weak" marginTop="32">
-                        Bir sonraki makalede görüşmek üzere.
+                        {lang === "tr" ? "Bir sonraki makalede görüşmek üzere." : "See you in the next post."}
                     </Text>
                 </Column>
             </Column>

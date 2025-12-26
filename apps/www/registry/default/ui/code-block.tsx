@@ -13,16 +13,22 @@ interface CodeTab {
 }
 
 interface CodeBlockProps {
-  tabs?: CodeTab[]
+  codes?: CodeTab[]
+  tabs?: CodeTab[] // Keeping for backward compatibility if needed during migration
   code?: string
   language?: string
+  lineNumbers?: boolean
+  compact?: boolean
   className?: string
 }
 
 export function CodeBlock({
+  codes,
   tabs,
   code,
   language = "bash",
+  lineNumbers = false,
+  compact = false,
   className,
 }: CodeBlockProps) {
   const [activeTab, setActiveTab] = useState(0)
@@ -32,6 +38,9 @@ export function CodeBlock({
   const [hasOverflow, setHasOverflow] = useState(false)
 
   const codeContent = useMemo(() => {
+    if (codes && codes.length > 0) {
+      return codes
+    }
     if (tabs && tabs.length > 0) {
       return tabs
     }
@@ -39,12 +48,10 @@ export function CodeBlock({
       return [{ label: language, code, language }]
     }
     return []
-  }, [tabs, code, language])
+  }, [codes, tabs, code, language])
 
   const currentCode = codeContent[activeTab]?.code || ""
 
-  // Check overflow when tab changes or content updates
-  // biome-ignore lint/correctness/useExhaustiveDependencies: activeTab is needed to recheck overflow when content changes
   useLayoutEffect(() => {
     const checkOverflow = () => {
       if (preRef.current) {
@@ -78,6 +85,8 @@ export function CodeBlock({
 
   if (codeContent.length === 0) return null
 
+  const lines = currentCode.split('\n');
+
   return (
     <div
       className={cn(
@@ -85,10 +94,11 @@ export function CodeBlock({
         "border-zinc-950/10 dark:border-white/10",
         "bg-zinc-50 dark:bg-white/5",
         "text-zinc-950 dark:text-zinc-50",
+        compact && "rounded-xl",
         className
       )}
     >
-      {/* Tab Bar */}
+      {/* Tab Bar * /}
       {codeContent.length > 1 && (
         <div className="flex items-center relative pr-2.5">
           <div
@@ -139,9 +149,9 @@ export function CodeBlock({
         </div>
       )}
 
-      {/* Code Content */}
+      {/* Code Content * /}
       <div className="relative overflow-hidden">
-        {/* Copy Button */}
+        {/* Copy Button * /}
         <motion.button
           onClick={handleCopy}
           whileTap={{ scale: 0.95 }}
@@ -193,6 +203,7 @@ export function CodeBlock({
             "p-4 text-sm leading-relaxed m-0",
             "bg-white dark:bg-zinc-950/50",
             codeContent.length > 1 ? "rounded-b-2xl" : "rounded-2xl",
+            compact && "p-2",
             hasOverflow ? "overflow-x-auto" : "overflow-x-hidden",
             hasOverflow && "scrollbar-thin scrollbar-thumb-rounded",
             hasOverflow &&
@@ -234,7 +245,16 @@ export function CodeBlock({
               }}
               className="font-mono text-zinc-950 dark:text-zinc-50 block whitespace-pre"
             >
-              {currentCode}
+              {lineNumbers ? (
+                lines.map((line, i) => (
+                  <div key={i} className="flex">
+                    <span className="w-8 shrink-0 text-zinc-500/50 select-none text-right pr-4">{i + 1}</span>
+                    <span>{line}</span>
+                  </div>
+                ))
+              ) : (
+                currentCode
+              )}
             </motion.code>
           </AnimatePresence>
         </pre>

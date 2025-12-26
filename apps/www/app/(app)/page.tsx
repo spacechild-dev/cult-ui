@@ -1,171 +1,135 @@
-import Link from "next/link"
-import Image from "next/image"
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import { getAllBlogPosts } from "@/lib/blog"
-import { getAllProjects } from "@/lib/projects"
-import { siteConfig } from "@/config/site"
-import { Icons } from "@/components/icons"
-import { ExternalLink, ShieldCheck, StickerIcon, Flame, Newspaper, Zap, ArrowUpRight } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
-import { Card } from "@/components/ui/card"
+"use client";
+
+import React from "react";
+import Link from "next/link";
 import {
-  MinimalCard,
-  MinimalCardDescription,
-  MinimalCardTitle,
-  MinimalCardImage,
-} from "@/registry/default/ui/minimal-card"
+  Heading,
+  Text,
+  Button,
+  Column,
+  Badge,
+  Flex,
+  Logo,
+  Line,
+  LetterFx,
+} from "@once-ui-system/core";
+import { getAllBlogPosts } from "@/lib/blog";
+import { getAllProjects } from "@/lib/projects";
+import { siteConfig } from "@/config/site";
+import { Icons } from "@/components/icons";
+import { ShieldCheck, Zap } from "lucide-react";
 
 export default function HomePage() {
-  const recentPosts = getAllBlogPosts().slice(0, 3)
-  const projects = getAllProjects().slice(0, 2)
-
-  const btnClass = "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 gap-1.5 px-3 has-[>svg]:px-2.5 rounded-xl transition-all hover:bg-muted/50"
-  const primaryBtnClass = "inline-flex items-center justify-center whitespace-nowrap text-sm font-bold disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 h-8 gap-1.5 px-4 has-[>svg]:px-2.5 rounded-xl transition-all"
+  const recentPosts = getAllBlogPosts().slice(0, 3);
+  const projects = getAllProjects().slice(0, 2);
 
   return (
-    <div className="isolate min-h-screen overflow-hidden pb-8 sm:pb-12">
-      <div className="container relative py-24 md:py-32 max-w-3xl">
-        {/* Hero Section */}
-        <section className="flex flex-col items-center gap-8 text-center">
-          <div className="mx-auto max-w-4xl space-y-6 md:space-y-8">
-            <p className="text-center text-sm leading-relaxed text-foreground md:text-base font-medium">
-              I’m Dağkan (sounds like “DAH-kahn”). I don’t really consider myself a developer, but I love exploring and experimenting with different topics—especially anything related to data-driven performance marketing, analytics, and martech.
-            </p>
-          </div>
-          <div className="flex w-full flex-wrap items-center justify-center gap-3 py-4 md:pb-2">
-            <Link target="_blank" rel="noreferrer" className={`${buttonVariants({ variant: "outline", size: "sm" })} rounded-xl transition-all hover:bg-muted/50`} href={siteConfig.links.github}>
-              <Icons.gitHub className="size-4" /> GitHub
-            </Link>
-            <Link target="_blank" rel="noreferrer" className={`${buttonVariants({ variant: "outline", size: "sm" })} rounded-xl transition-all hover:bg-muted/50`} href="https://www.linkedin.com/in/dagkanbayramoglu/">
-              <Icons.linkedin className="size-4" /> LinkedIn
-            </Link>
-            <Link target="_blank" rel="noreferrer" className={`${buttonVariants({ variant: "outline", size: "sm" })} rounded-xl transition-all hover:bg-muted/50`} href="https://open.spotify.com/user/az7ds62ok9xtg09ua7cs7ym9i">
-              <Icons.spotify className="size-4" /> Spotify
-            </Link>
-            <Link target="_blank" rel="noreferrer" className={`${buttonVariants({ variant: "outline", size: "sm" })} rounded-xl transition-all hover:bg-muted/50`} href="https://www.last.fm/user/dagkan/listening-report/year">
-              <Icons.lastfm className="size-4" /> Last.fm
-            </Link>
-            <Link href="mailto:hello@dagkanbayramoglu.com" className={`${buttonVariants({ variant: "outline", size: "sm" })} rounded-xl transition-all hover:bg-muted/50 px-6`}>
-              <Icons.mail className="size-4" /> Mail
-            </Link>
-          </div>
-        </section>
+    <Column fillWidth horizontal="center" paddingY="128" paddingX="l" style={{ minHeight: "100vh" }}>
+      {/* Hero Section */}
+      <Column maxWidth="s" horizontal="center" gap="l" align="center" marginBottom="64">
+        <Badge
+          textVariant="code-default-s"
+          border="neutral-alpha-medium"
+          onBackground="neutral-medium"
+          vertical="center"
+          gap="16"
+        >
+          <Flex vertical="center" gap="8">
+            <Icons.gitHub className="size-4" />
+            <Text marginX="4">
+              <LetterFx trigger="instant">Open Source Explorer</LetterFx>
+            </Text>
+          </Flex>
+        </Badge>
+        <Heading variant="display-strong-xl" align="center" marginTop="24">
+          Dağkan
+        </Heading>
+        <Text
+          variant="heading-default-xl"
+          onBackground="neutral-weak"
+          wrap="balance"
+          align="center"
+          marginBottom="16"
+        >
+          I’m Dağkan. I love exploring and experimenting with data-driven performance marketing, analytics, and martech.
+        </Text>
+        
+        <Flex gap="12" wrap>
+          <Button href={siteConfig.links.github} variant="secondary" size="s" prefixIcon="github">
+            GitHub
+          </Button>
+          <Button href="https://linkedin.com/in/dagkanbayramoglu" variant="secondary" size="s">
+            LinkedIn
+          </Button>
+          <Button href="mailto:hello@dagkanbayramoglu.com" variant="primary" size="s">
+            Mail Me
+          </Button>
+        </Flex>
+      </Column>
 
-        {/* Blog Section */}
-        <section className="mt-32 space-y-8">
-          <div className="flex items-center justify-between px-2">
-            <h2 className="text-xl font-bold tracking-tight">Recent Writing</h2>
-            <Link href="/blog" className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">View All Writing</Link>
-          </div>
+      {/* Blog Section */}
+      <Column maxWidth="m" fillWidth gap="m" marginBottom="64">
+        <Flex fillWidth justifyContent="space-between" vertical="center" marginBottom="24">
+          <Heading variant="display-strong-xs">Recent Writing</Heading>
+          <Button href="/blog" variant="tertiary" size="s" suffixIcon="chevronRight">View All</Button>
+        </Flex>
 
-          <div className="grid gap-6 sm:grid-cols-1 px-2">
-            {recentPosts.length === 0 ? (
-              <p className="col-span-full text-center text-muted-foreground">No blog posts yet.</p>
-            ) : (
-              recentPosts.map((post) => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} className="block no-underline group h-full">
-                  <MinimalCard className="relative p-2 no-underline shadow-sm transition-colors bg-card hover:bg-muted/50 text-left h-full flex flex-col">
-                    <div className="px-4 pt-6 pb-6 flex-grow flex flex-col gap-3">
-                      <time className="text-[10px] font-mono font-bold text-muted-foreground/60 uppercase tracking-widest" dateTime={post.date}>
-                        {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                      </time>
-                      <MinimalCardTitle className="text-lg font-bold leading-tight group-hover:text-primary transition-colors text-left px-0 mt-0">
-                        {post.title}
-                      </MinimalCardTitle>
-                      <MinimalCardDescription className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-normal text-left px-0">
-                        {post.description}
-                      </MinimalCardDescription>
-                      <div className="flex flex-wrap gap-2 pt-2">
-                        {post.tags.slice(0, 5).map((tag) => (
-                          <span
-                            key={tag}
-                            className="inline-flex items-center rounded-md bg-muted/50 px-2 py-0.5 text-[10px] font-medium text-muted-foreground ring-1 ring-inset ring-zinc-200/50"
-                          >
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </MinimalCard>
-                </Link>
-              ))
-            )}
-          </div>
-        </section>
+        <Flex direction="column" gap="16">
+          {recentPosts.map((post) => (
+            <Link key={post.slug} href={`/blog/${post.slug}`} style={{ textDecoration: 'none', width: '100%' }}>
+              <Flex 
+                fillWidth 
+                padding="24" 
+                radius="l" 
+                background="surface" 
+                border="neutral-alpha-weak" 
+                direction="column" 
+                gap="8"
+                className="hover-reveal"
+                style={{ transition: 'all 0.2s ease' }}
+              >
+                <Text variant="code-default-s" onBackground="neutral-weak">
+                  {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                </Text>
+                <Heading variant="heading-strong-m">{post.title}</Heading>
+                <Text variant="body-default-m" onBackground="neutral-weak">{post.description}</Text>
+              </Flex>
+            </Link>
+          ))}
+        </Flex>
+      </Column>
 
-        {/* Projects Section */}
-        <section className="mt-32 space-y-8">
-          <div className="flex items-center justify-between px-2">
-            <div className="flex items-center gap-3">
-              <h2 className="text-xl font-bold tracking-tight">Featured Projects</h2>
-            </div>
-            <Link href="/projects" className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">View All Projects</Link>
-          </div>
+      {/* Projects Section */}
+      <Column maxWidth="m" fillWidth gap="m">
+        <Flex fillWidth justifyContent="space-between" vertical="center" marginBottom="24">
+          <Heading variant="display-strong-xs">Featured Projects</Heading>
+          <Button href="/projects" variant="tertiary" size="s" suffixIcon="chevronRight">All Projects</Button>
+        </Flex>
 
-          <div className="grid gap-8 sm:grid-cols-2 px-2">
-            {projects.map((project) => (
-              <Link key={project.slug} href={`/projects/${project.slug}`} className="block no-underline group h-full">
-                <MinimalCard className="relative p-2 no-underline shadow-sm transition-colors bg-card/50 hover:bg-accent-teal/5 text-left h-full flex flex-col min-h-[320px] border-accent-teal/5">
-                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[18px] shrink-0 shadow-[0px_1px_1px_0px_rgba(0,0,0,0.05),0px_1px_1px_0px_rgba(255,252,240,0.5)_inset,0px_0px_0px_1px_hsla(0,0%,100%,0.1)_inset,0px_0px_1px_0px_rgba(28,27,26,0.5)]">
-                    {project.img ? (
-                      <Image 
-                        src={project.img} 
-                        alt={project.title} 
-                        fill 
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900 dark:to-zinc-950 flex items-center justify-center overflow-hidden">
-                        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]">
-                          <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <pattern id="project-pattern-main" width="10" height="10" patternUnits="userSpaceOnUse">
-                              <circle cx="1" cy="1" r="1" fill="currentColor" />
-                            </pattern>
-                            <rect width="100" height="100" fill="url(#project-pattern-main)" />
-                          </svg>
-                        </div>
-                        {project.slug === 'flow-otp' ? (
-                          <div className="relative flex flex-col items-center gap-4 py-8 scale-75">
-                            <div className="relative">
-                              <div className="absolute -inset-4 bg-accent-teal/20 rounded-full blur-2xl animate-pulse" />
-                              <div className="relative flex h-20 w-20 items-center justify-center rounded-3xl bg-white dark:bg-zinc-900 shadow-2xl border border-zinc-200 dark:border-zinc-800 rotate-12 group-hover:rotate-0 transition-transform duration-500">
-                                <ShieldCheck className="h-10 w-10 text-accent-teal" />
-                              </div>
-                            </div>
-                            <div className="flex flex-col items-center gap-1">
-                              <span className="text-[10px] font-mono font-bold text-zinc-500 tracking-widest uppercase">Secure Auth</span>
-                              <div className="flex gap-1">
-                                {[1,2,3,4,5,6].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-700" />)}
-                              </div>
-                            </div>
-                          </div>
-                        ) : (
-                          <Zap className="h-12 w-12 text-zinc-300 dark:text-zinc-700" />
-                        )}
-                      </div>
-                    )}
-                    <div className="absolute inset-0 rounded-[16px] pointer-events-none shadow-[0px_0px_0px_1px_rgba(0,0,0,.07),0px_0px_0px_3px_#fff,0px_0px_0px_4px_rgba(0,0,0,.08)] dark:shadow-[0px_0px_0px_1px_rgba(0,0,0,.07),0px_0px_0px_3px_rgba(100,100,100,0.3),0px_0px_0px_4px_rgba(0,0,0,.08)]" />
+        <Flex gap="24" wrap>
+          {projects.map((project) => (
+            <Link key={project.slug} href={`/projects/${project.slug}`} style={{ textDecoration: 'none', flex: '1 1 300px' }}>
+              <Flex 
+                direction="column" 
+                padding="24" 
+                radius="l" 
+                background="surface" 
+                border="neutral-alpha-weak" 
+                gap="16"
+                style={{ height: '100%' }}
+              >
+                <Flex vertical="center" gap="12">
+                  <div style={{ padding: '8px', borderRadius: '8px', background: 'var(--neutral-alpha-weak)' }}>
+                    {project.slug === 'spotify-mixtapekit' ? <Icons.spotify className="size-5 text-green-500" /> : <ShieldCheck className="size-5 text-blue-500" />}
                   </div>
-                  <div className="px-2 pt-6 pb-6 flex-grow flex flex-col gap-3">
-                    <div className="flex items-center gap-2">
-                      <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-muted/50 border border-zinc-200/50 dark:border-zinc-800/50 shadow-sm">
-                        {project.slug === 'spotify-mixtapekit' ? <Icons.spotify className="h-4 w-4 text-green-500" /> : <ShieldCheck className="h-4 w-4 text-accent-teal" />}
-                      </div>
-                      <MinimalCardTitle className="text-lg font-bold leading-tight group-hover:text-accent-teal transition-colors">
-                        {project.title}
-                      </MinimalCardTitle>
-                    </div>
-                    <MinimalCardDescription className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-normal line-clamp-4">
-                      {project.description}
-                    </MinimalCardDescription>
-                  </div>
-                </MinimalCard>
-              </Link>
-            ))}
-          </div>
-        </section>
-      </div>
-    </div>
-  )
+                  <Heading variant="heading-strong-s">{project.title}</Heading>
+                </Flex>
+                <Text variant="body-default-s" onBackground="neutral-weak">{project.description}</Text>
+              </Flex>
+            </Link>
+          ))}
+        </Flex>
+      </Column>
+    </Column>
+  );
 }

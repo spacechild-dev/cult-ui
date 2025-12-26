@@ -281,15 +281,16 @@ export const Header = () => {
                             />
                         </Flex>
 
-                        <Button 
-                            variant="tertiary" 
-                            size="s" 
-                            onClick={() => setIsContactOpen(true)}
-                            prefixIcon="mail"
-                            s={{ hide: true }}
-                        >
-                            <span>Contact</span>
-                        </Button>
+                        <Row s={{ hide: true }}>
+                            <Button 
+                                variant="tertiary" 
+                                size="s" 
+                                onClick={() => setIsContactOpen(true)}
+                                prefixIcon="mail"
+                            >
+                                <span>Contact</span>
+                            </Button>
+                        </Row>
 
                         <a 
                             href={social.buyMeACoffee} 

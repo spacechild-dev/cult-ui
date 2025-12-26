@@ -139,198 +139,197 @@ export const Header = () => {
     ];
 
     return (
-        <>
-            {/* Minimal Beta Badge - Fixed Bottom Right */}
-            <Flex 
-                paddingX="12" 
-                paddingY="4" 
-                radius="full" 
-                background="neutral-strong"
-                style={{
-                    position: 'fixed',
-                    bottom: '24px',
-                    right: '24px',
-                    width: 'fit-content',
-                    zIndex: 1000,
-                    opacity: 0.5,
-                    border: '1px solid var(--neutral-alpha-weak)',
-                }}
-            >
-                <Text variant="code-default-xs" onBackground="neutral-strong">
-                    BETA
-                </Text>
-            </Flex>
-
-            <Flex
-                as="header"
-                fillWidth
-                paddingTop="16"
-                paddingX="24"
-                horizontal="center"
-                style={{
-                    position: 'fixed',
-                    top: 0,
-                    zIndex: 100,
-                    pointerEvents: 'none'
-                }}
-            >
+        <Flex
+            as="header"
+            fillWidth
+            paddingTop="16"
+            paddingX="24"
+            horizontal="center"
+            style={{
+                position: 'fixed',
+                top: 0,
+                zIndex: 100,
+                pointerEvents: 'none'
+            }}
+        >
+            <Row vertical="center" gap="0" style={{ pointerEvents: 'auto' }}>
+                {/* BETA Label - Stuck to menu */}
                 <Flex 
-                    fillWidth 
-                    horizontal="between" 
+                    paddingX="16" 
+                    vertical="center"
+                    style={{
+                        background: 'var(--brand-solid-strong)',
+                        height: '48px',
+                        borderTopLeftRadius: '24px',
+                        borderBottomLeftRadius: '24px',
+                        border: '1px solid var(--brand-alpha-medium)',
+                        borderRight: 'none',
+                        boxShadow: 'var(--shadow-elevation-dark-two)',
+                    }}
+                >
+                    <Text variant="code-default-xs" weight="strong" onBackground="brand-strong">
+                        BETA
+                    </Text>
+                </Flex>
+
+                {/* Main Nav Capsule */}
+                <Flex 
                     vertical="center"
                     paddingX="12"
-                    radius="full"
                     style={{
                         background: 'rgba(255, 255, 255, 0.85)',
                         backdropFilter: 'blur(16px)',
                         height: '48px',
                         width: 'fit-content',
-                        minWidth: '320px',
+                        minWidth: '420px',
                         border: '1px solid var(--neutral-alpha-weak)',
+                        borderTopRightRadius: '24px',
+                        borderBottomRightRadius: '24px',
                         boxShadow: 'var(--shadow-elevation-dark-two)',
-                        pointerEvents: 'auto'
                     }}
                 >
-                    <Row vertical="center" gap="12">
-                        {/* Dynamic Home Icon with Smooth Animation */}
-                        <Link 
-                            href="/" 
-                            style={{ textDecoration: 'none' }}
-                            onMouseEnter={() => setIsHomeHovered(true)}
-                            onMouseLeave={() => setIsHomeHovered(false)}
-                        >
-                            <motion.div
-                                layout
-                                transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                                style={{
-                                    height: '32px',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    background: 'var(--brand-alpha-weak)',
-                                    border: '1px solid var(--brand-alpha-medium)',
-                                    borderRadius: '9999px',
-                                    padding: '0 8px',
-                                    overflow: 'hidden',
-                                    minWidth: '32px'
-                                }}
+                    <Row vertical="center" fillWidth horizontal="between">
+                        <Row vertical="center" gap="12">
+                            {/* Dynamic Home Icon with Smooth Animation */}
+                            <Link 
+                                href="/" 
+                                style={{ textDecoration: 'none' }}
+                                onMouseEnter={() => setIsHomeHovered(true)}
+                                onMouseLeave={() => setIsHomeHovered(false)}
                             >
-                                <Code size={16} className="text-brand-strong" style={{ flexShrink: 0 }} />
-                                <AnimatePresence mode="popLayout">
-                                    {isHomeHovered && (
-                                        <motion.span
-                                            initial={{ opacity: 0, width: 0, x: -5 }}
-                                            animate={{ opacity: 1, width: 'auto', x: 0 }}
-                                            exit={{ opacity: 0, width: 0, x: -5 }}
-                                            style={{
-                                                marginLeft: '8px',
-                                                fontSize: '10px',
-                                                fontWeight: 900,
-                                                textTransform: 'uppercase',
-                                                whiteSpace: 'nowrap',
-                                                color: 'var(--brand-on-background-strong)'
-                                            }}
-                                        >
-                                            {language === 'tr' ? 'Anasayfa' : 'Home'}
-                                        </motion.span>
-                                    )}
-                                </AnimatePresence>
-                            </motion.div>
-                        </Link>
+                                <motion.div
+                                    layout
+                                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                                    style={{
+                                        height: '32px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        background: 'var(--brand-alpha-weak)',
+                                        border: '1px solid var(--brand-alpha-medium)',
+                                        borderRadius: '9999px',
+                                        padding: '0 8px',
+                                        overflow: 'hidden',
+                                        minWidth: '32px'
+                                    }}
+                                >
+                                    <Code size={16} className="text-brand-strong" style={{ flexShrink: 0 }} />
+                                    <AnimatePresence mode="popLayout">
+                                        {isHomeHovered && (
+                                            <motion.span
+                                                initial={{ opacity: 0, width: 0, x: -5 }}
+                                                animate={{ opacity: 1, width: 'auto', x: 0 }}
+                                                exit={{ opacity: 0, width: 0, x: -5 }}
+                                                style={{
+                                                    marginLeft: '8px',
+                                                    fontSize: '10px',
+                                                    fontWeight: 900,
+                                                    textTransform: 'uppercase',
+                                                    whiteSpace: 'nowrap',
+                                                    color: 'var(--brand-on-background-strong)'
+                                                }}
+                                            >
+                                                {language === 'tr' ? 'Anasayfa' : 'Home'}
+                                            </motion.span>
+                                        )}
+                                    </AnimatePresence>
+                                </motion.div>
+                            </Link>
 
-                        {/* Desktop Mega Menu */}
-                        <Row s={{ hide: true }}>
-                            <MegaMenu menuGroups={menuGroups} />
+                            {/* Desktop Mega Menu */}
+                            <Row s={{ hide: true }}>
+                                <MegaMenu menuGroups={menuGroups} />
+                            </Row>
+
+                            {/* Mobile Menu Toggle */}
+                            <Row hide s={{ display: 'flex' }}>
+                                <NavIcon 
+                                    isActive={isMobileMenuOpen} 
+                                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+                                />
+                            </Row>
                         </Row>
 
-                        {/* Mobile Menu Toggle */}
-                        <Row hide s={{ display: 'flex' }}>
-                            <NavIcon 
-                                isActive={isMobileMenuOpen} 
-                                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
-                            />
-                        </Row>
-                    </Row>
+                        <Row vertical="center" gap="8">
+                            <Flex background="neutral-alpha-weak" radius="full" padding="2" vertical="center">
+                                <ToggleButton
+                                    id="lang-en"
+                                    size="s"
+                                    selected={language === 'en'}
+                                    onClick={() => setLanguage('en')}
+                                >
+                                    EN
+                                </ToggleButton>
+                                <ToggleButton
+                                    id="lang-tr"
+                                    size="s"
+                                    selected={language === 'tr'}
+                                    onClick={() => setLanguage('tr')}
+                                >
+                                    TR
+                                </ToggleButton>
+                                <Line vert background="neutral-alpha-medium" height="12" marginX="4" />
+                                <IconButton
+                                    id="theme-toggle"
+                                    size="s"
+                                    variant="tertiary"
+                                    icon={theme === 'dark' ? 'sun' : 'moon'}
+                                    onClick={toggleTheme}
+                                />
+                            </Flex>
 
-                    <Row vertical="center" gap="8">
-                        <Flex background="neutral-alpha-weak" radius="full" padding="2" vertical="center">
-                            <ToggleButton
-                                id="lang-en"
-                                size="s"
-                                selected={language === 'en'}
-                                onClick={() => setLanguage('en')}
-                            >
-                                EN
-                            </ToggleButton>
-                            <ToggleButton
-                                id="lang-tr"
-                                size="s"
-                                selected={language === 'tr'}
-                                onClick={() => setLanguage('tr')}
-                            >
-                                TR
-                            </ToggleButton>
-                            <Line vert background="neutral-alpha-medium" height="12" marginX="4" />
-                            <IconButton
-                                id="theme-toggle"
-                                size="s"
-                                variant="tertiary"
-                                icon={theme === 'dark' ? 'sun' : 'moon'}
-                                onClick={toggleTheme}
-                            />
-                        </Flex>
-
-                        <Row s={{ hide: true }}>
-                            <Button 
-                                variant="tertiary" 
-                                size="s" 
-                                onClick={() => setIsContactOpen(true)}
-                                prefixIcon="mail"
-                            >
-                                <span>{t("nav.contact")}</span>
-                            </Button>
+                            <Row s={{ hide: true }}>
+                                <Button 
+                                    variant="tertiary" 
+                                    size="s" 
+                                    onClick={() => setIsContactOpen(true)}
+                                    prefixIcon="mail"
+                                >
+                                    <span>{t("nav.contact")}</span>
+                                </Button>
+                            </Row>
                         </Row>
                     </Row>
                 </Flex>
+            </Row>
 
-                {/* Mobile Mega Menu */}
-                <AnimatePresence>
-                    {isMobileMenuOpen && (
-                        <MobileMegaMenu 
-                            menuGroups={[
-                                { id: "home", label: t("nav.home"), href: "/" },
-                                ...menuGroups
-                            ]} 
-                            onClose={() => setIsMobileMenuOpen(false)}
-                        />
-                    )}
-                </AnimatePresence>
+            {/* Mobile Mega Menu */}
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <MobileMegaMenu 
+                        menuGroups={[
+                            { id: "home", label: t("nav.home"), href: "/" },
+                            ...menuGroups
+                        ]} 
+                        onClose={() => setIsMobileMenuOpen(false)}
+                    />
+                )}
+            </AnimatePresence>
 
-                <Dialog
-                    isOpen={isContactOpen}
-                    onClose={() => setIsContactOpen(false)}
-                    title="Get in Touch"
-                    description="Drop me a message and let's start a conversation."
-                    maxWidth="s"
-                >
-                    <Flex direction="column" gap="16" padding="16">
-                        <Input 
-                            id="contact-email"
-                            label="Email" 
-                            placeholder="your@email.com" 
-                            type="email"
-                        />
-                        <Textarea 
-                            id="contact-message"
-                            label="Message" 
-                            placeholder="What's on your mind?" 
-                        />
-                        <Button variant="primary" fillWidth onClick={() => setIsContactOpen(false)}>
-                            Send Message
-                        </Button>
-                    </Flex>
-                </Dialog>
-            </Flex>
-        </>
+            <Dialog
+                isOpen={isContactOpen}
+                onClose={() => setIsContactOpen(false)}
+                title="Get in Touch"
+                description="Drop me a message and let's start a conversation."
+                maxWidth="s"
+            >
+                <Flex direction="column" gap="16" padding="16">
+                    <Input 
+                        id="contact-email"
+                        label="Email" 
+                        placeholder="your@email.com" 
+                        type="email"
+                    />
+                    <Textarea 
+                        id="contact-message"
+                        label="Message" 
+                        placeholder="What's on your mind?" 
+                    />
+                    <Button variant="primary" fillWidth onClick={() => setIsContactOpen(false)}>
+                        Send Message
+                    </Button>
+                </Flex>
+            </Dialog>
+        </Flex>
     );
 };

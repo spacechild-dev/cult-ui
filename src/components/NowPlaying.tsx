@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Flex, Text, Heading, Row, Line } from "@once-ui-system/core";
+import { Flex, Text, Heading, Row } from "@once-ui-system/core";
 import { SiLastdotfm } from "react-icons/si";
 
 interface Track {
@@ -11,7 +11,11 @@ interface Track {
     '@attr'?: { nowplaying: string };
 }
 
-export const NowPlaying = () => {
+interface NowPlayingProps {
+    variant?: 'default' | 'compact';
+}
+
+export const NowPlaying = ({ variant = 'default' }: NowPlayingProps) => {
     const [track, setTrack] = useState<Track | null>(null);
     const apiKey = 'b196b523ff00d1b3803ae66c3d5d2da5';
     const user = 'dagkan';
@@ -22,6 +26,7 @@ export const NowPlaying = () => {
         fetch(url)
             .then(r => r.json())
             .then(data => {
+                if (!data.recenttracks) return;
                 const latestTrack = data.recenttracks.track[0];
                 if (latestTrack && latestTrack['@attr'] && latestTrack['@attr'].nowplaying) {
                     setTrack(latestTrack);
@@ -42,10 +47,57 @@ export const NowPlaying = () => {
 
     const cover = track.image.slice().reverse().find(img => img['#text'])?.['#text'] || 'https://placehold.co/74x74?text=♫';
 
+    if (variant === 'compact') {
+        return (
+            <a 
+                href={profileUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'none', width: 'fit-content' }}
+            >
+                <Flex
+                    paddingX="12"
+                    paddingY="8"
+                    radius="full"
+                    background="surface"
+                    border="neutral-alpha-weak"
+                    vertical="center"
+                    gap="12"
+                    style={{
+                        backdropFilter: 'blur(12px)',
+                        boxShadow: 'var(--shadow-elevation-dark-two)',
+                        transition: 'all 0.3s ease',
+                    }}
+                >
+                    <Flex
+                        style={{
+                            width: '24px',
+                            height: '24px',
+                            position: 'relative',
+                            overflow: 'hidden',
+                            borderRadius: '4px',
+                            flexShrink: 0,
+                        }}
+                    >
+                        <img src={cover} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </Flex>
+                    <Row vertical="center" gap="8">
+                        <Text variant="label-strong-xs" onBackground="neutral-strong">
+                            {track.name}
+                        </Text>
+                        <Text variant="label-default-xs" onBackground="neutral-weak">
+                            {track.artist['#text']}
+                        </Text>
+                        <SiLastdotfm className="text-brand-strong" size={14} />
+                    </Row>
+                </Flex>
+            </a>
+        );
+    }
+
     return (
         <Flex
             fillWidth
-            maxWidth="s"
             padding="12"
             radius="l"
             background="surface"
@@ -54,12 +106,9 @@ export const NowPlaying = () => {
                 backdropFilter: 'blur(12px)',
                 boxShadow: 'var(--shadow-elevation-dark-two)',
                 transition: 'all 0.3s ease',
-                marginTop: '32px'
             }}
-            className="now-playing-card"
         >
             <Row fillWidth vertical="center" gap="16">
-                {/* Cover Art */}
                 <Flex
                     style={{
                         width: '64px',
@@ -78,7 +127,6 @@ export const NowPlaying = () => {
                     />
                 </Flex>
 
-                {/* Info */}
                 <Flex direction="column" gap="4" style={{ minWidth: 0, flex: 1 }}>
                     <Text variant="code-default-xs" onBackground="brand-strong" style={{ letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                         Now Playing
@@ -99,7 +147,6 @@ export const NowPlaying = () => {
                     </Text>
                 </Flex>
 
-                {/* Badge/Action */}
                 <a 
                     href={profileUrl} 
                     target="_blank" 
@@ -114,7 +161,6 @@ export const NowPlaying = () => {
                         vertical="center" 
                         gap="8"
                         style={{ cursor: 'pointer', transition: 'all 0.2s ease' }}
-                        className="lastfm-badge"
                     >
                         <SiLastdotfm className="text-brand-strong" />
                         <Text variant="label-strong-xs" onBackground="brand-strong">Last.fm</Text>

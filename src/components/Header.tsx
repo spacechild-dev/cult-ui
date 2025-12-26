@@ -7,13 +7,15 @@ import {
     Text,
     Row,
     MegaMenu,
+    MobileMegaMenu,
     Dialog,
     Button,
     Input,
     Textarea,
     IconButton,
     ToggleButton,
-    Line
+    Line,
+    NavIcon
 } from "@once-ui-system/core";
 import { social } from "@/resources/once-ui.config";
 import { FaCoffee } from "react-icons/fa";
@@ -25,6 +27,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export const Header = () => {
     const pathname = usePathname();
     const [isContactOpen, setIsContactOpen] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { language, setLanguage, t } = useLanguage();
     const [theme, setTheme] = useState<'light' | 'dark'>('dark');
     const [isHomeHovered, setIsHomeHovered] = useState(false);
@@ -45,6 +48,96 @@ export const Header = () => {
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('data-theme', newTheme);
     };
+
+    const menuGroups = [
+        {
+            id: "blog",
+            label: t("nav.blog"),
+            sections: [
+                {
+                    title: t("nav.topics"),
+                    links: [
+                        {
+                            label: t("nav.allPosts"),
+                            href: "/blog",
+                            icon: "document",
+                            description: "Read everything",
+                        },
+                        {
+                            label: t("nav.digitalMarketing"),
+                            href: "/blog?tag=marketing",
+                            icon: "target",
+                            description: "Performance & Strategy",
+                        },
+                        {
+                            label: t("nav.tracking"),
+                            href: "/blog?tag=tracking",
+                            icon: "chart",
+                            description: "Analytics & Data",
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            id: "projects",
+            label: t("nav.projects"),
+            sections: [
+                {
+                    title: "Explore",
+                    links: [
+                        {
+                            label: "All Projects",
+                            href: "/projects",
+                            icon: "layers",
+                            description: "View all case studies",
+                        },
+                        {
+                            label: "Web Apps",
+                            href: "/projects?type=web",
+                            icon: "globe",
+                            description: "Next.js & React apps",
+                        },
+                        {
+                            label: "Docker Apps",
+                            href: "/projects?type=docker",
+                            icon: "cube",
+                            description: "Self-hosted solutions",
+                        },
+                        {
+                            label: "Chrome Apps",
+                            href: "/projects?type=chrome",
+                            icon: "puzzle",
+                            description: "Browser extensions",
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            id: "career",
+            label: t("nav.career"),
+            sections: [
+                {
+                    title: "Professional",
+                    links: [
+                        {
+                            label: t("nav.experience"),
+                            href: "/resume#experience",
+                            icon: "briefcase",
+                            description: "Work history",
+                        },
+                        {
+                            label: t("nav.certificates"),
+                            href: "/resume#certificates",
+                            icon: "book",
+                            description: "Skills & Badges",
+                        },
+                    ],
+                },
+            ],
+        }
+    ];
 
     return (
         <>
@@ -95,7 +188,7 @@ export const Header = () => {
                         backdropFilter: 'blur(16px)',
                         height: '48px',
                         width: 'fit-content',
-                        minWidth: '420px',
+                        minWidth: 'fit-content',
                         border: '1px solid var(--neutral-alpha-weak)',
                         boxShadow: 'var(--shadow-elevation-dark-two)',
                         pointerEvents: 'auto'
@@ -145,97 +238,18 @@ export const Header = () => {
                             </motion.div>
                         </Link>
 
-                        <MegaMenu
-                            menuGroups={[
-                                {
-                                    id: "blog",
-                                    label: t("nav.blog"),
-                                    sections: [
-                                        {
-                                            title: t("nav.topics"),
-                                            links: [
-                                                {
-                                                    label: t("nav.allPosts"),
-                                                    href: "/blog",
-                                                    icon: "document",
-                                                    description: "Read everything",
-                                                },
-                                                {
-                                                    label: t("nav.digitalMarketing"),
-                                                    href: "/blog?tag=marketing",
-                                                    icon: "target",
-                                                    description: "Performance & Strategy",
-                                                },
-                                                {
-                                                    label: t("nav.tracking"),
-                                                    href: "/blog?tag=tracking",
-                                                    icon: "chart",
-                                                    description: "Analytics & Data",
-                                                },
-                                            ],
-                                        },
-                                    ],
-                                },
-                                {
-                                    id: "projects",
-                                    label: t("nav.projects"),
-                                    sections: [
-                                        {
-                                            title: "Explore",
-                                            links: [
-                                                {
-                                                    label: "All Projects",
-                                                    href: "/projects",
-                                                    icon: "layers",
-                                                    description: "View all case studies",
-                                                },
-                                                {
-                                                    label: "Web Apps",
-                                                    href: "/projects?type=web",
-                                                    icon: "globe",
-                                                    description: "Next.js & React apps",
-                                                },
-                                                {
-                                                    label: "Docker Apps",
-                                                    href: "/projects?type=docker",
-                                                    icon: "cube",
-                                                    description: "Self-hosted solutions",
-                                                },
-                                                {
-                                                    label: "Chrome Apps",
-                                                    href: "/projects?type=chrome",
-                                                    icon: "puzzle",
-                                                    description: "Browser extensions",
-                                                },
-                                            ],
-                                        },
-                                    ],
-                                },
-                                {
-                                    id: "career",
-                                    label: t("nav.career"),
-                                    sections: [
-                                        {
-                                            title: "Professional",
-                                            links: [
-                                                {
-                                                    label: t("nav.experience"),
-                                                    href: "/resume#experience",
-                                                    icon: "briefcase",
-                                                    description: "Work history",
-                                                },
-                                                {
-                                                    label: t("nav.certificates"),
-                                                    href: "/resume#certificates",
-                                                    icon: "book",
-                                                    description: "Skills & Badges",
-                                                },
-                                            ],
-                                        },
-                                    ],
-                                }
-                            ]}
-                        />
+                        {/* Desktop Mega Menu */}
+                        <Row s={{ hide: true }}>
+                            <MegaMenu menuGroups={menuGroups} />
+                        </Row>
+
+                        {/* Mobile Menu Toggle */}
+                        <Row hide s={{ display: 'flex' }}>
+                            <NavIcon 
+                                isActive={isMobileMenuOpen} 
+                                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+                            />
+                        </Row>
                     </Row>
 
                     <Row vertical="center" gap="8">
@@ -267,6 +281,16 @@ export const Header = () => {
                             />
                         </Flex>
 
+                        <Button 
+                            variant="tertiary" 
+                            size="s" 
+                            onClick={() => setIsContactOpen(true)}
+                            prefixIcon="mail"
+                            s={{ hide: true }}
+                        >
+                            <span>Contact</span>
+                        </Button>
+
                         <a 
                             href={social.buyMeACoffee} 
                             target="_blank" 
@@ -288,11 +312,24 @@ export const Header = () => {
                         >
                             <Row vertical="center" gap="4">
                                 <FaCoffee size={12} />
-                                <span className="hidden sm:inline">Buy me a coffee</span>
+                                <span className="hidden sm:inline">Support</span>
                             </Row>
                         </a>
                     </Row>
                 </Flex>
+
+                {/* Mobile Mega Menu */}
+                <AnimatePresence>
+                    {isMobileMenuOpen && (
+                        <MobileMegaMenu 
+                            menuGroups={[
+                                { id: "home", label: t("nav.home"), href: "/" },
+                                ...menuGroups
+                            ]} 
+                            onClose={() => setIsMobileMenuOpen(false)}
+                        />
+                    )}
+                </AnimatePresence>
 
                 <Dialog
                     isOpen={isContactOpen}

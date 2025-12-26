@@ -1,215 +1,155 @@
-import { notFound } from "next/navigation"
-import { getAllProjects, getProject } from "@/lib/projects"
-import { MDXRemote } from "next-mdx-remote/rsc"
-import Link from "next/link"
-import Image from "next/image"
-import { components } from "@/components/blog-mdx-components"
-import rehypePrettyCode from "rehype-pretty-code"
-import { Icons } from "@/components/icons"
-import { ExternalLink, CheckCircle2, StickerIcon, ShieldCheck } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
-import {
-  MinimalCard,
-  MinimalCardDescription,
-  MinimalCardTitle,
-} from "@/registry/default/ui/minimal-card"
+import { notFound } from "next/navigation";
+import { getAllProjects, getProject } from "@/lib/projects";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import Link from "next/link";
+import Image from "next/image";
+import { components } from "@/components/blog-mdx-components";
+import rehypePrettyCode from "rehype-pretty-code";
+import { 
+    Heading, 
+    Text, 
+    Column, 
+    Flex, 
+    Row, 
+    Button, 
+    Line, 
+    Scroller,
+    Background
+} from "@once-ui-system/core";
+import { Icons } from "@/components/icons";
+import { ShieldCheck, CheckCircle2 } from "lucide-react";
 
 export async function generateStaticParams() {
-  const projects = getAllProjects()
+  const projects = getAllProjects();
   return projects.map((project) => ({
     slug: project.slug,
-  }))
+  }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params
-  const project = getProject(slug)
+  const { slug } = await params;
+  const project = getProject(slug);
 
-  if (!project) {
-    return {}
-  }
+  if (!project) return {};
 
   return {
     title: `${project.title} | Projects`,
     description: project.description,
-  }
+  };
 }
 
 export default async function ProjectPage({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params
-  const project = getProject(slug)
+  const { slug } = await params;
+  const project = getProject(slug);
 
   if (!project) {
-    notFound()
+    notFound();
   }
 
-  const btnClass = "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-8 gap-1.5 px-3 rounded-xl transition-all hover:bg-muted/50"
-
   return (
-    <div className="container max-w-3xl py-12">
-      <Link
-        href="/projects"
-        className="text-sm text-muted-foreground hover:text-foreground mb-8 inline-block transition-colors"
-      >
-        ← Back to Projects
-      </Link>
+    <Column fillWidth horizontal="center" paddingY="128" paddingX="l" style={{ minHeight: "100vh" }}>
+      <Column maxWidth="m" fillWidth gap="64">
+        {/* Back Link */}
+        <Link href="/projects" style={{ textDecoration: 'none' }}>
+            <Row vertical="center" gap="8">
+                <Icons.logo className="size-4 rotate-180 text-neutral-weak" />
+                <Text variant="label-strong-s" onBackground="neutral-weak">Back to Projects</Text>
+            </Row>
+        </Link>
 
-      <div className="flex flex-col gap-16">
-        {/* Top Section: Description & Image */}
-        <section className="flex flex-col gap-8">
-          <div className="flex flex-col gap-6">
-            <div className="space-y-4">
-              <h1 className="text-4xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200">
-                {project.title}
-              </h1>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="inline-flex items-center rounded-md bg-muted px-2 py-0.5 text-[10px] font-mono uppercase tracking-widest text-muted-foreground border border-border"
-                  >
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <p className="text-lg text-muted-foreground leading-relaxed text-sm sm:text-base">
-              {project.description}
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href={project.href}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(btnClass, "bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20")}
-              >
-                <ExternalLink className="size-4" />
-                <span>Visit Project</span>
-              </Link>
-              <Link
-                href={project.github}
-                target="_blank"
-                rel="noreferrer"
-                className={btnClass}
-              >
-                <Icons.gitHub className="size-4" />
-                <span>Source Code</span>
-              </Link>
-            </div>
-          </div>
-          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[2rem] border bg-muted shadow-2xl group">
-            {project.img ? (
-              <Image 
-                src={project.img} 
-                alt={project.title} 
-                fill 
-                className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                priority
-              />
-            ) : (
-              <div className="absolute inset-0 bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-900 dark:to-zinc-800 flex items-center justify-center">
-                {project.slug === 'flow-otp' ? (
-                  <ShieldCheck className="h-20 w-20 text-blue-500/20 animate-pulse" />
-                ) : (
-                  <StickerIcon className="h-20 w-20 text-zinc-300 dark:text-zinc-700" />
-                )}
-              </div>
-            )}
-          </div>
-        </section>
-
-        {/* Middle Section: Key Features using MinimalCard in a 3-column grid */}
-        {project.keyFeatures && project.keyFeatures.length > 0 && (
-          <section className="space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-2xl font-bold tracking-tight">Key Features</h2>
-              <div className="h-1 w-16 bg-primary rounded-full" />
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {project.keyFeatures.map((feature, index) => (
-                <MinimalCard 
-                  key={index}
-                  className="bg-card/30 backdrop-blur-sm border-zinc-200/50 shadow-sm transition-all hover:shadow-md p-4"
-                >
-                  <div className="flex flex-col gap-3 h-full text-left">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0">
-                      <CheckCircle2 className="size-4" />
-                    </div>
-                    <div>
-                      <MinimalCardTitle className="text-sm font-bold leading-tight mb-1.5">
-                        {feature}
-                      </MinimalCardTitle>
-                      <MinimalCardDescription className="text-[11px] leading-snug text-muted-foreground">
-                        Optimized core functionality.
-                      </MinimalCardDescription>
-                    </div>
-                  </div>
-                </MinimalCard>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Content Section (MDX) - Technical Details */}
-        <section className="w-full">
-          <div className="space-y-4 mb-8">
-            <h2 className="text-2xl font-bold tracking-tight">Technical Details</h2>
-            <div className="h-1 w-16 bg-primary rounded-full" />
-          </div>
-          <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:tracking-tight prose-pre:p-0">
-            <MDXRemote 
-              source={project.content} 
-              components={components}
-              options={{
-                mdxOptions: {
-                  rehypePlugins: [
-                    [
-                      rehypePrettyCode,
-                      {
-                        theme: "github-light-default",
-                      },
-                    ],
-                  ],
-                },
-              }}
-            />
-          </div>
-        </section>
-
-        {/* Bottom Section: App Screenshots */}
-        {project.screenshots && project.screenshots.length > 0 && (
-          <section className="space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-2xl font-bold tracking-tight">App Screenshots</h2>
-              <div className="h-1 w-16 bg-primary rounded-full" />
-            </div>
-            <div className="grid grid-cols-1 gap-8">
-              {project.screenshots.map((screenshot, index) => (
-                <div 
-                  key={index}
-                  className="relative aspect-[16/10] w-full overflow-hidden rounded-[2rem] border bg-muted shadow-2xl group"
-                >
-                  <Image 
-                    src={screenshot} 
-                    alt={`${project.title} screenshot ${index + 1}`} 
-                    fill 
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+        {/* Top Row: App Info & Featured Image */}
+        <Row gap="48" vertical="center" wrap>
+            <Column flex={1} gap="24" style={{ minWidth: '300px' }}>
+                <Column gap="12">
+                    <Heading variant="display-strong-m">{project.title}</Heading>
+                    <Text variant="body-default-l" onBackground="neutral-weak">{project.description}</Text>
+                </Column>
+                <Flex gap="8" wrap>
+                    {project.tags.map((tag) => (
+                        <Flex key={tag} paddingX="8" paddingY="4" radius="m" background="neutral-alpha-weak">
+                            <Text variant="code-default-xs">#{tag}</Text>
+                        </Flex>
+                    ))}
+                </Flex>
+                <Row gap="12">
+                    <Button href={project.href} variant="primary" size="s" suffixIcon="chevronRight">Visit Live</Button>
+                    <Button href={project.github} variant="secondary" size="s" prefixIcon="github">Source</Button>
+                </Row>
+            </Column>
+            <Flex flex={1} style={{ minWidth: '300px' }}>
+                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-neutral-alpha-weak shadow-xl">
+                    {project.img ? (
+                        <Image src={project.img} alt={project.title} fill className="object-cover" />
+                    ) : (
+                        <Flex fillWidth fillHeight background="surface" center>
+                            <ShieldCheck className="size-16 text-emerald-500/20" />
+                        </Flex>
+                    )}
                 </div>
-              ))}
-            </div>
-          </section>
+            </Flex>
+        </Row>
+
+        {/* Key Features */}
+        {project.keyFeatures && (
+            <Column gap="24">
+                <Heading variant="heading-strong-l">Key Features</Heading>
+                <Line background="neutral-alpha-weak" />
+                <Row gap="24" wrap>
+                    {project.keyFeatures.map((feature, index) => (
+                        <Flex key={index} flex="1 1 200px" padding="24" radius="l" background="surface" border="neutral-alpha-weak" gap="12" vertical="center">
+                            <CheckCircle2 className="size-5 text-emerald-500 shrink-0" />
+                            <Text variant="label-strong-s">{feature}</Text>
+                        </Flex>
+                    ))}
+                </Row>
+            </Column>
         )}
-      </div>
-    </div>
-  )
+
+        {/* Detailed Description (MDX) */}
+        <Column gap="24">
+            <Heading variant="heading-strong-l">Detailed Overview</Heading>
+            <Line background="neutral-alpha-weak" />
+            <div className="prose prose-neutral dark:prose-invert max-w-none">
+                <MDXRemote 
+                    source={project.content} 
+                    components={components}
+                    options={{
+                        mdxOptions: {
+                            rehypePlugins: [[rehypePrettyCode, { theme: "github-dark" }]],
+                        },
+                    }}
+                />
+            </div>
+        </Column>
+
+        {/* App Screenshots Scroller */}
+        <Column gap="24">
+            <Heading variant="heading-strong-l">Screenshots</Heading>
+            <Line background="neutral-alpha-weak" />
+            <Scroller fillWidth gap="16" paddingBottom="12">
+                {/* Real Screenshot */}
+                {project.screenshots?.map((ss, i) => (
+                    <div key={i} style={{ minWidth: '400px' }} className="relative aspect-[16/9] rounded-xl overflow-hidden border border-neutral-alpha-weak shadow-md">
+                        <Image src={ss} alt="Screenshot" fill className="object-cover" />
+                    </div>
+                ))}
+                {/* Placeholders */}
+                {[1, 2, 3].map((_, i) => (
+                    <Flex key={i} style={{ minWidth: '400px' }} aspect="16/9" background="surface" border="neutral-alpha-weak" radius="l" center>
+                        <Text onBackground="neutral-faint">Screenshot Placeholder {i + 1}</Text>
+                    </Flex>
+                ))}
+            </Scroller>
+        </Column>
+      </Column>
+    </Column>
+  );
 }

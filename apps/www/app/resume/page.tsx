@@ -49,7 +49,9 @@ export default function ResumePage() {
               <Text variant="body-default-s" onBackground="neutral-weak">Oct 2025 – Present</Text>
             </Row>
             <Column paddingLeft="24" style={{ borderLeft: '2px solid var(--neutral-alpha-weak)' }} gap="8">
-              <Text variant="label-strong-m">Digital Performance and Media Account Manager</Text>
+              <Row justifyContent="space-between" vertical="start">
+                <Text variant="label-strong-m">Digital Performance and Media Account Manager</Text>
+              </Row>
               <Text variant="body-default-s" onBackground="neutral-weak">Managing performance and media operations across multiple clients and verticals. Coordinating strategy and execution for performance marketing workflows.</Text>
             </Column>
           </Column>
@@ -62,12 +64,35 @@ export default function ResumePage() {
             </Row>
             <Column paddingLeft="24" style={{ borderLeft: '2px solid var(--neutral-alpha-weak)' }} gap="16">
               <Column gap="4">
-                <Text variant="label-strong-m">Performance Marketing Team Lead</Text>
+                <Row justifyContent="space-between" vertical="start">
+                  <Text variant="label-strong-m">Performance Marketing Team Lead</Text>
+                  <Text variant="body-default-xs" onBackground="neutral-weak">Nov 2024 – Oct 2025</Text>
+                </Row>
                 <Text variant="body-default-s" onBackground="neutral-weak">Led a team of six with focus on mentorship, coordination, and performance marketing execution. Managed multi-platform campaigns and optimized media budgets.</Text>
               </Column>
               <Column gap="4">
-                <Text variant="label-strong-m">Sr. Performance Marketing Executive</Text>
+                <Row justifyContent="space-between" vertical="start">
+                  <Text variant="label-strong-m">Sr. Performance Marketing Executive</Text>
+                  <Text variant="body-default-xs" onBackground="neutral-weak">Feb 2024 – Oct 2024</Text>
+                </Row>
                 <Text variant="body-default-s" onBackground="neutral-weak">Owned end-to-end campaign execution and reporting across performance platforms.</Text>
+              </Column>
+            </Column>
+          </Column>
+
+          {/* PROFAJ */}
+          <Column gap="16">
+            <Row justifyContent="space-between" vertical="center" wrap>
+              <Heading variant="heading-strong-m" onBackground="brand-strong">PROFAJ</Heading>
+              <Text variant="body-default-s" onBackground="neutral-weak">Apr 2023 – Feb 2024</Text>
+            </Row>
+            <Column paddingLeft="24" style={{ borderLeft: '2px solid var(--neutral-alpha-weak)' }} gap="16">
+              <Column gap="4">
+                <Row justifyContent="space-between" vertical="start">
+                  <Text variant="label-strong-m">Digital Marketing Team Lead</Text>
+                  <Text variant="body-default-xs" onBackground="neutral-weak">2023 – 2024</Text>
+                </Row>
+                <Text variant="body-default-s" onBackground="neutral-weak">Provided strategic direction for a five-person marketing team. Managed workload distribution and performance tracking.</Text>
               </Column>
             </Column>
           </Column>
@@ -94,7 +119,7 @@ export default function ResumePage() {
           <Heading variant="heading-strong-l">Skills & Tools</Heading>
           <Line background="neutral-alpha-weak" />
           <Flex gap="12" wrap>
-            {['Google Ads', 'Meta Ads', 'GA4', 'GTM', 'Python', 'JavaScript', 'Looker Studio'].map(skill => (
+            {['Google Ads', 'Meta Ads', 'TikTok Ads', 'LinkedIn Ads', 'GA4', 'GTM', 'Looker Studio', 'Zapier', 'Make', 'n8n'].map(skill => (
               <Flex key={skill} paddingX="12" paddingY="6" radius="m" background="surface" border="neutral-alpha-weak">
                 <Text variant="code-default-xs">{skill}</Text>
               </Flex>

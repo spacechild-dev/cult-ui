@@ -22,7 +22,7 @@ export default function HomePage() {
   return (
     <Column fillWidth horizontal="center" paddingY="128" paddingX="l" style={{ minHeight: "100vh" }}>
       {/* Hero Section */}
-      <Column maxWidth="s" horizontal="center" gap="l" align="center" marginBottom="64">
+      <Column maxWidth="m" horizontal="center" gap="l" align="center" marginBottom="64">
         <Badge
           textVariant="code-default-s"
           border="neutral-alpha-medium"

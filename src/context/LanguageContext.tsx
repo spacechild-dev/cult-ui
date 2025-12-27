@@ -50,6 +50,13 @@ const translations = {
             experienceTitle: "Experience",
             skillsTitle: "Skills & Tools",
             present: "Present"
+        },
+        privacy: {
+            title: "Privacy Policy",
+            generalTitle: "General Privacy",
+            generalContent: "I respect the personal data of users in the apps I develop and I do not collect any data. Everything is stored locally on the user's devices and browsers.",
+            audioLiftTitle: "AudioLift Chrome Extension",
+            audioLiftContent: "AudioLift is committed to user privacy. The extension uses the Web Audio API to enhance browser audio (equalizer, volume boost, compression) in real-time. AudioLift does not collect, store, or transmit any personal data, browsing history, or audio content to external servers. All audio processing is performed locally on your device. Your custom presets and settings are stored exclusively within your browser's chrome.storage.local. The \"access to all websites\" permission is strictly used for technical purposes to detect media elements on various domains and apply audio enhancements as requested by the user."
         }
     },
     tr: {
@@ -91,6 +98,13 @@ const translations = {
             experienceTitle: "Deneyim",
             skillsTitle: "Yetenekler & Araçlar",
             present: "Günümüz"
+        },
+        privacy: {
+            title: "Gizlilik Politikası",
+            generalTitle: "Genel Gizlilik",
+            generalContent: "Geliştirdiğim uygulamalarda kullanıcıların kişisel verilerine saygı duyuyorum ve hiçbir veriyi toplamıyorum. Her şey kullanıcıya ait cihazlarda ve tarayıcılarda saklanıyor.",
+            audioLiftTitle: "AudioLift Chrome Uzantısı",
+            audioLiftContent: "AudioLift kullanıcı gizliliğine bağlıdır. Uzantı, tarayıcı sesini (ekolayzır, ses yükseltme, kompresör) gerçek zamanlı olarak iyileştirmek için Web Audio API kullanır. AudioLift herhangi bir kişisel veriyi, tarama geçmişini veya ses içeriğini toplamaz, saklamaz veya harici sunuculara iletmez. Tüm ses işleme işlemleri yerel olarak cihazınızda gerçekleştirilir. Özel ön ayarlarınız ve ayarlarınız yalnızca tarayıcınızın chrome.storage.local alanında saklanır. \"Tüm web sitelerine erişim\" izni, çeşitli alan adlarındaki medya öğelerini tespit etmek ve kullanıcı tarafından talep edildiği şekilde ses iyileştirmelerini uygulamak için kesinlikle teknik amaçlarla kullanılır."
         }
     }
 };
